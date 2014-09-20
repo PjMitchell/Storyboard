@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Data.Tests", "Storyboard.Data.Tests\Storyboard.Data.Tests.csproj", "{91A8873A-0C6C-4302-9828-E6B545E8C5E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Web.Tests", "Storyboard.Web.Tests\Storyboard.Web.Tests.csproj", "{2EAFA1E9-C5BE-4C18-B52D-74A7B4B65BBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Data", "Storyboard.Data\Storyboard.Data.csproj", "{2A339C67-67F7-4019-89AD-4B5B30B0077C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Storyboard.Database", "Storyboard.Database\Storyboard.Database.sqlproj", "{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Domain", "Storyboard.Domain\Storyboard.Domain.csproj", "{FE1BD647-7363-4C06-9D6A-4DFBE75CD95A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Web", "Storyboard.Web\Storyboard.Web.csproj", "{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91A8873A-0C6C-4302-9828-E6B545E8C5E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91A8873A-0C6C-4302-9828-E6B545E8C5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91A8873A-0C6C-4302-9828-E6B545E8C5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91A8873A-0C6C-4302-9828-E6B545E8C5E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EAFA1E9-C5BE-4C18-B52D-74A7B4B65BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EAFA1E9-C5BE-4C18-B52D-74A7B4B65BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EAFA1E9-C5BE-4C18-B52D-74A7B4B65BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EAFA1E9-C5BE-4C18-B52D-74A7B4B65BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A339C67-67F7-4019-89AD-4B5B30B0077C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A339C67-67F7-4019-89AD-4B5B30B0077C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A339C67-67F7-4019-89AD-4B5B30B0077C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A339C67-67F7-4019-89AD-4B5B30B0077C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FE1BD647-7363-4C06-9D6A-4DFBE75CD95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1BD647-7363-4C06-9D6A-4DFBE75CD95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1BD647-7363-4C06-9D6A-4DFBE75CD95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1BD647-7363-4C06-9D6A-4DFBE75CD95A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
