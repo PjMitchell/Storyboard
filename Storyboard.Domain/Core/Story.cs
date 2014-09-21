@@ -1,4 +1,5 @@
-﻿using Storyboard.Domain.Core.Commands;
+﻿using HDLink;
+using Storyboard.Domain.Core.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Domain.Core
 {
-    public class Story
+    public class Story : INode
     {
         public int Id { get; set; }
+        public INodeType NodeType
+        {
+            get { return StoryboardNodeTypes.Story; }
+        }
         public string Title { get; set; }
         public string Synopsis { get; set; }
 
@@ -23,5 +28,7 @@ namespace Storyboard.Domain.Core
                 Synopsis = this.Synopsis
             };
         }
+
+        
     }
 }

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HDLink.1.0.0-CI00001\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -43,10 +47,14 @@
     <Compile Include="Core\Actor.cs" />
     <Compile Include="Core\Commands\AddUpdateActorCommand.cs" />
     <Compile Include="Core\Commands\AddUpdateStoryCommand.cs" />
+    <Compile Include="Core\StoryboardNodeTypes.cs" />
     <Compile Include="Core\Story.cs" />
     <Compile Include="Data\IActorRepository.cs" />
     <Compile Include="Data\IStoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
