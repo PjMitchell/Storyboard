@@ -7,6 +7,7 @@ using Storyboard.Data.Core;
 using System.Collections.Generic;
 using System.Linq;
 using Storyboard.Domain.Core.Commands;
+using HDLink;
 
 namespace Storyboard.Data.Tests
 {
@@ -49,6 +50,44 @@ namespace Storyboard.Data.Tests
             var expected = GetAllActors().Single(s => s.Id == 1);
             Assert.AreEqual(expected.Description, result.Description);
             Assert.AreEqual(expected.Name, result.Name);
+
+        }
+
+        [TestMethod]
+        public void CanGetActorById_AsINodeRepository()
+        {
+            LoadActors();
+            var iNodeRepo = target as INodeRepository;
+            var result = iNodeRepo.Get(1) as Actor;
+            var expected = GetAllActors().Single(s => s.Id == 1) ;
+            Assert.IsNotNull(result);
+            Assert.AreEqual(expected.Description, result.Description);
+            Assert.AreEqual(expected.Name, result.Name);
+
+        }
+
+        [TestMethod]
+        public void CanGetActorsByIds()
+        {
+            LoadActors();
+            var result = target.Get(new []{1, 3}).ToList();
+            var expected = GetAllActors().Where(w => w.Id == 1 || w.Id == 3).ToList();
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Any(a=> a.Id ==1));
+            Assert.IsTrue(result.Any(a => a.Id == 3));
+
+        }
+
+        [TestMethod]
+        public void CanGetActorsByIds_AsINodeRepository()
+        {
+            LoadActors();
+            var iNodeRepo = target as INodeRepository;
+            var result = iNodeRepo.Get(new[] { 1, 3 }).ToList();
+            var expected = GetAllActors().Where(w => w.Id == 1 || w.Id == 3).ToList();
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Any(a => a.Id == 1));
+            Assert.IsTrue(result.Any(a => a.Id == 3));
 
         }
 

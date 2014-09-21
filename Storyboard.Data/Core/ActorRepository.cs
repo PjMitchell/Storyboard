@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Storyboard.Data.Helpers;
 
 namespace Storyboard.Data.Core
 {
-    public class ActorRepository : IActorRepository
+    public class ActorRepository : IActorRepository, INodeRepository<Actor>
     {
         public IEnumerable<Actor> Get()
         {
@@ -25,6 +26,17 @@ namespace Storyboard.Data.Core
             var db = Database.Open();
             Actor actor = db.Story.Actor.FindAllById(id).SingleOrDefault();
             return actor;
+        }
+
+        public IEnumerable<Actor> Get(IEnumerable<int> ids)
+        {
+            var chunkedIds = ids.Chunk(1000);
+            var db = Database.Open();
+            return chunkedIds.SelectMany(chunk =>
+                {
+                    IEnumerable<Actor> chunkResult = db.Story.Actor.FindAllById(chunk.ToArray());
+                    return chunkResult;
+                });
         }
 
         public void AddOrUpdate(AddUpdateActorCommand command)
@@ -45,6 +57,18 @@ namespace Storyboard.Data.Core
         {
             var db = Database.Open();
             db.Story.Actor.DeleteById(id);
+        }
+
+
+
+        IEnumerable<INode> INodeRepository.Get(IEnumerable<int> ids)
+        {
+            return Get(ids);
+        }
+
+        INode INodeRepository.Get(int id)
+        {
+            return Get(id); ;
         }
     }
 }

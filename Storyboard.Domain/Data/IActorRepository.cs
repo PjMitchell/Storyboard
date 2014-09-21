@@ -24,6 +24,13 @@ namespace Storyboard.Domain.Data
         Actor Get(int id);
 
         /// <summary>
+        /// Gets requested Actors
+        /// </summary>
+        /// <param name="ids">Actor Ids</param>
+        /// <returns>Requested Actor</returns>
+        IEnumerable<Actor> Get(IEnumerable<int> ids);
+
+        /// <summary>
         /// Creates or Updates Actor
         /// </summary>
         /// <param name="command">Actor to be created / updated</param>

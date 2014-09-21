@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HDLink.1.0.0-CI00001\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
+      <HintPath>..\packages\HDLink.1.0.0-CI00002\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data">
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Core\ActorRepository.cs" />
     <Compile Include="Core\StoryRepository.cs" />
+    <Compile Include="Helpers\LinqHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

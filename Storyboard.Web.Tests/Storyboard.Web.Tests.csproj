@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HDLink.1.0.0-CI00001\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
+      <HintPath>..\packages\HDLink.1.0.0-CI00002\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
