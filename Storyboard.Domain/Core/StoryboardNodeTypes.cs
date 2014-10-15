@@ -15,6 +15,24 @@ namespace Storyboard.Domain.Core
 
         public static NodeType Story { get { return story; } }
         public static NodeType Actor { get { return actor; } }
+
+        /// <summary>
+        /// Gets NodeType From Id
+        /// </summary>
+        /// <param name="id">Id of Node Type</param>
+        /// <returns>Storyboard NodeTypes</returns>
+        public static NodeType GetFromValue(int id)
+        {
+            switch(id)
+            {
+                case 1 :
+                    return story;
+                case 2 :
+                    return actor;
+                default:
+                    throw new ArgumentOutOfRangeException("id");
+            }
+        }
    }
 
     

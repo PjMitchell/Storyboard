@@ -1,10 +1,11 @@
 ﻿If (SELECT count(*) FROM Story.Actor) = 0
 BEGIN
-INSERT INTO Story.Actor ([Name], [Description])
+SET IDENTITY_INSERT  Story.Actor ON
+INSERT INTO Story.Actor ([Id], [Name], [Description])
 VALUES 
-(N'Red Riding Hood', N'Girl who likes red'),
-(N'The Big, Bad Wolf', N'A Wolf that is both big and bad'),
-(N'Grandma', N'Red''s Grandma'),
-(N'The woodsman', N'A man with an axe')
-
+(1,N'Red Riding Hood', N'Girl who likes red'),
+(2,N'The Big, Bad Wolf', N'A Wolf that is both big and bad'),
+(3,N'Grandma', N'Red''s Grandma'),
+(4,N'The woodsman', N'A man with an axe')
+SET IDENTITY_INSERT  Story.Actor OFF
 END

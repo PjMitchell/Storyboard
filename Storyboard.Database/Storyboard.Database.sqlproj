@@ -67,11 +67,13 @@
     <Build Include="Schema\Story.sql" />
     <Build Include="Tables\Story\Story.sql" />
     <Build Include="Tables\Story\Actor.sql" />
+    <Build Include="Tables\Story\Link.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Storyboard.Database.Local.publish.xml" />
     <None Include="Data\Seed\StorySeed.sql" />
     <None Include="Data\Seed\ActorSeed.sql" />
+    <None Include="Data\Seed\LinkSeed.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />

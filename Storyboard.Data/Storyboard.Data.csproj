@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\ActorRepository.cs" />
+    <Compile Include="Core\LinkRepository.cs" />
     <Compile Include="Core\StoryRepository.cs" />
+    <Compile Include="DBObject\LinkTableRow.cs" />
     <Compile Include="Helpers\LinqHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

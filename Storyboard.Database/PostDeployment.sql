@@ -11,3 +11,4 @@ Post-Deployment Script Template
 */
 :r .\Data\Seed\StorySeed.sql
 :r .\Data\Seed\ActorSeed.sql
+:r .\Data\Seed\LinkSeed.sql
