@@ -53,6 +53,18 @@ namespace Storyboard.Data.Tests
         }
 
         [TestMethod]
+        public void CanGetStorysByIds()
+        {
+            LoadStories();
+            var result = target.Get(new[] { 1, 3 }).ToList();
+            var expected = GetAllStories().Where(w => w.Id == 1 || w.Id == 3).ToList();
+            Assert.AreEqual(2, result.Count);
+            Assert.IsTrue(result.Any(a => a.Id == 1));
+            Assert.IsTrue(result.Any(a => a.Id == 3));
+
+        }
+
+        [TestMethod]
         public void CanCreateStory()
         {
             var story = GetAllStories().Single(s => s.Id == 1);

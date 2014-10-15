@@ -7,11 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Storyboard.Data.Helpers;
 using System.Threading.Tasks;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryRepository : IStoryRepository
+    public class StoryRepository : IStoryRepository, INodeRepository<Story>
     {
         /// <summary>
         /// Gets all Stories from Database
@@ -62,6 +63,27 @@ namespace Storyboard.Data.Core
         {
             var db = Database.Open();
             db.Story.Story.DeleteById(id);
+        }
+
+        public IEnumerable<Story> Get(IEnumerable<int> ids)
+        {
+            var chunkedIds = ids.Chunk(1000);
+            var db = Database.Open();
+            return chunkedIds.SelectMany(chunk =>
+            {
+                IEnumerable<Story> chunkResult = db.Story.Story.FindAllById(chunk.ToArray());
+                return chunkResult;
+            });
+        }
+
+        IEnumerable<INode> INodeRepository.Get(IEnumerable<int> ids)
+        {
+            return Get(ids);
+        }
+
+        INode INodeRepository.Get(int id)
+        {
+            return Get(id);
         }
     }
 }

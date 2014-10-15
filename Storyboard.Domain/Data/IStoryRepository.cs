@@ -15,6 +15,13 @@ namespace Storyboard.Domain.Data
         /// </summary>
         /// <returns>All Stories</returns>
         IEnumerable<Story> Get();
+
+        /// <summary>
+        /// Gets requested stories
+        /// </summary>
+        /// <param name="ids">Story Ids</param>
+        /// <returns>Requested Stories</returns>
+        IEnumerable<Story> Get(IEnumerable<int> ids);
         
         /// <summary>
         /// Gets requested story
