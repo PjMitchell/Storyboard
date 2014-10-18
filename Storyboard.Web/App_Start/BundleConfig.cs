@@ -27,7 +27,8 @@ namespace Storyboard.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
-                       "~/App/Home/OverviewController.js"));
+                "~/App/Home/OverviewController.js",
+                "~/App/Home/Services/StoryOverviewDataService.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

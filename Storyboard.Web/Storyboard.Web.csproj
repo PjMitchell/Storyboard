@@ -55,6 +55,9 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject.Web.WebApi">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.2.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
@@ -190,6 +193,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\StoryOverviewController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -206,6 +210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Home\StoryOverviewSummary.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,7 +219,9 @@
   <ItemGroup>
     <Content Include="App\AppBootstrapper.js" />
     <Content Include="App\Home\HomeModule.js" />
+    <Content Include="App\Home\Models\StoryOverviewSummary.js" />
     <Content Include="App\Home\OverviewController.js" />
+    <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -254,6 +261,8 @@
     <Content Include="App\AppBootstrapper.js.map" />
     <Content Include="App\Home\OverviewController.js.map" />
     <Content Include="App\Home\HomeModule.js.map" />
+    <Content Include="App\Home\Models\StoryOverviewSummary.js.map" />
+    <Content Include="App\Home\Services\StoryOverviewDataService.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -994,6 +1003,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="App\Home\Views\OverviewShellView.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1068,7 +1078,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\AppBootstrapper.ts" />
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
+    <TypeScriptCompile Include="App\Home\Models\StoryOverviewSummary.ts" />
     <TypeScriptCompile Include="App\Home\OverviewController.ts" />
+    <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
