@@ -1,4 +1,5 @@
 ﻿using Storyboard.Domain.Core;
+using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using Storyboard.Web.Models.Home;
 using System;
@@ -42,9 +43,10 @@ namespace Storyboard.Web.API
         //}
 
         //// POST api/<controller>
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        public void Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
+        {
+            repository.AddOrUpdate(addUpdateStoryCommand);
+        }
 
         //// PUT api/<controller>/5
         //public void Put(int id, [FromBody]string value)

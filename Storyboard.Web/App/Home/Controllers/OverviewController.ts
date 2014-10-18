@@ -1,5 +1,5 @@
-﻿/// <reference path="homemodule.ts" />
-/// <reference path="../../scripts/typings/angularjs/angular.d.ts" />
+﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../../../scripts/typings/angularjs/angular.d.ts" />
 
 module Home {
     export interface IOverviewScope extends ng.IScope {

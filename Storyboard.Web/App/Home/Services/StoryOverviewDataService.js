@@ -8,6 +8,10 @@ var Home;
         StoryOverviewDataService.prototype.getAll = function () {
             return this.http.get('/api/StoryOverview');
         };
+
+        StoryOverviewDataService.prototype.add = function (command) {
+            return this.http.post('/api/StoryOverview', command);
+        };
         return StoryOverviewDataService;
     })();
     Home.StoryOverviewDataService = StoryOverviewDataService;

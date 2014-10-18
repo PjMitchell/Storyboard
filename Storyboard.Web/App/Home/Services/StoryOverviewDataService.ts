@@ -9,5 +9,9 @@ module Home {
         public getAll() {
             return this.http.get<Home.IStoryOverviewSummary[]>('/api/StoryOverview'); 
         }
+
+        public add(command: Home.AddUpdateStoryCommand) {
+            return this.http.post('/api/StoryOverview',command)
+        }
     }
 } 

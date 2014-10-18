@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Storyboard.Domain.Core;
 using System.Linq;
 using Storyboard.Web.Models.Home;
+using Storyboard.Domain.Core.Commands;
 
 namespace Storyboard.Web.Tests.Apis
 {
@@ -40,6 +41,22 @@ namespace Storyboard.Web.Tests.Apis
 
         }
 
+        [TestMethod]
+        public void Post_CreatesNewStory()
+        {
+            var newStory = new AddUpdateStoryCommand();
+            Mock.Arrange(() => repo.AddOrUpdate(newStory))
+                .MustBeCalled();
+                
+            // Act
+
+            target.Post(newStory);
+            // Assert
+            Mock.Assert(repo);
+
+        }
+
+        //todo add validation
 
         private void AssertOverviewSummaryEqual(StoryOverviewSummary summary, Story story)
         {
