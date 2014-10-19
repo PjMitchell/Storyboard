@@ -1088,7 +1088,6 @@
     <TypeScriptCompile Include="App\Home\Models\StoryOverviewSummary.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\OverviewController.ts" />
     <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
-    <TypeScriptCompile Include="App\Home\Tests\StoryOverviewDataServiceTests.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
