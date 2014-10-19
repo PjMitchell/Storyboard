@@ -16,7 +16,8 @@ module Home {
             this.scope = $scope;
             
             this.dataService = StoryOverviewDataService;
-            this.dataService.getAll().success(this.onSummariesReturned);
+            this.getAllSummaries();
+            //this.dataService.getAll().success(this.onSummariesReturned);
             this.Name = "Test";
             this.Summaries = [];
             
@@ -24,7 +25,16 @@ module Home {
         }
         Name: string;
         Summaries: Home.IStoryOverviewSummary[];
-         private onSummariesReturned = (result: IStoryOverviewSummary[]) => {
+
+        deleteStoryCommand(id: number) {
+            this.dataService.delete(id).success(this.getAllSummaries);
+        }
+
+        //as lambda to prevent this context changing
+        private getAllSummaries = () => {
+            this.dataService.getAll().success(this.onSummariesReturned);
+        }
+        private onSummariesReturned = (result: IStoryOverviewSummary[]) => {
              this.Summaries = result;
              
         } 

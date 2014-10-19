@@ -42,7 +42,7 @@ namespace Storyboard.Web.API
         //    return "value";
         //}
 
-        //// POST api/<controller>
+        //// POST api/StoryOverview
         public void Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
         {
             repository.AddOrUpdate(addUpdateStoryCommand);
@@ -53,9 +53,10 @@ namespace Storyboard.Web.API
         //{
         //}
 
-        //// DELETE api/<controller>/5
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE api/StoryOverview/5
+        public void Delete(int id)
+        {
+            repository.Delete(id);
+        }
     }
 }

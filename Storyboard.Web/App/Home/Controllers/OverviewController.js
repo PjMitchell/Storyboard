@@ -5,16 +5,25 @@ var Home;
     var OverviewController = (function () {
         function OverviewController($scope, StoryOverviewDataService) {
             var _this = this;
+            //as lambda to prevent this context changing
+            this.getAllSummaries = function () {
+                _this.dataService.getAll().success(_this.onSummariesReturned);
+            };
             this.onSummariesReturned = function (result) {
                 _this.Summaries = result;
             };
             this.scope = $scope;
 
             this.dataService = StoryOverviewDataService;
-            this.dataService.getAll().success(this.onSummariesReturned);
+            this.getAllSummaries();
+
+            //this.dataService.getAll().success(this.onSummariesReturned);
             this.Name = "Test";
             this.Summaries = [];
         }
+        OverviewController.prototype.deleteStoryCommand = function (id) {
+            this.dataService.delete(id).success(this.getAllSummaries);
+        };
         OverviewController.$inject = ['$scope', 'StoryOverviewDataService'];
         return OverviewController;
     })();

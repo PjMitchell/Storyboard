@@ -56,6 +56,20 @@ namespace Storyboard.Web.Tests.Apis
 
         }
 
+        [TestMethod]
+        public void Delete_DeletesStory()
+        {
+            Mock.Arrange(() => repo.Delete(1))
+                .MustBeCalled();
+
+            // Act
+
+            target.Delete(1);
+            // Assert
+            Mock.Assert(repo);
+
+        }
+
         //todo add validation
 
         private void AssertOverviewSummaryEqual(StoryOverviewSummary summary, Story story)

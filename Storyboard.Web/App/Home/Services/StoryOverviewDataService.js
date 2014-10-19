@@ -3,14 +3,19 @@ var Home;
 (function (Home) {
     var StoryOverviewDataService = (function () {
         function StoryOverviewDataService($http) {
+            this.apiRoute = '/api/StoryOverview';
             this.http = $http;
         }
         StoryOverviewDataService.prototype.getAll = function () {
-            return this.http.get('/api/StoryOverview');
+            return this.http.get(this.apiRoute);
         };
 
         StoryOverviewDataService.prototype.add = function (command) {
-            return this.http.post('/api/StoryOverview', command);
+            return this.http.post(this.apiRoute, command);
+        };
+
+        StoryOverviewDataService.prototype.delete = function (id) {
+            return this.http.delete(this.apiRoute + '/' + id);
         };
         return StoryOverviewDataService;
     })();
