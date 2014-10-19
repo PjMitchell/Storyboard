@@ -1,6 +1,12 @@
 ﻿/// <reference path="../homemodule.ts" />
 module Home {
-    export class StoryOverviewDataService {
+    export interface IStoryOverviewDataService {
+        getAll(): ng.IHttpPromise<Home.IStoryOverviewSummary[]>
+        add(command: Home.AddUpdateStoryCommand): ng.IHttpPromise<{}>
+        delete(id: number): ng.IHttpPromise<{}>
+    }
+
+    export class StoryOverviewDataService implements IStoryOverviewDataService {
         private http: ng.IHttpService;
         private apiRoute = '/api/StoryOverview';
         constructor($http: ng.IHttpService) {
