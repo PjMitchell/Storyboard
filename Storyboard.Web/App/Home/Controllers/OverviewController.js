@@ -13,13 +13,9 @@ var Home;
                 _this.Summaries = result;
             };
             this.scope = $scope;
-
             this.dataService = StoryOverviewDataService;
-            this.getAllSummaries();
-
-            //this.dataService.getAll().success(this.onSummariesReturned);
-            this.Name = "Test";
             this.Summaries = [];
+            this.getAllSummaries();
         }
         OverviewController.prototype.deleteStoryCommand = function (id) {
             this.dataService.delete(id).success(this.getAllSummaries);
@@ -29,4 +25,4 @@ var Home;
     })();
     Home.OverviewController = OverviewController;
 })(Home || (Home = {}));
-//# sourceMappingURL=OverviewController.js.map
+//# sourceMappingURL=overviewcontroller.js.map

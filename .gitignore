@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.dll
 
 # =========================
 # Operating System Files
@@ -41,3 +42,16 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/packages
+/Storyboard.Data/Bin
+/Storyboard.Data/obj
+/Storyboard.Data.Tests/Bin
+/Storyboard.Data.Tests/obj
+/Storyboard.Database/Bin
+/Storyboard.Database/obj
+/Storyboard.Domain/Bin
+/Storyboard.Domain/obj
+/Storyboard.Web/Bin
+/Storyboard.Web/obj
+/Storyboard.Web.Tests/Bin
+/Storyboard.Web.Tests/obj

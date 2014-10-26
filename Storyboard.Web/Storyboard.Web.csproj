@@ -226,6 +226,7 @@
     <Content Include="App\Home\Controllers\OverviewController.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\AddStoryShellView.html" />
+    <Content Include="App\Tests\Home\OverviewControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -273,6 +274,7 @@
     <Content Include="App\Home\Controllers\AddStoryController.js.map" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js.map" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js.map" />
+    <Content Include="App\Tests\Home\OverviewControllerTests.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1102,6 +1104,7 @@
     <TypeScriptCompile Include="App\Home\Models\StoryOverviewSummary.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\OverviewController.ts" />
     <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
+    <TypeScriptCompile Include="App\Tests\Home\OverviewControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewDataServiceTests.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />

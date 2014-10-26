@@ -5,4 +5,9 @@ module Home {
         Title : string
         Synopsis: string
     }
+    export class StoryOverviewSummary implements IStoryOverviewSummary {
+        Id: number
+        Title: string
+        Synopsis: string
+    }
 } 
