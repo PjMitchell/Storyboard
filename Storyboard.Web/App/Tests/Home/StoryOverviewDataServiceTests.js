@@ -8,38 +8,78 @@ describe('StoryOverviewDataService', function () {
 
     beforeEach(function () {
         fakeHttpService = {};
-        fakeHttpService.get = function (input) {
-            return {};
-        };
-        fakeHttpService.post = function (input, data) {
-            return {};
-        };
-        fakeHttpService.delete = function (input) {
-            return {};
-        };
         apiRoute = '/api/StoryOverview';
         service = new Home.StoryOverviewDataService(fakeHttpService);
     });
 
-    it('Gets calls StoryOverview api', function () {
-        spyOn(fakeHttpService, 'get');
-        service.getAll();
-        expect(fakeHttpService.get).toHaveBeenCalledWith(apiRoute);
+    describe('Get', function () {
+        var httpResult;
+
+        beforeEach(function () {
+            httpResult = {};
+            fakeHttpService.get = function (input) {
+                return httpResult;
+            };
+        });
+
+        it('Calls StoryOverview api', function () {
+            spyOn(fakeHttpService, 'get');
+            service.getAll();
+            expect(fakeHttpService.get).toHaveBeenCalledWith(apiRoute);
+        });
+
+        it('Returns HttpResult', function () {
+            var result = service.getAll();
+            expect(result).toEqual(httpResult);
+        });
     });
 
-    it('Add call StoryOverview api', function () {
-        spyOn(fakeHttpService, 'post');
-        var command = new Home.AddUpdateStoryCommand();
-        command.Id = 1;
-        service.add(command);
-        expect(fakeHttpService.post).toHaveBeenCalledWith(apiRoute, command);
+    describe('Add', function () {
+        var httpResult;
+        var command;
+
+        beforeEach(function () {
+            httpResult = {};
+            fakeHttpService.post = function (input, data) {
+                return httpResult;
+            };
+            command = new Home.AddUpdateStoryCommand();
+            command.Id = 1;
+        });
+
+        it('Call StoryOverview api', function () {
+            spyOn(fakeHttpService, 'post');
+            service.add(command);
+            expect(fakeHttpService.post).toHaveBeenCalledWith(apiRoute, command);
+        });
+
+        it('Returns HttpResult', function () {
+            var result = service.add(command);
+            expect(result).toEqual(httpResult);
+        });
     });
 
-    it('Delete call StoryOverview api', function () {
-        spyOn(fakeHttpService, 'delete');
-        var id = 1;
-        service.delete(id);
-        expect(fakeHttpService.delete).toHaveBeenCalledWith(apiRoute + '/' + id);
+    describe('Delete', function () {
+        var httpResult;
+
+        beforeEach(function () {
+            httpResult = {};
+            fakeHttpService.delete = function (input) {
+                return httpResult;
+            };
+        });
+
+        it('Call StoryOverview api', function () {
+            spyOn(fakeHttpService, 'delete');
+            var id = 1;
+            service.delete(id);
+            expect(fakeHttpService.delete).toHaveBeenCalledWith(apiRoute + '/' + id);
+        });
+
+        it('Returns HttpResult', function () {
+            var result = service.delete(1);
+            expect(result).toEqual(httpResult);
+        });
     });
 });
 //# sourceMappingURL=StoryOverviewDataServiceTests.js.map
