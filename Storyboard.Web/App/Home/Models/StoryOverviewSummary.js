@@ -1,4 +1,4 @@
-﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../homemodule.ts" />
 var Home;
 (function (Home) {
     var StoryOverviewSummary = (function () {

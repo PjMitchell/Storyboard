@@ -1,4 +1,4 @@
-﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../homemodule.ts" />
 var Home;
 (function (Home) {
     var StoryOverviewDataService = (function () {
@@ -9,11 +9,9 @@ var Home;
         StoryOverviewDataService.prototype.getAll = function () {
             return this.http.get(this.apiRoute);
         };
-
         StoryOverviewDataService.prototype.add = function (command) {
             return this.http.post(this.apiRoute, command);
         };
-
         StoryOverviewDataService.prototype.delete = function (id) {
             return this.http.delete(this.apiRoute + '/' + id);
         };

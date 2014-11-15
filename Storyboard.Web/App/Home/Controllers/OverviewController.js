@@ -1,4 +1,4 @@
-﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../homemodule.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" />
 var Home;
 (function (Home) {

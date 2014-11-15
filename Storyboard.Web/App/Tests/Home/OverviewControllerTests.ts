@@ -4,14 +4,13 @@
 /// <reference path="../../home/controllers/overviewcontroller.ts" />
 /// <reference path="../../home/models/storyoverviewsummary.ts" />
 
-describe('OverviewController', () => {
+describe('OverviewController', (): void => {
     var target: Home.OverviewController;
     var scope: ng.IScope;
     var dataService: Home.IStoryOverviewDataService;
     var initialStories: Home.IStoryOverviewSummary[];
-    var q: ng.IQService;
 
-    beforeEach(()=>  {
+    beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
         scope = <ng.IScope>{};
         initialStories = new Array<Home.IStoryOverviewSummary>();
@@ -21,22 +20,21 @@ describe('OverviewController', () => {
         storyOne.Synopsis = 'Story 1 Overview';
         initialStories[0] = storyOne;
         dataService = <Home.IStoryOverviewDataService>{};
-        
-        
+
         dataService.getAll = () => {
             var promise = <ng.IHttpPromise<Home.StoryOverviewSummary[]>>{};
             promise.success = (callback: ng.IHttpPromiseCallback<Home.StoryOverviewSummary[]>) => {
-                callback(initialStories, 1, (header: string) => header, <ng.IRequestConfig>{})
-                return <ng.IHttpPromise<Home.IStoryOverviewSummary[]>>{}
+                callback(initialStories, 1, <ng.IHttpHeadersGetter>{}, <ng.IRequestConfig>{});
+                return <ng.IHttpPromise<Home.IStoryOverviewSummary[]>>{};
             };
             return promise;
-        }
+        };
     });
 
-    it('OnConstruction Summaries are populated', () => {
+    it('OnConstruction Summaries are populated', (): void => {
         target = new Home.OverviewController(scope, dataService);
         expect(target.Summaries.length).toEqual(1);
         expect(target.Summaries[0].Id).toEqual(1);
     });
 
-})
+});

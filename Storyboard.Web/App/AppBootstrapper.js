@@ -1,11 +1,9 @@
-﻿/// <reference path="home/HomeModule.ts" />
+/// <reference path="home/HomeModule.ts" />
 /// <reference path="../scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="home/Controllers/overviewcontroller.ts" />
 /// <reference path="../scripts/typings/angularjs/angular-route.d.ts" />
 var app = angular.module('storyboardApp', ['ngRoute']);
-app.factory('StoryOverviewDataService', function ($http) {
-    return new Home.StoryOverviewDataService($http);
-});
+app.factory('StoryOverviewDataService', function ($http) { return new Home.StoryOverviewDataService($http); });
 app.controller('OverviewController', Home.OverviewController);
 app.controller('AddStoryController', Home.AddStoryController);
 app.config(function ($routeProvider) {

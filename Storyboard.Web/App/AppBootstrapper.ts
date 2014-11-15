@@ -13,10 +13,10 @@ app.config(function ($routeProvider : ng.route.IRouteProvider) {
         controllerAs: 'vm',
         templateUrl: 'App/Home/Views/OverviewShellView.html'
     })
-        .when('/story/add',{
+        .when('/story/add', {
             controller: 'AddStoryController',
             controllerAs: 'vm',
             templateUrl: 'App/Home/Views/AddStoryShellView.html'
         })
-        .otherwise({ redirectTo: '/' })
+        .otherwise({ redirectTo: '/' });
 });

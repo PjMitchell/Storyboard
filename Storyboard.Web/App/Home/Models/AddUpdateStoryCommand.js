@@ -1,4 +1,4 @@
-﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../homemodule.ts" />
 var Home;
 (function (Home) {
     var AddUpdateStoryCommand = (function () {
@@ -9,4 +9,4 @@ var Home;
     })();
     Home.AddUpdateStoryCommand = AddUpdateStoryCommand;
 })(Home || (Home = {}));
-//# sourceMappingURL=AddUpdateStoryCommand.js.map
+//# sourceMappingURL=addupdatestorycommand.js.map
