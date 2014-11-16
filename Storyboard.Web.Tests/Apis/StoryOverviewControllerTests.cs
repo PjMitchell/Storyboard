@@ -45,6 +45,21 @@ namespace Storyboard.Web.Tests.Apis
         }
 
         [TestMethod]
+        public void Get_Id_GetsStoryOverview()
+        {
+            var id = 1;
+            var story = new StoryOverview();
+            Mock.Arrange(() => service.GetStoryOverview(id))
+                .Returns(() => story);
+            // Act
+
+            var result = target.Get(id);
+            // Assert
+            Assert.AreEqual(story, result);
+            
+        }
+
+        [TestMethod]
         public void Post_CreatesNewStory()
         {
             var newStory = new AddUpdateStoryCommand();

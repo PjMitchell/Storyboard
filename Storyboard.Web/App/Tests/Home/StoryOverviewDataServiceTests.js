@@ -27,6 +27,16 @@ describe('StoryOverviewDataService', function () {
             var result = service.getAll();
             expect(result).toEqual(httpResult);
         });
+        it('By Id Calls StoryOverview api with Id', function () {
+            var id = 1;
+            spyOn(fakeHttpService, 'get');
+            service.get(1);
+            expect(fakeHttpService.get).toHaveBeenCalledWith(apiRoute + '/' + id);
+        });
+        it('By Id Returns HttpResult', function () {
+            var result = service.getAll();
+            expect(result).toEqual(httpResult);
+        });
     });
     describe('Add', function () {
         var httpResult, command;

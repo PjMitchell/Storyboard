@@ -9,6 +9,9 @@ var Home;
         StoryOverviewDataService.prototype.getAll = function () {
             return this.http.get(this.apiRoute);
         };
+        StoryOverviewDataService.prototype.get = function (id) {
+            return this.http.get(this.apiRoute + '/' + id);
+        };
         StoryOverviewDataService.prototype.add = function (command) {
             return this.http.post(this.apiRoute, command);
         };
@@ -18,5 +21,6 @@ var Home;
         return StoryOverviewDataService;
     })();
     Home.StoryOverviewDataService = StoryOverviewDataService;
+    ;
 })(Home || (Home = {}));
 //# sourceMappingURL=StoryOverviewDataService.js.map

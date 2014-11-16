@@ -28,11 +28,11 @@ namespace Storyboard.Web.API
         {
             return storyReadService.GetStorySummaries();
         }
-              
-        // GET api/<controller>/5
-        public string Get(int id)
+
+        // GET api/StoryOverview/5
+        public StoryOverview Get(int id)
         {
-            return "value";
+            return storyReadService.GetStoryOverview(id);
         }
 
         //// POST api/StoryOverview

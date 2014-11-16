@@ -27,7 +27,7 @@ namespace Storyboard.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
-                "~/App/Home/Controllers/OverviewController.js",
+                "~/App/Home/Controllers/SummaryController.js",
                 "~/App/Home/Controllers/AddStoryController.js",
                 "~/App/Home/Models/AddUpdateStoryCommand.js",
                 "~/App/Home/Services/StoryOverviewDataService.js"));
