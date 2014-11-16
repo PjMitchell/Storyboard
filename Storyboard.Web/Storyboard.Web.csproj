@@ -211,7 +211,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Home\StoryOverviewSummary.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -222,8 +221,8 @@
     <Content Include="App\Home\Controllers\AddStoryController.js" />
     <Content Include="App\Home\HomeModule.js" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js" />
-    <Content Include="App\Home\Models\StoryOverviewSummary.js" />
     <Content Include="App\Home\Controllers\OverviewController.js" />
+    <Content Include="App\Home\Models\StoryModels.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\AddStoryShellView.html" />
     <Content Include="App\Tests\Home\OverviewControllerTests.js" />
@@ -264,7 +263,6 @@
     <Content Include="App\AppBootstrapper.js.map" />
     <Content Include="App\Home\Controllers\OverviewController.js.map" />
     <Content Include="App\Home\HomeModule.js.map" />
-    <Content Include="App\Home\Models\StoryOverviewSummary.js.map" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js.map" />
     <Content Include="App\Home\Controllers\AddStoryController.js.map" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js.map" />
@@ -281,6 +279,7 @@
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="App\Home\Models\StoryModels.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1080,6 +1079,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1103,7 +1103,7 @@
     <TypeScriptCompile Include="App\Home\Controllers\AddStoryController.ts" />
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateStoryCommand.ts" />
-    <TypeScriptCompile Include="App\Home\Models\StoryOverviewSummary.ts" />
+    <TypeScriptCompile Include="App\Home\Models\StoryModels.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\OverviewController.ts" />
     <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
     <TypeScriptCompile Include="App\Tests\Home\OverviewControllerTests.ts" />
@@ -1126,6 +1126,9 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />

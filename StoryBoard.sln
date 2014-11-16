@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98C2CD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC279737-9F5A-443B-A3C3-67C704153EB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Domain.Test", "Storyboard.Domain.Test\Storyboard.Domain.Test.csproj", "{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71AE40DB-5E06-4F2F-A991-CCE6E03CB4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

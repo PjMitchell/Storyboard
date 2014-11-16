@@ -6,8 +6,9 @@ using Telerik.JustMock;
 using System.Collections.Generic;
 using Storyboard.Domain.Core;
 using System.Linq;
-using Storyboard.Web.Models.Home;
+using Storyboard.Domain.Models;
 using Storyboard.Domain.Core.Commands;
+using Storyboard.Domain.Services;
 
 namespace Storyboard.Web.Tests.Apis
 {
@@ -15,29 +16,31 @@ namespace Storyboard.Web.Tests.Apis
     public class StoryOverviewControllerTests
     {
         private IStoryRepository repo;
+        private IStoryReadService service;
         private StoryOverviewController target;
 
         [TestInitialize]
         public void Init()
         {
             repo = Mock.Create<IStoryRepository>();
-            target = new StoryOverviewController(repo);
+            service = Mock.Create<IStoryReadService>();
+            target = new StoryOverviewController(service,repo);
         }
 
 
         [TestMethod]
         public void Get_GetsAllStoryOverviewSummaries()
         {
-            var stories = GetTestList();
-            Mock.Arrange(() => repo.Get())
+            var stories = GetTestList().Select(s=> new StorySummary{Id = s.Id}).ToList();
+            Mock.Arrange(() => service.GetStorySummaries())
                 .Returns(() => stories);
             // Act
             
             var result = target.Get().ToList();
             // Assert
             Assert.AreEqual(stories.Count, result.Count());
-            AssertOverviewSummaryEqual(result.SingleOrDefault(s=> s.Id ==1), stories.SingleOrDefault(s => s.Id == 1));
-            AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 2), stories.SingleOrDefault(s => s.Id == 2));
+            AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 1), GetTestList().SingleOrDefault(s => s.Id == 1));
+            AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 2), GetTestList().SingleOrDefault(s => s.Id == 2));
 
         }
 
@@ -72,7 +75,7 @@ namespace Storyboard.Web.Tests.Apis
 
         //todo add validation
 
-        private void AssertOverviewSummaryEqual(StoryOverviewSummary summary, Story story)
+        private void AssertOverviewSummaryEqual(StorySummary summary, Story story)
         {
             Assert.IsNotNull(summary);
             Assert.IsNotNull(story);

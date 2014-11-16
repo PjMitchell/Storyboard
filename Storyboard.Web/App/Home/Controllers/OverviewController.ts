@@ -15,7 +15,7 @@ module Home {
             this.getAllSummaries();            
         }
 
-        Summaries: Home.IStoryOverviewSummary[];
+        Summaries: Home.IStorySummary[];
 
         deleteStoryCommand(id: number) {
             this.dataService.delete(id).success(this.getAllSummaries);
@@ -25,7 +25,7 @@ module Home {
         private getAllSummaries = () => {
             this.dataService.getAll().success(this.onSummariesReturned);
         }
-        private onSummariesReturned = (result: IStoryOverviewSummary[]) => {
+        private onSummariesReturned = (result: IStorySummary[]) => {
              this.Summaries = result;
         } 
     }

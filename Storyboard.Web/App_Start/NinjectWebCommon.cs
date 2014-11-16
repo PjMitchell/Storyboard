@@ -12,6 +12,8 @@ namespace Storyboard.Web.App_Start
     using Ninject.Web.Common;
     using Storyboard.Domain.Data;
     using Storyboard.Data.Core;
+    using Storyboard.Domain.Services;
+    using HDLink;
 
     public static class NinjectWebCommon 
     {
@@ -48,6 +50,11 @@ namespace Storyboard.Web.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
                 kernel.Bind<IStoryRepository>().To<StoryRepository>();
                 kernel.Bind<IActorRepository>().To<ActorRepository>();
+                kernel.Bind<IStoryReadService>().To<StoryReadService>();
+                kernel.Bind<ILinkRepository>().To<LinkRepository>();
+                kernel.Bind<INodeRepositoryFactory>().To<StoryboardNodeRepositoryFactory>();
+                kernel.Bind<INodeService>().To<NodeService>();
+
                 RegisterServices(kernel);
                 return kernel;
             }

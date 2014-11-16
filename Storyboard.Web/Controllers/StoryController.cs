@@ -1,5 +1,6 @@
 ﻿using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
+using Storyboard.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace Storyboard.Web.Controllers
     public class StoryController : Controller
     {
         private readonly IStoryRepository repository;
+        private readonly IStoryReadService service;
         
-        public StoryController(IStoryRepository repository)
+        public StoryController(IStoryReadService service, IStoryRepository repository)
         {
             this.repository = repository;
+            this.service = service;
         }
         
         // GET: Story
@@ -26,7 +29,7 @@ namespace Storyboard.Web.Controllers
         // GET: Story/Details/5
         public ActionResult Details(int id)
         {
-            return View(repository.Get(id));
+            return View(service.GetStoryOverview(id));
         }
 
         // GET: Story/Create

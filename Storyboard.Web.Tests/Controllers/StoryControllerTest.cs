@@ -10,6 +10,7 @@ using Storyboard.Domain.Core;
 using Storyboard.Domain.Data;
 using Telerik.JustMock;
 using Storyboard.Domain.Core.Commands;
+using Storyboard.Domain.Services;
 
 namespace Storyboard.Web.Tests.Controllers
 {
@@ -17,13 +18,16 @@ namespace Storyboard.Web.Tests.Controllers
     public class StoryControllerTest
     {
         private IStoryRepository repo;
+        private IStoryReadService service;
+
         private StoryController target;
         
         [TestInitialize]
         public void Init()
         {
             repo = Mock.Create<IStoryRepository>();
-            target = new StoryController(repo);
+            service = Mock.Create<IStoryReadService>();
+            target = new StoryController(service,repo);
         }
         
         

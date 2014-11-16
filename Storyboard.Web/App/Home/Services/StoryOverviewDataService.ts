@@ -1,7 +1,7 @@
 ﻿/// <reference path="../homemodule.ts" />
 module Home {
     export interface IStoryOverviewDataService {
-        getAll(): ng.IHttpPromise<Home.IStoryOverviewSummary[]>
+        getAll(): ng.IHttpPromise<Home.IStorySummary[]>
         add(command: Home.AddUpdateStoryCommand): ng.IHttpPromise<{}>
         delete(id: number): ng.IHttpPromise<{}>
     }
@@ -14,7 +14,7 @@ module Home {
         }
 
         public getAll() {
-            return this.http.get<Home.IStoryOverviewSummary[]>(this.apiRoute); 
+            return this.http.get<Home.IStorySummary[]>(this.apiRoute); 
         }
 
         public add(command: Home.AddUpdateStoryCommand) {

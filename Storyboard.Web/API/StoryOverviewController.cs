@@ -1,7 +1,8 @@
 ﻿using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
-using Storyboard.Web.Models.Home;
+using Storyboard.Domain.Models;
+using Storyboard.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,33 +15,25 @@ namespace Storyboard.Web.API
     public class StoryOverviewController : ApiController
     {
         private readonly IStoryRepository repository;
+        private readonly IStoryReadService storyReadService;
         
-        public StoryOverviewController(IStoryRepository repository)
+        public StoryOverviewController(IStoryReadService storyReadService, IStoryRepository repository)
         {
             this.repository = repository;
+            this.storyReadService = storyReadService;
         }
 
         // GET api/StoryOverview
-        public IEnumerable<StoryOverviewSummary> Get()
+        public IEnumerable<StorySummary> Get()
         {
-            return repository.Get().Select(MapToOverviewSummary);
+            return storyReadService.GetStorySummaries();
         }
-
-        private StoryOverviewSummary MapToOverviewSummary(Story arg)
+              
+        // GET api/<controller>/5
+        public string Get(int id)
         {
-            return new StoryOverviewSummary
-                {
-                    Id = arg.Id,
-                    Synopsis = arg.Synopsis,
-                    Title = arg.Title
-                };
+            return "value";
         }
-
-        //// GET api/<controller>/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         //// POST api/StoryOverview
         public void Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
@@ -58,5 +51,7 @@ namespace Storyboard.Web.API
         {
             repository.Delete(id);
         }
+
+        
     }
 }

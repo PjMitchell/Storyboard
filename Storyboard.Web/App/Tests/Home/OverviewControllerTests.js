@@ -2,7 +2,7 @@
 /// <reference path="../../home/services/storyoverviewdataservice.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/overviewcontroller.ts" />
-/// <reference path="../../home/models/storyoverviewsummary.ts" />
+/// <reference path="../../home/models/storyModels.ts" />
 describe('OverviewController', function () {
     var target;
     var scope;
@@ -12,7 +12,7 @@ describe('OverviewController', function () {
         dataService = {};
         scope = {};
         initialStories = new Array();
-        var storyOne = new Home.StoryOverviewSummary();
+        var storyOne = new Home.StorySummary();
         storyOne.Id = 1;
         storyOne.Title = 'Story 1';
         storyOne.Synopsis = 'Story 1 Overview';

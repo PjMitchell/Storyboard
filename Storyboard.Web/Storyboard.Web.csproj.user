@@ -6,7 +6,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <ToolsVersionPromptShown>1.1</ToolsVersionPromptShown>
   </PropertyGroup>
   <ProjectExtensions>

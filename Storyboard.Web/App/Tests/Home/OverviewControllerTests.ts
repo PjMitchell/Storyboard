@@ -2,19 +2,19 @@
 /// <reference path="../../home/services/storyoverviewdataservice.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/overviewcontroller.ts" />
-/// <reference path="../../home/models/storyoverviewsummary.ts" />
+/// <reference path="../../home/models/storyModels.ts" />
 
 describe('OverviewController', (): void => {
     var target: Home.OverviewController;
     var scope: ng.IScope;
     var dataService: Home.IStoryOverviewDataService;
-    var initialStories: Home.IStoryOverviewSummary[];
+    var initialStories: Home.IStorySummary[];
 
     beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
         scope = <ng.IScope>{};
-        initialStories = new Array<Home.IStoryOverviewSummary>();
-        var storyOne = new Home.StoryOverviewSummary();
+        initialStories = new Array<Home.IStorySummary>();
+        var storyOne = new Home.StorySummary();
         storyOne.Id = 1;
         storyOne.Title = 'Story 1';
         storyOne.Synopsis = 'Story 1 Overview';
@@ -22,10 +22,10 @@ describe('OverviewController', (): void => {
         dataService = <Home.IStoryOverviewDataService>{};
 
         dataService.getAll = () => {
-            var promise = <ng.IHttpPromise<Home.StoryOverviewSummary[]>>{};
-            promise.success = (callback: ng.IHttpPromiseCallback<Home.StoryOverviewSummary[]>) => {
+            var promise = <ng.IHttpPromise<Home.StorySummary[]>>{};
+            promise.success = (callback: ng.IHttpPromiseCallback<Home.StorySummary[]>) => {
                 callback(initialStories, 1, <ng.IHttpHeadersGetter>{}, <ng.IRequestConfig>{});
-                return <ng.IHttpPromise<Home.IStoryOverviewSummary[]>>{};
+                return <ng.IHttpPromise<Home.IStorySummary[]>>{};
             };
             return promise;
         };

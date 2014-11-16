@@ -1,0 +1,10 @@
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.csprojResolveAssemblyReference.cache
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.Test.dll
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.Test.pdb
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.dll
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\HDLink.dll
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.pdb
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.dll
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.pdb
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.dll
+C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.xml

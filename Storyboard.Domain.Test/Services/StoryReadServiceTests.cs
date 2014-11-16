@@ -1,0 +1,90 @@
+﻿using HDLink;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Storyboard.Domain.Core;
+using Storyboard.Domain.Data;
+using Storyboard.Domain.Models;
+using Storyboard.Domain.Services;
+using System.Collections.Generic;
+using System.Linq;
+using Telerik.JustMock;
+
+namespace Storyboard.Domain.Test
+{
+    [TestClass]
+    public class StoryReadServiceTests
+    {
+        private IStoryReadService target;
+        private IStoryRepository storyRepos;
+        private INodeService nodeService;
+        private Story testStory;
+        
+        [TestInitialize]
+        public void Init()
+        {
+            storyRepos = Mock.Create<IStoryRepository>();
+            nodeService = Mock.Create<INodeService>();
+            target = new StoryReadService(storyRepos, nodeService);
+            testStory = new Story { Id = 1, Title = "A Story", Synopsis = "A Summary" };
+            Mock.Arrange(() => storyRepos.Get(testStory.Id))
+                .Returns(() => testStory);
+        }
+        
+        [TestMethod]
+        public void GetStorySummary_GetsStorySummary()
+        {
+            var result = target.GetStorySummary(testStory.Id);
+            
+            Assert.AreEqual(testStory.Id, result.Id);
+            Assert.AreEqual(testStory.Title, result.Title);
+            Assert.AreEqual(testStory.Synopsis, result.Synopsis);
+
+        }
+
+        [TestMethod]
+        public void GetStorySummaries_GetsStorySummary()
+        {
+            Mock.Arrange(() => storyRepos.Get())
+                .Returns(() => new List<Story> { testStory, testStory });
+            var list = target.GetStorySummaries().ToList();
+
+            Assert.AreEqual(2, list.Count);
+            var result = list[0];
+            Assert.AreEqual(testStory.Id, result.Id);
+            Assert.AreEqual(testStory.Title, result.Title);
+            Assert.AreEqual(testStory.Synopsis, result.Synopsis);
+
+        }
+
+        [TestMethod]
+        public void GetStoryOverview_GetsStorySummary()
+        {
+            var result = target.GetStoryOverview(testStory.Id);
+
+            Assert.AreEqual(testStory.Id, result.Summary.Id);
+            Assert.AreEqual(testStory.Title, result.Summary.Title);
+            Assert.AreEqual(testStory.Synopsis, result.Summary.Synopsis);
+
+        }
+
+        [TestMethod]
+        public void GetStoryOverview_GetsActors()
+        {
+            var actor = new Actor{Id = 10, Name = "Actor"};
+            var actors = new List<Actor> { actor };
+            Mock.Arrange(()=> nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<INodeType>()))
+                .Returns((INode node, INodeType nodetype) => 
+                    node.Id == testStory.Id 
+                    && node.NodeType == testStory.NodeType 
+                    && nodetype == StoryboardNodeTypes.Actor
+                    ? actors
+                    : new List<Actor>());
+            
+            var result = target.GetStoryOverview(testStory.Id);
+            Assert.AreEqual(1, result.Actors.Count);
+            Assert.AreEqual(10, result.Actors[0].Id);
+
+            
+
+        }
+    }
+}
