@@ -29,6 +29,7 @@ describe('SummaryController', (): void => {
             };
             return promise;
         };
+
     });
 
     it('OnConstruction Summaries are populated', (): void => {

@@ -7,6 +7,8 @@ var app = angular.module('storyboardApp', ['ngRoute']);
 app.factory('StoryOverviewDataService', ($http:ng.IHttpService)=> new  Home.StoryOverviewDataService($http));
 app.controller('SummaryController', Home.SummaryController);
 app.controller('AddStoryController', Home.AddStoryController);
+app.controller('StoryOverviewController', Home.StoryOverviewController);
+
 app.config(function ($routeProvider : ng.route.IRouteProvider) {
     $routeProvider.when('/', {
         controller: 'SummaryController',
@@ -17,6 +19,11 @@ app.config(function ($routeProvider : ng.route.IRouteProvider) {
             controller: 'AddStoryController',
             controllerAs: 'vm',
             templateUrl: 'App/Home/Views/AddStoryShellView.html'
+        })
+        .when('/story/:id', {
+            controller: 'StoryOverviewController',
+            controllerAs: 'vm',
+            templateUrl: 'App/Home/Views/OverviewShellView.html'
         })
         .otherwise({ redirectTo: '/' });
 });

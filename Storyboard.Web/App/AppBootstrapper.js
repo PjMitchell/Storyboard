@@ -6,6 +6,7 @@ var app = angular.module('storyboardApp', ['ngRoute']);
 app.factory('StoryOverviewDataService', function ($http) { return new Home.StoryOverviewDataService($http); });
 app.controller('SummaryController', Home.SummaryController);
 app.controller('AddStoryController', Home.AddStoryController);
+app.controller('StoryOverviewController', Home.StoryOverviewController);
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         controller: 'SummaryController',
@@ -15,6 +16,10 @@ app.config(function ($routeProvider) {
         controller: 'AddStoryController',
         controllerAs: 'vm',
         templateUrl: 'App/Home/Views/AddStoryShellView.html'
+    }).when('/story/:id', {
+        controller: 'StoryOverviewController',
+        controllerAs: 'vm',
+        templateUrl: 'App/Home/Views/OverviewShellView.html'
     }).otherwise({ redirectTo: '/' });
 });
 //# sourceMappingURL=AppBootstrapper.js.map

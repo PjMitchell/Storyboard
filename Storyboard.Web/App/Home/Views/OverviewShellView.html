@@ -1,0 +1,26 @@
+﻿<a href="#story/">Back</a>
+<h3>{{vm.Overview.Summary.Title}}</h3>
+<p>{{vm.Overview.Summary.Synopsis}}</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="actor in vm.Overview.Actors">
+        <td>
+            {{ actor.Name}}
+        </td>
+        <td>
+            {{ actor.Description}}
+        </td>
+        <td>
+            <!--<p ng-click="vm.deleteStoryCommand(actor.Id)">Delete</p>-->
+        </td>
+    </tr>
+</table>

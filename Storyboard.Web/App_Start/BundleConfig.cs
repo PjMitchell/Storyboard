@@ -29,6 +29,7 @@ namespace Storyboard.Web
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
                 "~/App/Home/Controllers/SummaryController.js",
                 "~/App/Home/Controllers/AddStoryController.js",
+                "~/App/Home/Controllers/StoryOverviewController.js",
                 "~/App/Home/Models/AddUpdateStoryCommand.js",
                 "~/App/Home/Services/StoryOverviewDataService.js"));
 

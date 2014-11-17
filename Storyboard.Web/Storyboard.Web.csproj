@@ -226,6 +226,8 @@
     <Content Include="App\Home\Models\StoryModels.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\AddStoryShellView.html" />
+    <Content Include="App\Home\Views\OverviewShellView.html" />
+    <Content Include="App\Tests\Home\StoryOverviewControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js" />
     <Content Include="App\Tests\Home\SummaryControllerTests.js" />
     <Content Include="Content\bootstrap.css" />
@@ -282,6 +284,7 @@
     <Content Include="App\Home\Controllers\SummaryController.js.map" />
     <Content Include="App\Tests\Home\SummaryControllerTests.js.map" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js.map" />
+    <Content Include="App\Tests\Home\StoryOverviewControllerTests.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1109,6 +1112,7 @@
     <TypeScriptCompile Include="App\Home\Models\StoryModels.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\SummaryController.ts" />
     <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
+    <TypeScriptCompile Include="App\Tests\Home\StoryOverviewControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\SummaryControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewDataServiceTests.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

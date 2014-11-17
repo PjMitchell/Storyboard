@@ -12,7 +12,7 @@
 
     <tr ng-repeat="summary in vm.Summaries">
         <td>
-            {{ summary.Title}}
+            <a href="#story/{{summary.Id}}">{{ summary.Title}}</a>
         </td>
         <td>
             {{ summary.Synopsis}}
