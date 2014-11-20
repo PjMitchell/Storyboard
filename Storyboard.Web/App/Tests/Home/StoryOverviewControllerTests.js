@@ -1,3 +1,4 @@
+/// <reference path="../../home/models/addupdatestorycommand.ts" />
 /// <reference path="../../../scripts/typings/jasmine/jasmine.d.ts" />
 /// <reference path="../../home/services/storyoverviewdataservice.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
