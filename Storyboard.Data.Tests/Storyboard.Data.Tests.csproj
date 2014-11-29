@@ -64,6 +64,7 @@
     <Compile Include="Core\ActorRepositoryTests.cs" />
     <Compile Include="Core\StoryRepositoryTests.cs" />
     <Compile Include="Core\LinkRepositoryTests.cs" />
+    <Compile Include="Core\LinkDataServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -50,6 +50,7 @@
     <Compile Include="Core\StoryboardNodeTypes.cs" />
     <Compile Include="Core\Story.cs" />
     <Compile Include="Data\IActorRepository.cs" />
+    <Compile Include="Data\ILinkDataService.cs" />
     <Compile Include="Data\IStoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StoryOverview.cs" />
