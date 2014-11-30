@@ -63,5 +63,78 @@ namespace Storyboard.Data.Tests.Core
 
 
         }
+
+        [TestMethod]
+        public void Can_Remove()
+        {
+            var link1 = new SimpleLink //The one to be deleted
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.1f
+            };
+
+            var link2 = new SimpleLink //The NodeB is different
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Actor),
+                NodeB = new Node(13, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.2f
+            };
+
+            var link3 = new SimpleLink //The NodeB is different
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Actor),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.3f
+            };
+
+            var link4 = new SimpleLink //The NodeA is different
+            {
+                NodeA = new Node(13, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.4f
+            };
+
+            var link5 = new SimpleLink //The NodeA is different
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Story),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.5f
+            };
+            var link6 = new SimpleLink
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 3 },
+                Strength = 0.6f
+            };
+            target.Add(link1);
+            target.Add(link2);
+            target.Add(link3);
+            target.Add(link4);
+            target.Add(link5);
+            target.Add(link6);
+
+            target.Remove(link1);
+            var db = Database.Open();
+            IEnumerable<LinkTableRow> rows = db.Story.Link.All();
+            var rowAsList = rows.ToList();
+            Assert.AreEqual(5, rowAsList.Count);
+            Assert.IsFalse(rowAsList.Any(r => r.LinkStrength == 0.1f));
+
+
+
+        }
     }
 }

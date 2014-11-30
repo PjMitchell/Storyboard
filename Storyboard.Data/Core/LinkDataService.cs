@@ -19,6 +19,18 @@ namespace Storyboard.Data.Core
             db.Story.Link.Insert(MapRow(link));
         }
 
+        public void Remove(ILink link)
+        {
+            var linkTypeRef = link.Type == null ? 0 : link.Type.Id;
+            var db = Database.Open();
+            db.Story.Link.DeleteAll(db.Story.Link.NodeARef == link.NodeA.Id 
+                && db.Story.Link.NodeAType == link.NodeA.NodeType.Id 
+                && db.Story.Link.NodeBRef == link.NodeB.Id 
+                && db.Story.Link.NodeBType == link.NodeB.NodeType.Id
+                && db.Story.Link.LinkTypeRef == linkTypeRef
+                );
+        }
+
         private LinkTableRow MapRow(ILink arg)
         {
             return new LinkTableRow
@@ -33,5 +45,8 @@ namespace Storyboard.Data.Core
 
             };
         }
+
+
+        
     }
 }

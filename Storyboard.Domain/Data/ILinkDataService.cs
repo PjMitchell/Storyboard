@@ -11,5 +11,10 @@ namespace Storyboard.Domain.Data
         /// Adds new link to store
         /// </summary>
         void Add(ILink link);
+
+        /// <summary>
+        /// Removes link from store
+        /// </summary>
+        void Remove(ILink link);
     }
 }
