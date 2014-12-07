@@ -193,6 +193,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\ActorController.cs" />
     <Compile Include="API\StoryController.cs" />
     <Compile Include="API\StoryOverviewController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1109,6 +1110,7 @@
     <TypeScriptCompile Include="App\Home\Controllers\AddStoryController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\StoryOverviewController.ts" />
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
+    <TypeScriptCompile Include="App\Home\Models\AddUpdateActorCommand.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateStoryCommand.ts" />
     <TypeScriptCompile Include="App\Home\Models\StoryModels.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\SummaryController.ts" />

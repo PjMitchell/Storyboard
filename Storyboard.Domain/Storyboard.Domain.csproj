@@ -47,6 +47,7 @@
     <Compile Include="Core\Actor.cs" />
     <Compile Include="Core\Commands\AddUpdateActorCommand.cs" />
     <Compile Include="Core\Commands\AddUpdateStoryCommand.cs" />
+    <Compile Include="Core\Commands\DeleteActorCommand.cs" />
     <Compile Include="Core\StoryboardNodeTypes.cs" />
     <Compile Include="Core\Story.cs" />
     <Compile Include="Data\IActorRepository.cs" />

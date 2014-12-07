@@ -16,5 +16,10 @@ namespace Storyboard.Domain.Data
         /// Removes link from store
         /// </summary>
         void Remove(ILink link);
+
+        /// <summary>
+        /// Removes links from store that contain node
+        /// </summary>
+        void Remove(INode node);
     }
 }

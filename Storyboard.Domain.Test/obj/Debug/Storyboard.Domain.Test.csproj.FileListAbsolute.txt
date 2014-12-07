@@ -8,3 +8,13 @@ C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboa
 C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.pdb
 C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.dll
 C:\Users\Boo\Documents\Code\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.xml
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.Test.dll
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.Test.pdb
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\HDLink.dll
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.dll
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.dll
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Storyboard.Domain.pdb
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\bin\Debug\Telerik.JustMock.xml
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.csprojResolveAssemblyReference.cache
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.dll
+C:\Users\Peter\Documents\GitHub\Storyboard\Storyboard.Domain.Test\obj\Debug\Storyboard.Domain.Test.pdb

@@ -26,7 +26,7 @@ namespace Storyboard.Web.API
         }
 
         
-        // GET api/Story/AddNewActor/5
+        // PUT api/Story/AddNewActor/5
         /// <summary>
         /// Adds new Actor to story
         /// </summary>
@@ -40,6 +40,17 @@ namespace Storyboard.Web.API
                 NodeB = new Node(command.Id, StoryboardNodeTypes.Actor)
             };
             dataService.Add(link);
+
+        }
+
+        // PUT api/Story/AddNewActor/5
+        /// <summary>
+        /// Remove Actor from story (Currently deletes actor)
+        /// </summary>
+        [HttpPut]
+        public void RemoveActor(int id, RemoveActorCommand command)
+        {
+            //repository.Delete(command.Id);
 
         }
     }

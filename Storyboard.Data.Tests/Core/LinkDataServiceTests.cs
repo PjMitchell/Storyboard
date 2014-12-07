@@ -136,5 +136,59 @@ namespace Storyboard.Data.Tests.Core
 
 
         }
+
+        [TestMethod]
+        public void Can_Remove_ByNode()
+        {
+            var link1 = new SimpleLink //Deleted
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.1f
+            };
+
+            var link2 = new SimpleLink //Node type is different
+            {
+                NodeA = new Node(12, StoryboardNodeTypes.Story),
+                NodeB = new Node(13, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.4f
+            };
+
+            var link3 = new SimpleLink //Deleted
+            {
+                NodeA = new Node(22, StoryboardNodeTypes.Actor),
+                NodeB = new Node(12, StoryboardNodeTypes.Actor),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.3f
+            };
+
+            var link4 = new SimpleLink //The NodeA is different
+            {
+                NodeA = new Node(13, StoryboardNodeTypes.Actor),
+                NodeB = new Node(22, StoryboardNodeTypes.Story),
+                Direction = LinkFlow.BtoA,
+                Type = new LinkType { Id = 4 },
+                Strength = 0.4f
+            };
+
+            target.Add(link1);
+            target.Add(link2);
+            target.Add(link3);
+            target.Add(link4);
+            
+            target.Remove(new Node(12, StoryboardNodeTypes.Actor));
+            var db = Database.Open();
+            IEnumerable<LinkTableRow> rows = db.Story.Link.All();
+            var rowAsList = rows.ToList();
+            Assert.AreEqual(2, rowAsList.Count);
+            Assert.IsTrue(rowAsList.All(r => r.LinkStrength == 0.4f));
+
+            
+        }
     }
 }

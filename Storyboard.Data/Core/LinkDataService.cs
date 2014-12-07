@@ -19,6 +19,10 @@ namespace Storyboard.Data.Core
             db.Story.Link.Insert(MapRow(link));
         }
 
+
+        /// <summary>
+        /// Removes link from store
+        /// </summary>
         public void Remove(ILink link)
         {
             var linkTypeRef = link.Type == null ? 0 : link.Type.Id;
@@ -28,6 +32,19 @@ namespace Storyboard.Data.Core
                 && db.Story.Link.NodeBRef == link.NodeB.Id 
                 && db.Story.Link.NodeBType == link.NodeB.NodeType.Id
                 && db.Story.Link.LinkTypeRef == linkTypeRef
+                );
+        }
+
+        /// <summary>
+        /// Removes links from store that contain node
+        /// </summary>
+        public void Remove(INode node)
+        {
+            var db = Database.Open();
+            db.Story.Link.DeleteAll((db.Story.Link.NodeARef == node.Id
+                && db.Story.Link.NodeAType == node.NodeType.Id) ||
+                (db.Story.Link.NodeBRef == node.Id
+                && db.Story.Link.NodeBType == node.NodeType.Id)
                 );
         }
 
