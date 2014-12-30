@@ -7,14 +7,14 @@
 
 describe('StoryOverviewController', (): void => {
     var target: Home.StoryOverviewController;
-    var scope: ng.IScope;
     var route: Home.IIdRouteParam;
     var dataService: Home.IStoryOverviewDataService;
     var returnedOverview: Home.StoryOverview;
+    var modalService: ng.ui.bootstrap.IModalService;
 
     beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
-        scope = <ng.IScope>{};
+        modalService = <ng.ui.bootstrap.IModalService>{};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
 
@@ -45,7 +45,7 @@ describe('StoryOverviewController', (): void => {
 
     it('OnConstruction Overview is populated', (): void => {
 
-        target = new Home.StoryOverviewController(scope, route, dataService);
+        target = new Home.StoryOverviewController(route,modalService, dataService);
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);
         expect(target.Overview.Summary.Title).toEqual(returnedOverview.Summary.Title);
     });

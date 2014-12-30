@@ -222,13 +222,16 @@
   <ItemGroup>
     <Content Include="App\AppBootstrapper.js" />
     <Content Include="App\Home\Controllers\AddStoryController.js" />
+    <Content Include="App\Home\Controllers\CreateActorDialogController.js" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js" />
     <Content Include="App\Home\Controllers\SummaryController.js" />
     <Content Include="App\Home\HomeModule.js" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js" />
     <Content Include="App\Home\Models\StoryModels.js" />
+    <Content Include="App\Home\Services\StoryDataService.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\AddStoryShellView.html" />
+    <Content Include="App\Home\Views\CreateActorDialogView.html" />
     <Content Include="App\Home\Views\OverviewShellView.html" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js" />
@@ -262,6 +265,10 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -288,6 +295,8 @@
     <Content Include="App\Tests\Home\SummaryControllerTests.js.map" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js.map" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js.map" />
+    <Content Include="App\Home\Services\StoryDataService.js.map" />
+    <Content Include="App\Home\Controllers\CreateActorDialogController.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1109,6 +1118,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\AppBootstrapper.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\AddStoryController.ts" />
+    <TypeScriptCompile Include="App\Home\Controllers\CreateActorDialogController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\StoryOverviewController.ts" />
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateActorCommand.ts" />
@@ -1119,6 +1129,7 @@
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\SummaryControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewDataServiceTests.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

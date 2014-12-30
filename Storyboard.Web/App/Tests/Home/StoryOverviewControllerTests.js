@@ -6,13 +6,13 @@
 /// <reference path="../../home/models/storyModels.ts" />
 describe('StoryOverviewController', function () {
     var target;
-    var scope;
     var route;
     var dataService;
     var returnedOverview;
+    var modalService;
     beforeEach(function () {
         dataService = {};
-        scope = {};
+        modalService = {};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
         var storyOne = new Home.StorySummary();
@@ -37,7 +37,7 @@ describe('StoryOverviewController', function () {
         };
     });
     it('OnConstruction Overview is populated', function () {
-        target = new Home.StoryOverviewController(scope, route, dataService);
+        target = new Home.StoryOverviewController(route, modalService, dataService);
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);
         expect(target.Overview.Summary.Title).toEqual(returnedOverview.Summary.Title);
     });

@@ -2,11 +2,12 @@
 /// <reference path="../scripts/typings/angularjs/angular.d.ts" />
 /// <reference path="home/Controllers/SummaryController.ts" />
 /// <reference path="../scripts/typings/angularjs/angular-route.d.ts" />
-var app = angular.module('storyboardApp', ['ngRoute']);
+var app = angular.module('storyboardApp', ['ngRoute', 'ui.bootstrap']);
 app.factory('StoryOverviewDataService', function ($http) { return new Home.StoryOverviewDataService($http); });
 app.controller('SummaryController', Home.SummaryController);
 app.controller('AddStoryController', Home.AddStoryController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);
+app.controller('CreateActorDialogController', Home.CreateActorDialogController);
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         controller: 'SummaryController',
