@@ -103,6 +103,7 @@
     <Compile Include="Apis\ActorControllerTests.cs" />
     <Compile Include="Apis\LinkControllerTests.cs" />
     <Compile Include="Controllers\StoryControllerTest.cs" />
+    <Compile Include="Helpers\HttpTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

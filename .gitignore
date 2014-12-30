@@ -27,7 +27,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -42,6 +43,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+*.suo
 /packages
 /Storyboard.Data/Bin
 /Storyboard.Data/obj
@@ -55,3 +57,4 @@ Temporary Items
 /Storyboard.Web/obj
 /Storyboard.Web.Tests/Bin
 /Storyboard.Web.Tests/obj
+*.suo

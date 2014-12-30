@@ -22,10 +22,11 @@ namespace Storyboard.Web.API
         }
         
         // Post api/Actor
-        public AddUpdateActorCommand Post(AddUpdateActorCommand command)
+        public HttpResponseMessage Post(AddUpdateActorCommand command)
         {
+            
             repository.AddOrUpdate(command);
-            return command;
+            return Request.CreateResponse<int>(HttpStatusCode.Created, command.Id);
         }
 
         //Delete api/Actor/1
