@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ActorController.cs" />
+    <Compile Include="API\LinkController.cs" />
     <Compile Include="API\StoryController.cs" />
     <Compile Include="API\StoryOverviewController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

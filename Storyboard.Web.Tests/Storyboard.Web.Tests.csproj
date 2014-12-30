@@ -101,6 +101,7 @@
     <Compile Include="Apis\StoryOverviewControllerTests.cs" />
     <Compile Include="Apis\StoryControllerTests.cs" />
     <Compile Include="Apis\ActorControllerTests.cs" />
+    <Compile Include="Apis\LinkControllerTests.cs" />
     <Compile Include="Controllers\StoryControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
