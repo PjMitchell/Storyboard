@@ -14,6 +14,13 @@ namespace Storyboard.Data.Core
 {
     public class ActorRepository : IActorRepository, INodeRepository<Actor>, INodeRepository
     {
+        private readonly ILinkDataService linkDataService;
+        
+        public ActorRepository(ILinkDataService linkDataService)
+        {
+            this.linkDataService = linkDataService;
+        }
+        
         public IEnumerable<Actor> Get()
         {
             var db = Database.Open();
@@ -57,6 +64,7 @@ namespace Storyboard.Data.Core
         {
             var db = Database.Open();
             db.Story.Actor.DeleteById(id);
+            linkDataService.Remove(new Node(id, StoryboardNodeTypes.Actor));
         }
 
 

@@ -8,6 +8,9 @@ var Home;
         ActorDataService.prototype.add = function (command) {
             return this.http.post(this.apiRoute, command);
         };
+        ActorDataService.prototype.delete = function (id) {
+            return this.http.delete(this.apiRoute + '/' + id);
+        };
         return ActorDataService;
     })();
     Home.ActorDataService = ActorDataService;

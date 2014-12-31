@@ -10,13 +10,19 @@ module Home {
     import ui = ng.ui.bootstrap;
 
     export class StoryOverviewController {
-        static $inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService'];
+        static $inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService', 'ActorDataService'];
         private storyDataService: IStoryOverviewDataService;
         private modalService: ui.IModalService;
         private linkDataService: ILinkDataService;
+        private actorDataService: IActorDataService
         Overview: StoryOverview;
 
         private onOverviewReturned = (story: Home.StoryOverview) => { this.Overview = story; };
+        private removeActor = (id: number) => {
+            this.Overview.Actors = this.Overview.Actors.filter((actor, index, actors) => {
+                return actor.Id !== id;
+            })
+        };
         private onLinkSaved = () => {
             this.getOverview(this.Overview.Summary.Id)
         };
@@ -25,10 +31,11 @@ module Home {
                 .then(this.onLinkSaved);
         }; 
 
-        constructor($routeParams: IIdRouteParam, $modal: ui.IModalService, StoryOverviewDataService: IStoryOverviewDataService, LinkDataService: ILinkDataService) {
+        constructor($routeParams: IIdRouteParam, $modal: ui.IModalService, StoryOverviewDataService: IStoryOverviewDataService, LinkDataService: ILinkDataService, ActorDataService: IActorDataService) {
             this.storyDataService = StoryOverviewDataService;
             this.modalService = $modal;
             this.linkDataService = LinkDataService;
+            this.actorDataService = ActorDataService;
             this.getOverview($routeParams.id);          
         }
 
@@ -45,6 +52,10 @@ module Home {
                     controllerAs:'vm'
                 }
             this.modalService.open(settings).result.then(this.onActorSaved);
+        }
+
+        public deleteActorCommand(id: number) {
+            this.actorDataService.delete(id).then(arg=> this.removeActor(id))
         }
     };
 }

@@ -12,9 +12,11 @@ describe('StoryOverviewController', function () {
     var returnedOverview;
     var modalService;
     var linkDataService;
+    var actorDataService;
     beforeEach(function () {
         dataService = {};
         linkDataService = {};
+        actorDataService = {};
         modalService = {};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
@@ -38,7 +40,7 @@ describe('StoryOverviewController', function () {
             };
             return promise;
         };
-        target = new Home.StoryOverviewController(route, modalService, dataService, linkDataService);
+        target = new Home.StoryOverviewController(route, modalService, dataService, linkDataService, actorDataService);
     });
     it('OnConstruction Overview is populated', function () {
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);

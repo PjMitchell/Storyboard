@@ -14,10 +14,13 @@ describe('StoryOverviewController', (): void => {
     var returnedOverview: Home.StoryOverview;
     var modalService: ui.IModalService;
     var linkDataService: Home.ILinkDataService;
+    var actorDataService: Home.IActorDataService;
 
     beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
-        linkDataService = <Home.ILinkDataService>{};
+        linkDataService = <Home.ILinkDataService>{}
+        actorDataService = <Home.IActorDataService>{};
+
         modalService = <ui.IModalService>{};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
@@ -45,7 +48,7 @@ describe('StoryOverviewController', (): void => {
             };
             return promise;
         };
-        target = new Home.StoryOverviewController(route, modalService, dataService,linkDataService);
+        target = new Home.StoryOverviewController(route, modalService, dataService, linkDataService, actorDataService);
     });
 
     it('OnConstruction Overview is populated', (): void => {

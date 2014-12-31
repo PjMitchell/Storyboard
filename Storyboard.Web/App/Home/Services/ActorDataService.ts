@@ -1,7 +1,7 @@
 ﻿module Home {
     export interface IActorDataService {
         add(command: Home.AddUpdateActorCommand): ng.IHttpPromise<number>;
-        //delete(id: number): ng.IHttpPromise<{}>;
+        delete(id: number): ng.IHttpPromise<{}>;
     }
 
     export class ActorDataService implements IActorDataService {
@@ -15,8 +15,8 @@
             return this.http.post(this.apiRoute, command);
         }
 
-        //public delete(id: number) {
-        //    return this.http.delete(this.apiRoute + '/' + id);
-        //}
+        public delete(id: number) {
+            return this.http.delete(this.apiRoute + '/' + id);
+        }
     };
 }  

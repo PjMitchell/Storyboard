@@ -5,10 +5,15 @@
 var Home;
 (function (Home) {
     var StoryOverviewController = (function () {
-        function StoryOverviewController($routeParams, $modal, StoryOverviewDataService, LinkDataService) {
+        function StoryOverviewController($routeParams, $modal, StoryOverviewDataService, LinkDataService, ActorDataService) {
             var _this = this;
             this.onOverviewReturned = function (story) {
                 _this.Overview = story;
+            };
+            this.removeActor = function (id) {
+                _this.Overview.Actors = _this.Overview.Actors.filter(function (actor, index, actors) {
+                    return actor.Id !== id;
+                });
             };
             this.onLinkSaved = function () {
                 _this.getOverview(_this.Overview.Summary.Id);
@@ -19,6 +24,7 @@ var Home;
             this.storyDataService = StoryOverviewDataService;
             this.modalService = $modal;
             this.linkDataService = LinkDataService;
+            this.actorDataService = ActorDataService;
             this.getOverview($routeParams.id);
         }
         StoryOverviewController.prototype.getOverview = function (id) {
@@ -32,7 +38,11 @@ var Home;
             };
             this.modalService.open(settings).result.then(this.onActorSaved);
         };
-        StoryOverviewController.$inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService'];
+        StoryOverviewController.prototype.deleteActorCommand = function (id) {
+            var _this = this;
+            this.actorDataService.delete(id).then(function (arg) { return _this.removeActor(id); });
+        };
+        StoryOverviewController.$inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService', 'ActorDataService'];
         return StoryOverviewController;
     })();
     Home.StoryOverviewController = StoryOverviewController;
