@@ -4,14 +4,17 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/storyoverviewcontroller.ts" />
 /// <reference path="../../home/models/storyModels.ts" />
+/// <reference path="../../home/homemodule.ts" />
 describe('StoryOverviewController', function () {
     var target;
     var route;
     var dataService;
     var returnedOverview;
     var modalService;
+    var linkDataService;
     beforeEach(function () {
         dataService = {};
+        linkDataService = {};
         modalService = {};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
@@ -35,11 +38,25 @@ describe('StoryOverviewController', function () {
             };
             return promise;
         };
+        target = new Home.StoryOverviewController(route, modalService, dataService, linkDataService);
     });
     it('OnConstruction Overview is populated', function () {
-        target = new Home.StoryOverviewController(route, modalService, dataService);
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);
         expect(target.Overview.Summary.Title).toEqual(returnedOverview.Summary.Title);
+    });
+    describe('OpenCreateActorDialog', function () {
+        var modalPayload;
+        beforeEach(function () {
+            modalService.open = function (option) {
+                modalPayload = option;
+                return {};
+            };
+        });
+        it('OpensDialog', function () {
+            spyOn(modalService, 'open');
+            target.openCreateActorDialog();
+            expect(modalService.open).toHaveBeenCalled();
+        });
     });
 });
 //# sourceMappingURL=StoryOverviewControllerTests.js.map

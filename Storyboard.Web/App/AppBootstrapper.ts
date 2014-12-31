@@ -4,7 +4,10 @@
 /// <reference path="../scripts/typings/angularjs/angular-route.d.ts" />
 
 var app = angular.module('storyboardApp', ['ngRoute','ui.bootstrap']);
-app.factory('StoryOverviewDataService', ($http:ng.IHttpService)=> new  Home.StoryOverviewDataService($http));
+app.factory('StoryOverviewDataService', ($http: ng.IHttpService) => new Home.StoryOverviewDataService($http));
+app.factory('ActorDataService', ($http: ng.IHttpService) => new Home.ActorDataService($http));
+app.factory('LinkDataService', ($http: ng.IHttpService) => new Home.LinkDataService($http));
+
 app.controller('SummaryController', Home.SummaryController);
 app.controller('AddStoryController', Home.AddStoryController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);

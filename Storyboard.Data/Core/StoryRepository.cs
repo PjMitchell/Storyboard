@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryRepository : IStoryRepository, INodeRepository<Story>
+    public class StoryRepository : IStoryRepository, INodeRepository<Story>, INodeRepository
     {
         /// <summary>
         /// Gets all Stories from Database

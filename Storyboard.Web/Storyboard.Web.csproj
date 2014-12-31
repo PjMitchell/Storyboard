@@ -43,7 +43,7 @@
   <ItemGroup>
     <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HDLink.1.0.0-CI00002\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
+      <HintPath>..\packages\HDLink.1.0.0-CI00001\lib\portable-net45+sl50+win+wpa81+wp80\HDLink.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
@@ -214,6 +214,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Home\CreateLinkRequest.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -226,13 +227,17 @@
     <Content Include="App\Home\Controllers\StoryOverviewController.js" />
     <Content Include="App\Home\Controllers\SummaryController.js" />
     <Content Include="App\Home\HomeModule.js" />
+    <Content Include="App\Home\Models\AddUpdateActorCommand.js" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js" />
+    <Content Include="App\Home\Models\CreateLinkCommand.js" />
     <Content Include="App\Home\Models\StoryModels.js" />
-    <Content Include="App\Home\Services\StoryDataService.js" />
+    <Content Include="App\Home\Services\ActorDataService.js" />
+    <Content Include="App\Home\Services\LinkDataService.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\AddStoryShellView.html" />
     <Content Include="App\Home\Views\CreateActorDialogView.html" />
     <Content Include="App\Home\Views\OverviewShellView.html" />
+    <Content Include="App\Tests\Home\CreateActorDialogControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js" />
     <Content Include="App\Tests\Home\SummaryControllerTests.js" />
@@ -295,8 +300,12 @@
     <Content Include="App\Tests\Home\SummaryControllerTests.js.map" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js.map" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js.map" />
-    <Content Include="App\Home\Services\StoryDataService.js.map" />
     <Content Include="App\Home\Controllers\CreateActorDialogController.js.map" />
+    <Content Include="App\Tests\Home\CreateActorDialogControllerTests.js.map" />
+    <Content Include="App\Home\Models\AddUpdateActorCommand.js.map" />
+    <Content Include="App\Home\Services\ActorDataService.js.map" />
+    <Content Include="App\Home\Models\CreateLinkCommand.js.map" />
+    <Content Include="App\Home\Services\LinkDataService.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1096,7 +1105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1123,9 +1131,13 @@
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateActorCommand.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateStoryCommand.ts" />
+    <TypeScriptCompile Include="App\Home\Models\CreateLinkCommand.ts" />
     <TypeScriptCompile Include="App\Home\Models\StoryModels.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\SummaryController.ts" />
+    <TypeScriptCompile Include="App\Home\Services\ActorDataService.ts" />
+    <TypeScriptCompile Include="App\Home\Services\LinkDataService.ts" />
     <TypeScriptCompile Include="App\Home\Services\StoryOverviewDataService.ts" />
+    <TypeScriptCompile Include="App\Tests\Home\CreateActorDialogControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\SummaryControllerTests.ts" />
     <TypeScriptCompile Include="App\Tests\Home\StoryOverviewDataServiceTests.ts" />

@@ -5,24 +5,34 @@
 var Home;
 (function (Home) {
     var StoryOverviewController = (function () {
-        function StoryOverviewController($routeParams, $modal, StoryOverviewDataService) {
+        function StoryOverviewController($routeParams, $modal, StoryOverviewDataService, LinkDataService) {
             var _this = this;
             this.onOverviewReturned = function (story) {
                 _this.Overview = story;
             };
-            this.dataService = StoryOverviewDataService;
+            this.onLinkSaved = function () {
+                _this.getOverview(_this.Overview.Summary.Id);
+            };
+            this.onActorSaved = function (id) {
+                _this.linkDataService.add(new Home.CreateLinkRequest(new Home.Node(_this.Overview.Summary.Id, 1 /* Story */), new Home.Node(id, 2 /* Actor */))).then(_this.onLinkSaved);
+            };
+            this.storyDataService = StoryOverviewDataService;
             this.modalService = $modal;
-            this.dataService.get($routeParams.id).success(this.onOverviewReturned);
+            this.linkDataService = LinkDataService;
+            this.getOverview($routeParams.id);
         }
-        StoryOverviewController.prototype.OpenCreateActorDialog = function () {
+        StoryOverviewController.prototype.getOverview = function (id) {
+            this.storyDataService.get(id).success(this.onOverviewReturned);
+        };
+        StoryOverviewController.prototype.openCreateActorDialog = function () {
             var settings = {
                 templateUrl: 'App/Home/Views/CreateActorDialogView.html',
                 controller: 'CreateActorDialogController',
                 controllerAs: 'vm'
             };
-            this.modalService.open(settings);
+            this.modalService.open(settings).result.then(this.onActorSaved);
         };
-        StoryOverviewController.$inject = ['$routeParams', '$modal', 'StoryOverviewDataService'];
+        StoryOverviewController.$inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService'];
         return StoryOverviewController;
     })();
     Home.StoryOverviewController = StoryOverviewController;

@@ -4,17 +4,21 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/storyoverviewcontroller.ts" />
 /// <reference path="../../home/models/storyModels.ts" />
+/// <reference path="../../home/homemodule.ts" />
 
+import ui = ng.ui.bootstrap;
 describe('StoryOverviewController', (): void => {
     var target: Home.StoryOverviewController;
     var route: Home.IIdRouteParam;
     var dataService: Home.IStoryOverviewDataService;
     var returnedOverview: Home.StoryOverview;
-    var modalService: ng.ui.bootstrap.IModalService;
+    var modalService: ui.IModalService;
+    var linkDataService: Home.ILinkDataService;
 
     beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
-        modalService = <ng.ui.bootstrap.IModalService>{};
+        linkDataService = <Home.ILinkDataService>{};
+        modalService = <ui.IModalService>{};
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
 
@@ -41,13 +45,27 @@ describe('StoryOverviewController', (): void => {
             };
             return promise;
         };
+        target = new Home.StoryOverviewController(route, modalService, dataService,linkDataService);
     });
 
     it('OnConstruction Overview is populated', (): void => {
 
-        target = new Home.StoryOverviewController(route,modalService, dataService);
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);
         expect(target.Overview.Summary.Title).toEqual(returnedOverview.Summary.Title);
     });
 
+    describe('OpenCreateActorDialog', (): void => {
+        var modalPayload: ui.IModalSettings
+            beforeEach(function () {
+                modalService.open = (option) => {
+                    modalPayload = option;
+                    return <ui.IModalServiceInstance> {};
+                }
+            });
+        it('OpensDialog', function () {
+            spyOn(modalService, 'open');
+            target.openCreateActorDialog();
+            expect(modalService.open).toHaveBeenCalled();
+        })
+    });
 }); 

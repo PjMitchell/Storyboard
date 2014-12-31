@@ -1,5 +1,8 @@
-﻿using Storyboard.Domain.Core.Commands;
+﻿using HDLink;
+using Storyboard.Domain.Core;
+using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
+using Storyboard.Web.Models.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +37,9 @@ namespace Storyboard.Web.API
         //}
 
         // POST: api/Link
-        public void Post([FromBody]CreateLinkCommand command)
+        public void Post([FromBody]CreateLinkRequest request)
         {
-            dataService.Add(command);
+            dataService.Add(MapRequest(request));
         }
 
         // PUT: api/Link/5
@@ -48,5 +51,17 @@ namespace Storyboard.Web.API
         //public void Delete(int id)
         //{
         //}
+
+        private CreateLinkCommand MapRequest(CreateLinkRequest request)
+        {
+            return new CreateLinkCommand
+            {
+                NodeA = new Node(request.NodeAId, StoryboardNodeTypes.GetFromValue(request.NodeAType)),
+                NodeB = new Node(request.NodeBId, StoryboardNodeTypes.GetFromValue(request.NodeBType)),
+                Strength = request.Strength,
+                Direction = (LinkFlow)request.Direction,
+                Type = new LinkType { Id = request.Type }
+            };
+        }
     }
 }

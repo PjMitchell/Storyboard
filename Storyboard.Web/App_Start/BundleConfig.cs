@@ -37,11 +37,19 @@ namespace Storyboard.Web
                 "~/App/Home/Controllers/AddStoryController.js",
                 "~/App/Home/Controllers/StoryOverviewController.js",
                 "~/App/Home/Models/AddUpdateStoryCommand.js",
+                "~/App/Home/Models/AddUpdateActorCommand.js",
+                "~/App/Home/Models/CreateLinkCommand.js",
+                "~/App/Home/Services/ActorDataService.js",
+                "~/App/Home/Services/LinkDataService.js",
                 "~/App/Home/Services/StoryOverviewDataService.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
+#if DEBUG
+            BundleTable.EnableOptimizations = false;
+#else
             BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }

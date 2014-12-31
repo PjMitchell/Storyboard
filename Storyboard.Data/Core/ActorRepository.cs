@@ -12,7 +12,7 @@ using Storyboard.Data.Helpers;
 
 namespace Storyboard.Data.Core
 {
-    public class ActorRepository : IActorRepository, INodeRepository<Actor>
+    public class ActorRepository : IActorRepository, INodeRepository<Actor>, INodeRepository
     {
         public IEnumerable<Actor> Get()
         {

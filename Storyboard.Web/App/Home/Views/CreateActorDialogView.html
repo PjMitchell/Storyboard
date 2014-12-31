@@ -2,9 +2,12 @@
     <h3 class="modal-title">Create Actor</h3>
 </div>
 <div class="modal-body">
-    <
+    <h3>Name</h3>
+    <input type="text" ng-model="vm.Command.Name" placeholder="Enter a name here">
+    <h3>Description</h3>
+    <input type="text" ng-model="vm.Command.Description" placeholder="Enter a description here">
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-primary" ng-click="vm.ok()">OK</button>
+    <button class="btn btn-warning" ng-click="vm.cancel()">Cancel</button>
 </div>
