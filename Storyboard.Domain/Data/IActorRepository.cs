@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Domain.Data
 {
-    public interface IActorRepository
+    public interface IActorRepository: HDLink.IAsyncNodeRepository<Actor>
     {
         /// <summary>
         /// Gets all Actors from Database

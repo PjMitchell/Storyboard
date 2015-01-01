@@ -9,6 +9,8 @@ using System.Linq;
 using Storyboard.Domain.Models;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Services;
+using Storyboard.Domain.Test;
+using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Apis
 {
@@ -29,14 +31,14 @@ namespace Storyboard.Web.Tests.Apis
 
 
         [TestMethod]
-        public void Get_GetsAllStoryOverviewSummaries()
+        public async Task Get_GetsAllStoryOverviewSummaries()
         {
             var stories = GetTestList().Select(s=> new StorySummary{Id = s.Id}).ToList();
             Mock.Arrange(() => service.GetStorySummaries())
-                .Returns(() => stories);
+                .Returns(() =>MockTaskAdaptor.MockTaskResult(()=> stories));
             // Act
             
-            var result = target.Get().ToList();
+            var result = await target.Get();
             // Assert
             Assert.AreEqual(stories.Count, result.Count());
             AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 1), GetTestList().SingleOrDefault(s => s.Id == 1));
@@ -45,15 +47,15 @@ namespace Storyboard.Web.Tests.Apis
         }
 
         [TestMethod]
-        public void Get_Id_GetsStoryOverview()
+        public async Task Get_Id_GetsStoryOverview()
         {
             var id = 1;
             var story = new StoryOverview();
             Mock.Arrange(() => service.GetStoryOverview(id))
-                .Returns(() => story);
+                .Returns(() => MockTaskAdaptor.MockTaskResult(() => story));
             // Act
 
-            var result = target.Get(id);
+            var result =await target.Get(id);
             // Assert
             Assert.AreEqual(story, result);
             

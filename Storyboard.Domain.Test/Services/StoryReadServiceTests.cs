@@ -6,6 +6,7 @@ using Storyboard.Domain.Models;
 using Storyboard.Domain.Services;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Telerik.JustMock;
 
 namespace Storyboard.Domain.Test
@@ -15,24 +16,27 @@ namespace Storyboard.Domain.Test
     {
         private IStoryReadService target;
         private IStoryRepository storyRepos;
-        private INodeService nodeService;
+        private IAsyncNodeService nodeService;
         private Story testStory;
         
         [TestInitialize]
         public void Init()
         {
             storyRepos = Mock.Create<IStoryRepository>();
-            nodeService = Mock.Create<INodeService>();
+            nodeService = Mock.Create<IAsyncNodeService>();
             target = new StoryReadService(storyRepos, nodeService);
             testStory = new Story { Id = 1, Title = "A Story", Synopsis = "A Summary" };
-            Mock.Arrange(() => storyRepos.Get(testStory.Id))
-                .Returns(() => testStory);
+            Mock.Arrange(() => storyRepos.GetAsync(testStory.Id))
+                .Returns(() => MockTaskAdaptor.MockTaskResult(()=> testStory));
+            Mock.Arrange(() => nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<INodeType>()))
+                .Returns(() => MockTaskAdaptor.MockTaskResult(() => new List<INode>()));
         }
         
         [TestMethod]
-        public void GetStorySummary_GetsStorySummary()
+        [Timeout(500)]
+        public async Task GetStorySummary_GetsStorySummary()
         {
-            var result = target.GetStorySummary(testStory.Id);
+            var result = await target.GetStorySummary(testStory.Id);
             
             Assert.AreEqual(testStory.Id, result.Id);
             Assert.AreEqual(testStory.Title, result.Title);
@@ -41,11 +45,12 @@ namespace Storyboard.Domain.Test
         }
 
         [TestMethod]
-        public void GetStorySummaries_GetsStorySummary()
+        [Timeout(500)]
+        public async Task GetStorySummaries_GetsStorySummary()
         {
-            Mock.Arrange(() => storyRepos.Get())
-                .Returns(() => new List<Story> { testStory, testStory });
-            var list = target.GetStorySummaries().ToList();
+            Mock.Arrange(() => storyRepos.GetAsync())
+                .Returns(() =>MockTaskAdaptor.MockTaskResult(()=> new List<Story> { testStory, testStory }));
+            var list = await target.GetStorySummaries();
 
             Assert.AreEqual(2, list.Count);
             var result = list[0];
@@ -56,9 +61,10 @@ namespace Storyboard.Domain.Test
         }
 
         [TestMethod]
-        public void GetStoryOverview_GetsStorySummary()
+        [Timeout(500)]
+        public async Task GetStoryOverview_GetsStorySummary()
         {
-            var result = target.GetStoryOverview(testStory.Id);
+            var result = await target.GetStoryOverview(testStory.Id);
 
             Assert.AreEqual(testStory.Id, result.Summary.Id);
             Assert.AreEqual(testStory.Title, result.Summary.Title);
@@ -67,19 +73,20 @@ namespace Storyboard.Domain.Test
         }
 
         [TestMethod]
-        public void GetStoryOverview_GetsActors()
+        [Timeout(500)]
+        public async Task GetStoryOverview_GetsActors()
         {
             var actor = new Actor{Id = 10, Name = "Actor"};
             var actors = new List<Actor> { actor };
             Mock.Arrange(()=> nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<INodeType>()))
-                .Returns((INode node, INodeType nodetype) => 
+                .Returns((INode node, INodeType nodetype) => MockTaskAdaptor.MockTaskResult(()=> 
                     node.Id == testStory.Id 
                     && node.NodeType == testStory.NodeType 
                     && nodetype == StoryboardNodeTypes.Actor
-                    ? actors
-                    : new List<Actor>());
+                    ? actors.Cast<INode>().ToList()
+                    : new List<INode>()));
             
-            var result = target.GetStoryOverview(testStory.Id);
+            var result = await target.GetStoryOverview(testStory.Id);
             Assert.AreEqual(1, result.Actors.Count);
             Assert.AreEqual(10, result.Actors[0].Id);
 

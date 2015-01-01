@@ -9,7 +9,7 @@ using Storyboard.Domain.Data;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryboardNodeRepositoryFactory : INodeRepositoryFactory
+    public class StoryboardNodeRepositoryFactory : IAsyncNodeRepositoryFactory
     {
         private readonly ILinkDataService linkDataService;
 
@@ -17,7 +17,7 @@ namespace Storyboard.Data.Core
         {
             this.linkDataService = linkDataService;
         }
-        public INodeRepository CreateRepository(INodeType nodeType)
+        public IAsyncNodeRepository CreateRepository(INodeType nodeType)
         {
             if (nodeType == StoryboardNodeTypes.Actor)
                 return new ActorRepository(linkDataService);

@@ -23,7 +23,9 @@ namespace Storyboard.Web.Controllers
         // GET: Story
         public ActionResult Index()
         {
-            return View(repository.Get().ToList());
+            var stories = repository.GetAsync();
+            stories.Wait();
+            return View(stories.Result);
         }
 
         // GET: Story/Details/5

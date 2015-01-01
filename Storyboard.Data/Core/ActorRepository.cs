@@ -12,7 +12,7 @@ using Storyboard.Data.Helpers;
 
 namespace Storyboard.Data.Core
 {
-    public class ActorRepository : IActorRepository, INodeRepository<Actor>, INodeRepository
+    public class ActorRepository : IActorRepository, INodeRepository<Actor>, INodeRepository, IAsyncNodeRepository
     {
         private readonly ILinkDataService linkDataService;
         
@@ -77,6 +77,26 @@ namespace Storyboard.Data.Core
         INode INodeRepository.Get(int id)
         {
             return Get(id); ;
+        }
+
+        public Task<List<Actor>> GetAsync(IEnumerable<int> ids)
+        {
+            return Task.Run(() => Get(ids).ToList());
+        }
+
+        public Task<Actor> GetAsync(int id)
+        {
+            return Task.Run(() => Get(id));
+        }
+
+        Task<List<INode>> IAsyncNodeRepository.GetAsync(IEnumerable<int> ids)
+        {
+            return Task.Run(() => Get(ids).ToList<INode>()); ;
+        }
+
+        Task<INode> IAsyncNodeRepository.GetAsync(int id)
+        {
+            return Task.Run(() => (INode)Get(id)); ;
         }
     }
 }

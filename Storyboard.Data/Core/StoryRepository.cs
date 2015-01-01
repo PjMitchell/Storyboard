@@ -12,17 +12,20 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryRepository : IStoryRepository, INodeRepository<Story>, INodeRepository
+    public class StoryRepository : IStoryRepository, INodeRepository<Story>, INodeRepository, IAsyncNodeRepository
     {
         /// <summary>
         /// Gets all Stories from Database
         /// </summary>
         /// <returns>All Stories</returns>
-        public IEnumerable<Story> Get()
+        public Task<List<Story>> GetAsync()
         {
+            return Task.Run(()=>{
             var db = Database.Open();
             IEnumerable<Story> stories = db.Story.Story.All();
-            return stories;
+                return stories.ToList();
+            });
+            
         }
 
         /// <summary>
@@ -84,6 +87,26 @@ namespace Storyboard.Data.Core
         INode INodeRepository.Get(int id)
         {
             return Get(id);
+        }
+
+        public Task<List<Story>> GetAsync(IEnumerable<int> ids)
+        {
+            return Task.Run(() => Get(ids).ToList());
+        }
+
+        public Task<Story> GetAsync(int id)
+        {
+            return Task.Run(() => Get(id));
+        }
+
+        Task<List<INode>> IAsyncNodeRepository.GetAsync(IEnumerable<int> ids)
+        {
+            return Task.Run(() => Get(ids).ToList<INode>()); ;
+        }
+
+        Task<INode> IAsyncNodeRepository.GetAsync(int id)
+        {
+            return Task.Run(() => (INode)Get(id)); ;
         }
     }
 }

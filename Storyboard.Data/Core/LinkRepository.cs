@@ -10,7 +10,7 @@ using Storyboard.Domain.Core;
 
 namespace Storyboard.Data.Core
 {
-    public class LinkRepository : ILinkRepository
+    public class LinkRepository : ILinkRepository, IAsyncLinkRepository
     {
         public IEnumerable<ILink> Get(INode node, INodeType nodeType)
         {
@@ -38,6 +38,21 @@ namespace Storyboard.Data.Core
             return rows.Select(MapRow);
         }
 
+        public Task<List<ILink>> GetAsync(INode node, INodeType nodeType)
+        {
+            return Task.Run(() => Get(node, nodeType).ToList());
+        }
+
+        public Task<List<ILink>> GetAsync(INode node)
+        {
+            return Task.Run(() => Get(node).ToList());
+        }
+
+        public Task<List<ILink>> GetAsync()
+        {
+            return Task.Run(() => Get().ToList());
+        }
+
         private SimpleLink MapRow(LinkTableRow arg)
         {
             return new SimpleLink
@@ -49,5 +64,7 @@ namespace Storyboard.Data.Core
                 Type = new LinkType { Id = arg.LinkTypeRef }
             };
         }
+
+        
     }
 }

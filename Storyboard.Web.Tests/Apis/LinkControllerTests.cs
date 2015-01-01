@@ -15,29 +15,14 @@ namespace Storyboard.Web.Tests.Apis
     {
         private ILinkDataService dataService;
         private LinkController target;
+        private CreateLinkRequest defaultRequest;
 
         [TestInitialize]
         public void Init()
         {
             dataService = Mock.Create<ILinkDataService>();
             target = new LinkController(dataService);
-
-        }
-        [TestMethod]
-        public void PostCallsLinkDataService()
-        {
-            Mock.Arrange(() => dataService.Add(Arg.IsAny<CreateLinkCommand>())).Occurs(1);
-            target.Post(new CreateLinkRequest());
-            Mock.Assert(dataService);
-        }
-
-        [TestMethod]
-        public void PostCorrectlyMapsRequest()
-        {
-            CreateLinkCommand command = null;
-            Mock.Arrange(() => dataService.Add(Arg.IsAny<CreateLinkCommand>()))
-                .DoInstead((CreateLinkCommand arg)=> command = arg);
-            var request = new CreateLinkRequest
+            defaultRequest = new CreateLinkRequest
             {
                 NodeAId = 101,
                 NodeAType = StoryboardNodeTypes.Story.Id,
@@ -47,16 +32,33 @@ namespace Storyboard.Web.Tests.Apis
                 Strength = 0.5f,
                 Type = 23
             };
-            target.Post(request);
+
+        }
+        [TestMethod]
+        public void PostCallsLinkDataService()
+        {
+            Mock.Arrange(() => dataService.Add(Arg.IsAny<CreateLinkCommand>())).Occurs(1);
+            target.Post(defaultRequest);
+            Mock.Assert(dataService);
+        }
+
+        [TestMethod]
+        public void PostCorrectlyMapsRequest()
+        {
+            CreateLinkCommand command = null;
+            Mock.Arrange(() => dataService.Add(Arg.IsAny<CreateLinkCommand>()))
+                .DoInstead((CreateLinkCommand arg)=> command = arg);
             
-            Assert.AreEqual(request.NodeAId, command.NodeA.Id);
-            Assert.AreEqual(request.NodeAType, command.NodeA.NodeType.Id);
-            Assert.AreEqual(request.NodeBId, command.NodeB.Id);
-            Assert.AreEqual(request.NodeBType, command.NodeB.NodeType.Id);
+            target.Post(defaultRequest);
+
+            Assert.AreEqual(defaultRequest.NodeAId, command.NodeA.Id);
+            Assert.AreEqual(defaultRequest.NodeAType, command.NodeA.NodeType.Id);
+            Assert.AreEqual(defaultRequest.NodeBId, command.NodeB.Id);
+            Assert.AreEqual(defaultRequest.NodeBType, command.NodeB.NodeType.Id);
 
             Assert.AreEqual(LinkFlow.AtoB, command.Direction);
-            Assert.AreEqual(request.Strength, command.Strength);
-            Assert.AreEqual(request.Type, command.Type.Id);
+            Assert.AreEqual(defaultRequest.Strength, command.Strength);
+            Assert.AreEqual(defaultRequest.Type, command.Type.Id);
 
 
 

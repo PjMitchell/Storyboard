@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Storyboard.Web.API
@@ -24,15 +25,16 @@ namespace Storyboard.Web.API
         }
 
         // GET api/StoryOverview
-        public IEnumerable<StorySummary> Get()
+        public async Task<List<StorySummary>> Get()
         {
-            return storyReadService.GetStorySummaries();
+            var result = await storyReadService.GetStorySummaries();
+            return result;
         }
 
         // GET api/StoryOverview/5
-        public StoryOverview Get(int id)
+        public async Task<StoryOverview> Get(int id)
         {
-            return storyReadService.GetStoryOverview(id);
+            return await storyReadService.GetStoryOverview(id);
         }
 
         //// POST api/StoryOverview

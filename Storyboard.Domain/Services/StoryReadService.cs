@@ -16,9 +16,9 @@ namespace Storyboard.Domain.Services
     public class StoryReadService : IStoryReadService
     {
         private IStoryRepository storyRepository;
-        private INodeService nodeService;
+        private IAsyncNodeService nodeService;
 
-        public StoryReadService(IStoryRepository storyRepository, INodeService nodeService)
+        public StoryReadService(IStoryRepository storyRepository, IAsyncNodeService nodeService)
         {
             this.storyRepository = storyRepository;
             this.nodeService = nodeService;
@@ -29,11 +29,13 @@ namespace Storyboard.Domain.Services
         /// </summary>
         /// <param name="id">Story Id</param>
         /// <returns>Requested StoryOverview</returns>
-        public StoryOverview GetStoryOverview(int id)
+        public async Task<StoryOverview> GetStoryOverview(int id)
         {
             var result = new StoryOverview();
-            result.Summary = GetStorySummary(id);
-            result.Actors = nodeService.Get(new Node(id, StoryboardNodeTypes.Story), StoryboardNodeTypes.Actor).OfType<Actor>().ToList();
+            var getSummary = GetStorySummary(id);
+            var getActor = nodeService.Get(new Node(id, StoryboardNodeTypes.Story), StoryboardNodeTypes.Actor);
+            result.Summary = await getSummary;
+            result.Actors = (await getActor).OfType<Actor>().ToList();
             return result;
         }
 
@@ -42,9 +44,10 @@ namespace Storyboard.Domain.Services
         /// </summary>
         /// <param name="id">Story Id</param>
         /// <returns>Requested StorySummary</returns>
-        public StorySummary GetStorySummary(int id)
+        public async Task<StorySummary> GetStorySummary(int id)
         {
-            return MapToOverviewSummary(storyRepository.Get(id));
+            var story = await storyRepository.GetAsync(id);
+            return MapToOverviewSummary(story);
         }
 
 
@@ -52,9 +55,10 @@ namespace Storyboard.Domain.Services
         /// Gets all story summaries
         /// </summary>
         /// <returns>All story summaries</returns>
-        public IEnumerable<StorySummary> GetStorySummaries()
+        public async Task<List<StorySummary>> GetStorySummaries()
         {
-            return storyRepository.Get().Select(MapToOverviewSummary);
+            var stories = await storyRepository.GetAsync();
+            return stories.Select(MapToOverviewSummary).ToList();
         }
 
         private StorySummary MapToOverviewSummary(Story arg)

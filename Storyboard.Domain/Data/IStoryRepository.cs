@@ -1,4 +1,5 @@
-﻿using Storyboard.Domain.Core;
+﻿using HDLink;
+using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Domain.Data
 {
-    public interface IStoryRepository
+    public interface IStoryRepository : IAsyncNodeRepository<Story>
     {
         /// <summary>
         /// Gets all Stories from Database
         /// </summary>
         /// <returns>All Stories</returns>
-        IEnumerable<Story> Get();
+        Task<List<Story>> GetAsync();
 
         /// <summary>
         /// Gets requested stories
