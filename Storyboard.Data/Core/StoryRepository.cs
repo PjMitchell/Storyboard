@@ -14,6 +14,13 @@ namespace Storyboard.Data.Core
 {
     public class StoryRepository : IStoryRepository, INodeRepository<Story>, INodeRepository, IAsyncNodeRepository
     {
+        private readonly ILinkDataService linkDataService;
+        
+        public StoryRepository(ILinkDataService linkDataService)
+        {
+            this.linkDataService = linkDataService;
+        }
+        
         /// <summary>
         /// Gets all Stories from Database
         /// </summary>
@@ -66,6 +73,7 @@ namespace Storyboard.Data.Core
         {
             var db = Database.Open();
             db.Story.Story.DeleteById(id);
+            linkDataService.Remove(new Node(id, StoryboardNodeTypes.Story));
         }
 
         public IEnumerable<Story> Get(IEnumerable<int> ids)

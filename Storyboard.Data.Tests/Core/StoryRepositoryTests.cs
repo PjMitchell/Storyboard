@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Storyboard.Domain.Core.Commands;
 using System.Threading.Tasks;
+using HDLink;
+using Telerik.JustMock;
 
 namespace Storyboard.Data.Tests
 {
@@ -15,6 +17,7 @@ namespace Storyboard.Data.Tests
     public class StoryRepositoryTests
     {
         private IStoryRepository target;
+        private ILinkDataService linkDataService;
 
         [TestInitialize]
         public void Init()
@@ -24,7 +27,8 @@ namespace Storyboard.Data.Tests
             adaptor.SetKeyColumn("Story.Story", "Id");
 
             Database.UseMockAdapter(()=>adaptor);
-            target = new StoryRepository();
+            linkDataService = Mock.Create<ILinkDataService>();
+            target = new StoryRepository(linkDataService);
         }
         
         [TestCleanup]
@@ -113,6 +117,20 @@ namespace Storyboard.Data.Tests
             target.Delete(1);
             var result = await target.GetAsync();
             Assert.AreEqual(2, result.Count);
+
+        }
+
+        [TestMethod]
+        public void Delete_RemovesAssociatedNodes()
+        {
+            LoadStories();
+            INode node = null;
+            Mock.Arrange(() => linkDataService.Remove(Arg.IsAny<INode>()))
+                .DoInstead((INode arg) => node = arg);
+            target.Delete(1);
+            Assert.AreEqual(1, node.Id);
+            Assert.AreEqual(StoryboardNodeTypes.Story, node.NodeType);
+
 
         }
 

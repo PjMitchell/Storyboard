@@ -22,7 +22,7 @@ namespace Storyboard.Data.Core
             if (nodeType == StoryboardNodeTypes.Actor)
                 return new ActorRepository(linkDataService);
             if (nodeType == StoryboardNodeTypes.Story)
-                return new StoryRepository();
+                return new StoryRepository(linkDataService);
             throw new ArgumentOutOfRangeException("nodeType", "Could not find repository for nodeType");
         }
     }

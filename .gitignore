@@ -58,3 +58,4 @@ Temporary Items
 /Storyboard.Web.Tests/Bin
 /Storyboard.Web.Tests/obj
 *.suo
+*.dbmdl
