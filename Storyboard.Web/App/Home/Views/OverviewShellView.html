@@ -1,21 +1,7 @@
-﻿<a href="#story/">Back</a>
-<h3>{{vm.Overview.Summary.Title}}</h3>
+﻿<h3><a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/"></a> {{vm.Overview.Summary.Title}}</h3>
 <p>{{vm.Overview.Summary.Synopsis}}</p>
-<p>
-    <button class="btn btn-default" ng-click="vm.openCreateActorDialog()">New Actor</button>
-</p>
-
+<h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3> 
 <table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th></th>
-    </tr>
-
     <tr ng-repeat="actor in vm.Overview.Actors">
         <td>
             {{ actor.Name}}
@@ -24,7 +10,7 @@
             {{ actor.Description}}
         </td>
         <td>
-            <button class="btn btn-default" ng-click="vm.deleteActorCommand(actor.Id)">Delete</button>
+            <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="vm.deleteActorCommand(actor.Id)"></button>
         </td>
     </tr>
 </table>
