@@ -1,9 +1,0 @@
-﻿<form ng-submit="vm.add()" ng-show="!vm.IsSaving">
-    <h3>Title</h3>
-    <input type="text" ng-model="vm.Command.Title" placeholder="Enter a title here">
-    <h3>Synopsis</h3>
-    <input type="text" ng-model="vm.Command.Synopsis" placeholder="Enter a synopsis here">
-    <button>Submit</button>
-</form>
-<h3 ng-show="vm.IsSaving">Saving</h3>
-<a href="#/" ng-show="!vm.IsSaving">Cancel</a>

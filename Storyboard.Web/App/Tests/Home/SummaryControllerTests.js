@@ -4,14 +4,15 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/summaryController.ts" />
 /// <reference path="../../home/models/storyModels.ts" />
+/// <reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 describe('SummaryController', function () {
     var target;
-    var scope;
+    var modalService;
     var dataService;
     var initialStories;
     beforeEach(function () {
         dataService = {};
-        scope = {};
+        modalService = {};
         initialStories = new Array();
         var storyOne = new Home.StorySummary();
         storyOne.Id = 1;
@@ -29,7 +30,7 @@ describe('SummaryController', function () {
         };
     });
     it('OnConstruction Summaries are populated', function () {
-        target = new Home.SummaryController(scope, dataService);
+        target = new Home.SummaryController(modalService, dataService);
         expect(target.Summaries.length).toEqual(1);
         expect(target.Summaries[0].Id).toEqual(1);
     });

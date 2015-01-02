@@ -1,0 +1,45 @@
+﻿@import "_colourPalette.scss";
+@import "_textProperties.scss";
+
+
+body{
+    background: $background;
+    margin: 0;
+    padding: 0;
+    font-size: $regularFont;
+    color:$fontColour
+}
+
+header {
+    background: $accentColour;
+    margin:0 0 20px 0;
+    padding:5px;
+    h3 {
+        margin: 0;
+        color: $fontColour;
+        text-align: left;
+        font-size: $largeFont;
+    }
+}
+
+main {
+    padding: 0 5px;
+}
+
+table {
+    width: 100%;
+    td {
+        border-top: 1px solid $fontfaintColour;
+        padding: 2px;
+    }
+}
+
+.btn-icon {
+  color: $fontColour;
+  background-color: transparent;
+  border-color: transparent;
+
+  &:hover{
+      background-color: $accentColour
+  }
+}

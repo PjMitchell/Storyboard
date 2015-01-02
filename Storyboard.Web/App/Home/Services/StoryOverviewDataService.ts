@@ -1,4 +1,6 @@
 ﻿/// <reference path="../homemodule.ts" />
+/// <reference path="../models/storymodels.ts" />
+
 module Home {
     export interface IStoryOverviewDataService {
         getAll(): ng.IHttpPromise<Home.IStorySummary[]>;

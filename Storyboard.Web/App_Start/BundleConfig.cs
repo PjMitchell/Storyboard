@@ -24,7 +24,7 @@ namespace Storyboard.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/main.css",
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
@@ -34,7 +34,7 @@ namespace Storyboard.Web
             bundles.Add(new ScriptBundle("~/bundles/Home").Include(
                 "~/App/Home/Controllers/SummaryController.js",
                 "~/App/Home/Controllers/CreateActorDialogController.js",
-                "~/App/Home/Controllers/AddStoryController.js",
+                "~/App/Home/Controllers/CreateStoryDialogController.js",
                 "~/App/Home/Controllers/StoryOverviewController.js",
                 "~/App/Home/Models/AddUpdateStoryCommand.js",
                 "~/App/Home/Models/AddUpdateActorCommand.js",

@@ -4,16 +4,16 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/summaryController.ts" />
 /// <reference path="../../home/models/storyModels.ts" />
-
+/// <reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 describe('SummaryController', (): void => {
     var target: Home.SummaryController;
-    var scope: ng.IScope;
+    var modalService: ng.ui.bootstrap.IModalService;
     var dataService: Home.IStoryOverviewDataService;
     var initialStories: Home.IStorySummary[];
 
     beforeEach((): void=> {
         dataService = <Home.IStoryOverviewDataService>{};
-        scope = <ng.IScope>{};
+        modalService = <ng.ui.bootstrap.IModalService>{};
         initialStories = new Array<Home.IStorySummary>();
         var storyOne = new Home.StorySummary();
         storyOne.Id = 1;
@@ -34,7 +34,7 @@ describe('SummaryController', (): void => {
     });
 
     it('OnConstruction Summaries are populated', (): void => {
-        target = new Home.SummaryController(scope, dataService);
+        target = new Home.SummaryController(modalService, dataService);
         expect(target.Summaries.length).toEqual(1);
         expect(target.Summaries[0].Id).toEqual(1);
     });

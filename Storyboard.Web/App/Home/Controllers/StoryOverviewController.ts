@@ -7,12 +7,11 @@ module Home {
     export interface IIdRouteParam {
         id: number;
     }
-    import ui = ng.ui.bootstrap;
-
+    
     export class StoryOverviewController {
         static $inject = ['$routeParams', '$modal', 'StoryOverviewDataService', 'LinkDataService', 'ActorDataService'];
         private storyDataService: IStoryOverviewDataService;
-        private modalService: ui.IModalService;
+        private modalService: ng.ui.bootstrap.IModalService;
         private linkDataService: ILinkDataService;
         private actorDataService: IActorDataService
         Overview: StoryOverview;
@@ -31,7 +30,7 @@ module Home {
                 .then(this.onLinkSaved);
         }; 
 
-        constructor($routeParams: IIdRouteParam, $modal: ui.IModalService, StoryOverviewDataService: IStoryOverviewDataService, LinkDataService: ILinkDataService, ActorDataService: IActorDataService) {
+        constructor($routeParams: IIdRouteParam, $modal: ng.ui.bootstrap.IModalService, StoryOverviewDataService: IStoryOverviewDataService, LinkDataService: ILinkDataService, ActorDataService: IActorDataService) {
             this.storyDataService = StoryOverviewDataService;
             this.modalService = $modal;
             this.linkDataService = LinkDataService;
@@ -45,7 +44,7 @@ module Home {
         }
 
         public openCreateActorDialog() {
-            var settings = <ui.IModalSettings>
+            var settings = <ng.ui.bootstrap.IModalSettings>
                 {
                     templateUrl: 'App/Home/Views/CreateActorDialogView.html',
                     controller: 'CreateActorDialogController',

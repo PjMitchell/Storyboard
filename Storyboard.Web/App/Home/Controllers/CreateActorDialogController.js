@@ -1,7 +1,6 @@
 /// <reference path="../homemodule.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../../scripts/typings/angularjs/angular-route.d.ts" />
-/// <reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 /// <reference path="../services/actordataservice.ts" />
 var Home;
 (function (Home) {

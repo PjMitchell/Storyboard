@@ -4,17 +4,17 @@
 module Home {
 
     export class SummaryController {
-        static $inject = ['$scope', 'StoryOverviewDataService'];
+        static $inject = ['$modal','StoryOverviewDataService'];
         private dataService: Home.IStoryOverviewDataService;
-        private scope: ng.IScope;
+        private modalService: ng.ui.bootstrap.IModalService;
         private getAllSummaries: () => void;
         private onSummariesReturned: (result: IStorySummary[]) => void;
 
         Summaries: Home.IStorySummary[];
 
-        constructor($scope: ng.IScope, StoryOverviewDataService: Home.IStoryOverviewDataService) {
-            this.scope = $scope;
+        constructor($modal: ng.ui.bootstrap.IModalService, StoryOverviewDataService: Home.IStoryOverviewDataService) {
             this.dataService = StoryOverviewDataService;
+            this.modalService = $modal;
             this.Summaries = [];
 
             this.getAllSummaries = () => {
@@ -27,8 +27,22 @@ module Home {
             this.getAllSummaries();
         }
 
+        private onNewStory = () => {
+            this.getAllSummaries();
+        }; 
+
         deleteStoryCommand(id: number) {
             this.dataService.delete(id).success(this.getAllSummaries);
+        }
+
+        public openCreateStoryDialog() {
+            var settings = <ng.ui.bootstrap.IModalSettings>
+                {
+                    controller: 'CreateStoryDialogController',
+                    controllerAs: 'vm',
+                    templateUrl: 'App/Home/Views/CreateStoryDialogView.html'
+                }
+            this.modalService.open(settings).result.then(this.onNewStory);
         }
     }
 }

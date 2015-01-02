@@ -9,7 +9,7 @@ app.factory('ActorDataService', ($http: ng.IHttpService) => new Home.ActorDataSe
 app.factory('LinkDataService', ($http: ng.IHttpService) => new Home.LinkDataService($http));
 
 app.controller('SummaryController', Home.SummaryController);
-app.controller('AddStoryController', Home.AddStoryController);
+app.controller('CreateStoryDialogController', Home.CreateStoryDialogController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);
 app.controller('CreateActorDialogController', Home.CreateActorDialogController);
 

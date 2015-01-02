@@ -1,5 +1,6 @@
 /// <reference path="../../home/services/storyoverviewdataservice.ts" />
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" />
+/// <reference path="../../home/models/addupdatestorycommand.ts" />
 /// <reference path="../../../scripts/typings/jasmine/jasmine.d.ts" />
 describe('StoryOverviewDataService', function () {
     var fakeHttpService;

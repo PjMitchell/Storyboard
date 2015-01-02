@@ -1,3 +1,4 @@
+var _this = this;
 /// <reference path="../../home/models/addupdatestorycommand.ts" />
 /// <reference path="../../../scripts/typings/jasmine/jasmine.d.ts" />
 /// <reference path="../../home/services/storyoverviewdataservice.ts" />
@@ -5,6 +6,11 @@
 /// <reference path="../../home/controllers/storyoverviewcontroller.ts" />
 /// <reference path="../../home/models/storyModels.ts" />
 /// <reference path="../../home/homemodule.ts" />
+/// <reference path="../../home/services/linkdataservice.ts" />
+/// <reference path="../../home/models/createlinkcommand.ts" />
+/// <reference path="../../home/services/actordataservice.ts" />
+/// <reference path="../../home/models/addupdateactorcommand.ts" />
+/// <reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 describe('StoryOverviewController', function () {
     var target;
     var route;
@@ -17,7 +23,10 @@ describe('StoryOverviewController', function () {
         dataService = {};
         linkDataService = {};
         actorDataService = {};
-        modalService = {};
+        _this.modalService = {};
+        _this.modalService.open = function (option) {
+            return {};
+        };
         returnedOverview = new Home.StoryOverview();
         returnedOverview.Summary = new Home.StorySummary();
         var storyOne = new Home.StorySummary();
@@ -46,19 +55,24 @@ describe('StoryOverviewController', function () {
         expect(target.Overview.Summary.Id).toEqual(returnedOverview.Summary.Id);
         expect(target.Overview.Summary.Title).toEqual(returnedOverview.Summary.Title);
     });
-    describe('OpenCreateActorDialog', function () {
-        var modalPayload;
-        beforeEach(function () {
-            modalService.open = function (option) {
-                modalPayload = option;
-                return {};
-            };
-        });
-        it('OpensDialog', function () {
-            spyOn(modalService, 'open');
-            target.openCreateActorDialog();
-            expect(modalService.open).toHaveBeenCalled();
-        });
-    });
+    //it('OpensDialog', (): void => {
+    //    spyOn(this.modalService, 'open');
+    //    target.openCreateActorDialog();
+    //    expect(this.modalService.open).toHaveBeenCalled();
+    //});
+    //describe('OpenCreateActorDialog', (): void => {
+    //    var modalPayload: ng.ui.bootstrap.IModalSettings
+    //    beforeEach((): void=> {
+    //            this.modalService.open = (option) => {
+    //                modalPayload = option;
+    //                return <ng.ui.bootstrap.IModalServiceInstance> {};
+    //            }
+    //        });
+    //    it('OpensDialog', (): void => {
+    //        spyOn(this.modalService, 'open');
+    //        target.openCreateActorDialog();
+    //        expect(this.modalService.open).toHaveBeenCalled();
+    //    })
+    //});
 });
 //# sourceMappingURL=StoryOverviewControllerTests.js.map

@@ -3,6 +3,8 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" /> 
 /// <reference path="../../home/controllers/createactordialogcontroller.ts" />
 /// <reference path="../../home/homemodule.ts" />
+/// <reference path="../../home/models/addupdateactorcommand.ts" />
+/// <reference path="../../../scripts/typings/angular-ui-bootstrap/angular-ui-bootstrap.d.ts" />
 describe('CreateActorDialogController', function () {
     var target;
     var modalInstance;

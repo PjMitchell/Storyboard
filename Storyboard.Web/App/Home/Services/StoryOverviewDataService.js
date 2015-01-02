@@ -1,4 +1,5 @@
 /// <reference path="../homemodule.ts" />
+/// <reference path="../models/storymodels.ts" />
 var Home;
 (function (Home) {
     var StoryOverviewDataService = (function () {
