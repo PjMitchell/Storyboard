@@ -4918,7 +4918,8 @@ table {
 .btn-icon {
   color: #0F0F43;
   background-color: transparent;
-  border-color: transparent; }
+  border-color: transparent;
+  margin-bottom: 5px; }
   .btn-icon:hover {
     background-color: burlywood; }
 

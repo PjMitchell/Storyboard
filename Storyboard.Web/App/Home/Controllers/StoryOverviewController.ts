@@ -15,8 +15,11 @@ module Home {
         private linkDataService: ILinkDataService;
         private actorDataService: IActorDataService
         Overview: StoryOverview;
-
-        private onOverviewReturned = (story: Home.StoryOverview) => { this.Overview = story; };
+        IsLoaded: boolean;
+        private onOverviewReturned = (story: Home.StoryOverview) => {
+            this.Overview = story;
+            this.IsLoaded = true;
+        };
         private removeActor = (id: number) => {
             this.Overview.Actors = this.Overview.Actors.filter((actor, index, actors) => {
                 return actor.Id !== id;

@@ -9,6 +9,7 @@ var Home;
             var _this = this;
             this.onOverviewReturned = function (story) {
                 _this.Overview = story;
+                _this.IsLoaded = true;
             };
             this.removeActor = function (id) {
                 _this.Overview.Actors = _this.Overview.Actors.filter(function (actor, index, actors) {
