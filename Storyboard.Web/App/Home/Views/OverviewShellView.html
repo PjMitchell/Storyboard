@@ -1,4 +1,5 @@
-﻿<h3><a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/"></a> {{vm.Overview.Summary.Title}}</h3>
+﻿<h3 ng-show="!vm.IsLoaded">Loading...</h3>
+<h3><a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/"></a> {{vm.Overview.Summary.Title}}</h3>
 <p>{{vm.Overview.Summary.Synopsis}}</p>
 <div ng-show="vm.IsLoaded">
     <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
