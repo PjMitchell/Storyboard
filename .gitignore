@@ -60,3 +60,5 @@ Temporary Items
 *.suo
 *.dbmdl
 *.user
+*.publish.xml
+*.pubxml
