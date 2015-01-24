@@ -62,15 +62,16 @@ namespace Storyboard.Web.Tests.Apis
         }
 
         [TestMethod]
-        public void Post_CreatesNewStory()
+        public async Task Post_CreatesNewStory()
         {
             var newStory = new AddUpdateStoryCommand();
-            Mock.Arrange(() => repo.AddOrUpdate(newStory))
+            Mock.Arrange(() => repo.Add(newStory))
+                .Returns(()=> MockTaskAdaptor.MockTaskResult(()=> 1))
                 .MustBeCalled();
                 
             // Act
 
-            target.Post(newStory);
+            await target.Post(newStory);
             // Assert
             Mock.Assert(repo);
 

@@ -95,47 +95,38 @@ namespace Storyboard.Data.EF.Core
             }
         }
         
-        public void AddOrUpdate(AddUpdateActorCommand command)
-        {
-            if (command.Id != 0)
-                Update(command);
-            else
-                Add(command);
-        }
-
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             using (var db = new StoryboardContext())
             {
                 var row = new ActorTableRow { Id = id };
                 db.Entry(row).State = EntityState.Deleted;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             linkDataService.Remove(new Node(id, StoryboardNodeTypes.Actor));
         }
 
-        private void Add(AddUpdateActorCommand command)
-        {
-            using (var db = new StoryboardContext())
-            {
-                var row = Mapper.Map<ActorTableRow>(command);
-                db.Actor.Add(row);
-                db.SaveChanges();
-                command.Id = row.Id;
-            }
-        }
-
-        private void Update(AddUpdateActorCommand command)
+        public async Task Update(AddUpdateActorCommand command)
         {
             using (var db = new StoryboardContext())
             {
                 var row = Mapper.Map<ActorTableRow>(command);
                 db.Actor.Attach(row);
                 db.Entry(row).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
+            }
+        }
+        
+        public async Task<int> Add(AddUpdateActorCommand command)
+        {
+            using (var db = new StoryboardContext())
+            {
+                var row = Mapper.Map<ActorTableRow>(command);
+                db.Actor.Add(row);
+                await db.SaveChangesAsync();
+                return row.Id;
             }
         }
 
-        
     }
 }

@@ -2,6 +2,7 @@
 using Simple.Data;
 using Storyboard.Data.DBObject;
 using Storyboard.Domain.Data;
+using System.Threading.Tasks;
 
 namespace Storyboard.Data.Core
 {
@@ -13,39 +14,48 @@ namespace Storyboard.Data.Core
         /// <summary>
         /// Adds new link to store
         /// </summary>
-        public void Add(ILink link)
+        public Task Add(ILink link)
         {
-            var db = Database.Open();
-            db.Story.Link.Insert(MapRow(link));
+            return Task.Factory.StartNew(()=>
+                {
+                    var db = Database.Open();
+                    db.Story.Link.Insert(MapRow(link));
+                });
         }
 
 
         /// <summary>
         /// Removes link from store
         /// </summary>
-        public void Remove(ILink link)
+        public Task Remove(ILink link)
         {
-            var linkTypeRef = link.Type == null ? 0 : link.Type.Id;
-            var db = Database.Open();
-            db.Story.Link.DeleteAll(db.Story.Link.NodeARef == link.NodeA.Id 
-                && db.Story.Link.NodeAType == link.NodeA.NodeType.Id 
-                && db.Story.Link.NodeBRef == link.NodeB.Id 
-                && db.Story.Link.NodeBType == link.NodeB.NodeType.Id
-                && db.Story.Link.LinkTypeRef == linkTypeRef
-                );
+            return Task.Factory.StartNew(() =>
+                {
+                    var linkTypeRef = link.Type == null ? 0 : link.Type.Id;
+                    var db = Database.Open();
+                    db.Story.Link.DeleteAll(db.Story.Link.NodeARef == link.NodeA.Id
+                        && db.Story.Link.NodeAType == link.NodeA.NodeType.Id
+                        && db.Story.Link.NodeBRef == link.NodeB.Id
+                        && db.Story.Link.NodeBType == link.NodeB.NodeType.Id
+                        && db.Story.Link.LinkTypeRef == linkTypeRef
+                        );
+                });
         }
 
         /// <summary>
         /// Removes links from store that contain node
         /// </summary>
-        public void Remove(INode node)
+        public Task Remove(INode node)
         {
-            var db = Database.Open();
-            db.Story.Link.DeleteAll((db.Story.Link.NodeARef == node.Id
-                && db.Story.Link.NodeAType == node.NodeType.Id) ||
-                (db.Story.Link.NodeBRef == node.Id
-                && db.Story.Link.NodeBType == node.NodeType.Id)
-                );
+            return Task.Factory.StartNew(() =>
+                {
+                    var db = Database.Open();
+                    db.Story.Link.DeleteAll((db.Story.Link.NodeARef == node.Id
+                        && db.Story.Link.NodeAType == node.NodeType.Id) ||
+                        (db.Story.Link.NodeBRef == node.Id
+                        && db.Story.Link.NodeBType == node.NodeType.Id)
+                        );
+                });
         }
 
         private LinkTableRow MapRow(ILink arg)

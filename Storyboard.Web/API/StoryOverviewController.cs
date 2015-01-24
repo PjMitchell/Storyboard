@@ -38,9 +38,9 @@ namespace Storyboard.Web.API
         }
 
         //// POST api/StoryOverview
-        public void Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
+        public async Task Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
         {
-            repository.AddOrUpdate(addUpdateStoryCommand);
+            await repository.Add(addUpdateStoryCommand);
         }
 
         //// PUT api/<controller>/5
@@ -49,9 +49,9 @@ namespace Storyboard.Web.API
         //}
 
         // DELETE api/StoryOverview/5
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            repository.Delete(id);
+            await repository.Delete(id);
         }
 
         

@@ -43,12 +43,12 @@ namespace Storyboard.Web.Controllers
 
         // POST: Story/Create
         [HttpPost]
-        public ActionResult Create(AddUpdateStoryCommand command)
+        public async Task<ActionResult> Create(AddUpdateStoryCommand command)
         {
             if (!ModelState.IsValid)
                 return View();
             
-            repository.AddOrUpdate(command);
+            await repository.Add(command);
             return RedirectToAction("Index");
         }
 
@@ -63,12 +63,12 @@ namespace Storyboard.Web.Controllers
 
         // POST: Story/Edit/5
         [HttpPost]
-        public ActionResult Edit(AddUpdateStoryCommand command)
+        public async Task<ActionResult> Edit(AddUpdateStoryCommand command)
         {
             if (!ModelState.IsValid)
                 return View();
 
-            repository.AddOrUpdate(command);
+            await repository.Update(command);
             return RedirectToAction("Index");
         }
 

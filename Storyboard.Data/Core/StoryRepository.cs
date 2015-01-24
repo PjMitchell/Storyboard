@@ -116,5 +116,21 @@ namespace Storyboard.Data.Core
         {
             return Task.Run(() => (INode)Get(id)); ;
         }
+
+
+        public Task Update(AddUpdateStoryCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<int> Add(AddUpdateStoryCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IStoryRepository.Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

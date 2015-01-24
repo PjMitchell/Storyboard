@@ -22,14 +22,10 @@ namespace Storyboard.Data.EF.Core
         {
             this.linkDataService = linkDataService;
             Mapper.CreateMap<StoryTableRow, Story>();
-            Mapper.CreateMap<AddUpdateActorCommand, StoryTableRow>();
+            Mapper.CreateMap<AddUpdateStoryCommand, StoryTableRow>();
             
         }
-          
-      
-
-
-
+     
         /// <summary>
         /// Gets all Stories from Database
         /// </summary>
@@ -104,51 +100,49 @@ namespace Storyboard.Data.EF.Core
         }
 
         /// <summary>
-        /// Adds or Updates Story
-        /// </summary>
-        /// <param name="command">Story to be created / updated</param>
-        public void AddOrUpdate(AddUpdateStoryCommand command)
-        {
-            if (command.Id != 0)
-                Update(command);
-            else
-                Add(command);
-        }
-
-        /// <summary>
         /// Deletes Story
         /// </summary>
         /// <param name="id">Story Id</param>
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             using (var db = new StoryboardContext())
             {
                 var row = new StoryTableRow { Id = id };
                 db.Entry(row).State = EntityState.Deleted;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             linkDataService.Remove(new Node(id, StoryboardNodeTypes.Story));
         }
 
-        private void Add(AddUpdateStoryCommand command)
+        /// <summary>
+        /// Adds Story
+        /// </summary>
+        /// <param name="command">Story to be created</param>
+        public async Task<int> Add(AddUpdateStoryCommand command)
         {
             using (var db = new StoryboardContext())
             {
                 var row = Mapper.Map<StoryTableRow>(command);
                 db.Story.Add(row);
-                db.SaveChanges();
-                command.Id = row.Id;
+                await db.SaveChangesAsync();
+                return row.Id;
             }
         }
 
-        private void Update(AddUpdateStoryCommand command)
+        /// <summary>
+        /// Updates Story
+        /// </summary>
+        /// <param name="command">Story to be updated</param>
+        public async Task Update(AddUpdateStoryCommand command)
         {
+            if (command.Id == 0)
+                throw new ArgumentOutOfRangeException("command", "Tried update a story with Id of 0");
             using (var db = new StoryboardContext())
             {
                 var row = Mapper.Map<StoryTableRow>(command);
                 db.Story.Attach(row);
                 db.Entry(row).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
 

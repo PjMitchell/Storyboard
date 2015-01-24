@@ -1,4 +1,5 @@
 ﻿using HDLink;
+using System.Threading.Tasks;
 
 namespace Storyboard.Domain.Data
 {
@@ -10,16 +11,16 @@ namespace Storyboard.Domain.Data
         /// <summary>
         /// Adds new link to store
         /// </summary>
-        void Add(ILink link);
+        Task Add(ILink link);
 
         /// <summary>
         /// Removes link from store
         /// </summary>
-        void Remove(ILink link);
+        Task Remove(ILink link);
 
         /// <summary>
         /// Removes links from store that contain node
         /// </summary>
-        void Remove(INode node);
+        Task Remove(INode node);
     }
 }

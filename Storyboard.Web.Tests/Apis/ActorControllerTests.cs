@@ -4,9 +4,11 @@ using Storyboard.Web.API;
 using Storyboard.Domain.Data;
 using Telerik.JustMock;
 using Storyboard.Domain.Core.Commands;
+using Storyboard.Domain.Test;
 using System.Net.Http;
 using System.Web.Http;
 using Storyboard.Web.Tests.Helpers;
+using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Apis
 {
@@ -28,31 +30,35 @@ namespace Storyboard.Web.Tests.Apis
         }
         
         [TestMethod]
-        public void Post_CallsRepository()
+        public async Task Post_CallsRepository()
         {
             var command = new AddUpdateActorCommand();
-            Mock.Arrange(() => repo.AddOrUpdate(command)).MustBeCalled();
-            target.Post(command);
+            Mock.Arrange(() => repo.Add(command))
+                .Returns(()=> MockTaskAdaptor.MockTaskResult(()=> 1))
+                .MustBeCalled();
+            await target.Post(command);
             Mock.Assert(repo);
         }
 
         [TestMethod]
-        public void Post_ReturnsId()
+        public async Task Post_ReturnsId()
         {
             var command = new AddUpdateActorCommand();
-            Mock.Arrange(() => repo.AddOrUpdate(command))
-                .DoInstead((AddUpdateActorCommand arg)=> arg.Id = 1);
+            Mock.Arrange(() => repo.Add(command))
+                .Returns(() => MockTaskAdaptor.MockTaskResult(() => 1));
                 
-            var result = target.Post(command);
+            var result = await target.Post(command);
             Assert.AreEqual(1, HttpTestHelper.GetHttpMessAgeContent<int>(result));
             
         }
         [TestMethod]
-        public void Delete_RemovesActor()
+        public async Task Delete_RemovesActor()
         {
             var id =1;
-            Mock.Arrange(() => repo.Delete(id)).MustBeCalled();
-            target.Delete(id);
+            Mock.Arrange(() => repo.Delete(id))
+                .Returns(() => MockTaskAdaptor.MockTaskAction())
+                .MustBeCalled();
+            await target.Delete(id);
             Mock.Assert(repo);
 
         }

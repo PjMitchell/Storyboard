@@ -12,6 +12,7 @@ using Telerik.JustMock;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Services;
 using Storyboard.Domain.Test;
+using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Controllers
 {
@@ -49,17 +50,19 @@ namespace Storyboard.Web.Tests.Controllers
         }
 
         [TestMethod]
-        public void Create_CallsRepositoryIfValid()
+        public async Task Create_CallsRepositoryIfValid()
         {
             var command = new AddUpdateStoryCommand
             {
                 Title = "Title",
                 Synopsis = "Synposis"
             };
-            Mock.Arrange(() => repo.AddOrUpdate(command))
+            Mock.Arrange(() => repo.Add(command))
+                .Returns(() => MockTaskAdaptor.MockTaskResult(() => 1))
                 .MustBeCalled();
+                
             // Act
-            target.Create(command);
+            await target.Create(command);
             // Assert
             Mock.Assert(repo);
         }

@@ -17,15 +17,21 @@ namespace Storyboard.Domain.Data
         Task<List<Actor>> GetAsync();
         
         /// <summary>
-        /// Creates or Updates Actor
+        /// Creates Actor
         /// </summary>
-        /// <param name="command">Actor to be created / updated</param>
-        void AddOrUpdate(AddUpdateActorCommand command);
+        /// <param name="command">Actor to be created</param>
+        Task<int> Add(AddUpdateActorCommand command);
+
+        /// <summary>
+        /// Updates Actor
+        /// </summary>
+        /// <param name="command">Actor to be updated</param>
+        Task Update(AddUpdateActorCommand command);
 
         /// <summary>
         /// Deletes Actor
         /// </summary>
         /// <param name="id">Actor Id</param>
-        void Delete(int id);
+        Task Delete(int id);
     }
 }

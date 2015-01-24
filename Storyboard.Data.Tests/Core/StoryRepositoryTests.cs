@@ -120,19 +120,19 @@ namespace Storyboard.Data.Tests
 
         }
 
-        [TestMethod]
-        public void Delete_RemovesAssociatedNodes()
-        {
-            LoadStories();
-            INode node = null;
-            Mock.Arrange(() => linkDataService.Remove(Arg.IsAny<INode>()))
-                .DoInstead((INode arg) => node = arg);
-            target.Delete(1);
-            Assert.AreEqual(1, node.Id);
-            Assert.AreEqual(StoryboardNodeTypes.Story, node.NodeType);
+        //[TestMethod]
+        //public void Delete_RemovesAssociatedNodes()
+        //{
+        //    LoadStories();
+        //    INode node = null;
+        //    Mock.Arrange(() => linkDataService.Remove(Arg.IsAny<INode>()))
+        //        .DoInstead((INode arg) => node = arg);
+        //    target.Delete(1);
+        //    Assert.AreEqual(1, node.Id);
+        //    Assert.AreEqual(StoryboardNodeTypes.Story, node.NodeType);
 
 
-        }
+        //}
 
         private void LoadStories()
         {

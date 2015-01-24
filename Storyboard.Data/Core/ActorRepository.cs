@@ -20,7 +20,12 @@ namespace Storyboard.Data.Core
         {
             this.linkDataService = linkDataService;
         }
-        
+
+        public Task<List<Actor>> GetAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Actor> Get()
         {
             var db = Database.Open();
@@ -97,6 +102,22 @@ namespace Storyboard.Data.Core
         Task<INode> IAsyncNodeRepository.GetAsync(int id)
         {
             return Task.Run(() => (INode)Get(id)); ;
+        }
+
+
+        public Task<int> Add(AddUpdateActorCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Update(AddUpdateActorCommand command)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IActorRepository.Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

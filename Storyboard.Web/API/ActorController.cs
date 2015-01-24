@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Storyboard.Web.API
@@ -22,17 +23,17 @@ namespace Storyboard.Web.API
         }
         
         // Post api/Actor
-        public HttpResponseMessage Post(AddUpdateActorCommand command)
+        public async Task<HttpResponseMessage> Post(AddUpdateActorCommand command)
         {
             
-            repository.AddOrUpdate(command);
-            return Request.CreateResponse<int>(HttpStatusCode.Created, command.Id);
+            var id = await repository.Add(command);
+            return Request.CreateResponse<int>(HttpStatusCode.Created, id);
         }
 
         //Delete api/Actor/1
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            repository.Delete(id);
+            await repository.Delete(id);
 
         }
 
