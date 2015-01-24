@@ -18,20 +18,6 @@ namespace Storyboard.Domain.Data
         Task<List<Story>> GetAsync();
 
         /// <summary>
-        /// Gets requested stories
-        /// </summary>
-        /// <param name="ids">Story Ids</param>
-        /// <returns>Requested Stories</returns>
-        IEnumerable<Story> Get(IEnumerable<int> ids);
-        
-        /// <summary>
-        /// Gets requested story
-        /// </summary>
-        /// <param name="id">Story Id</param>
-        /// <returns>Requested Story</returns>
-        Story Get(int id);
-        
-        /// <summary>
         /// Creates or Updates Story
         /// </summary>
         /// <param name="command">Story to be created / updated</param>

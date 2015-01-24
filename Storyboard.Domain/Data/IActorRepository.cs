@@ -11,25 +11,11 @@ namespace Storyboard.Domain.Data
     public interface IActorRepository: HDLink.IAsyncNodeRepository<Actor>
     {
         /// <summary>
-        /// Gets all Actors from Database
+        /// Get Actors
         /// </summary>
         /// <returns>All Actors</returns>
-        IEnumerable<Actor> Get();
-
-        /// <summary>
-        /// Gets requested Actor
-        /// </summary>
-        /// <param name="id">Actor Id</param>
-        /// <returns>Requested Actor</returns>
-        Actor Get(int id);
-
-        /// <summary>
-        /// Gets requested Actors
-        /// </summary>
-        /// <param name="ids">Actor Ids</param>
-        /// <returns>Requested Actor</returns>
-        IEnumerable<Actor> Get(IEnumerable<int> ids);
-
+        Task<List<Actor>> GetAsync();
+        
         /// <summary>
         /// Creates or Updates Actor
         /// </summary>

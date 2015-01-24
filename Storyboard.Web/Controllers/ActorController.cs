@@ -3,12 +3,13 @@ using Storyboard.Domain.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Storyboard.Web.Controllers
 {
-    public class ActorController : Controller
+    public class ActorController : AsyncController
     {
         private readonly IActorRepository repository;
         
@@ -18,15 +19,15 @@ namespace Storyboard.Web.Controllers
         }
 
         // GET: Actor
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(repository.Get().ToList());
+            return View(await repository.GetAsync());
         }
 
         // GET: Actor/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View(repository.Get(id));
+            return View(await repository.GetAsync(id));
         }
 
         // GET: Actor/Create
@@ -47,9 +48,9 @@ namespace Storyboard.Web.Controllers
         }
 
         // GET: Actor/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var actor = repository.Get(id);
+            var actor = await repository.GetAsync(id);
             if (actor == null)
                 return RedirectToAction("Index");
             return View(actor.ToAddUpdateCommand());

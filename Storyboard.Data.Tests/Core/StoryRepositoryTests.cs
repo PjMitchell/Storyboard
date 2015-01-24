@@ -47,65 +47,65 @@ namespace Storyboard.Data.Tests
             Assert.AreEqual(3, result.Count());
         }
 
-        [TestMethod]
-        public void CanGetStoryById()
-        {
-            LoadStories();
-            var result = target.Get(1);
-            var expected = GetAllStories().Single(s => s.Id == 1);
-            Assert.AreEqual(expected.Synopsis, result.Synopsis);
-            Assert.AreEqual(expected.Title, result.Title);
+        //[TestMethod]
+        //public void CanGetStoryById()
+        //{
+        //    LoadStories();
+        //    var result = target.Get(1);
+        //    var expected = GetAllStories().Single(s => s.Id == 1);
+        //    Assert.AreEqual(expected.Synopsis, result.Synopsis);
+        //    Assert.AreEqual(expected.Title, result.Title);
 
-        }
+        //}
 
-        [TestMethod]
-        public void CanGetStorysByIds()
-        {
-            LoadStories();
-            var result = target.Get(new[] { 1, 3 }).ToList();
-            var expected = GetAllStories().Where(w => w.Id == 1 || w.Id == 3).ToList();
-            Assert.AreEqual(2, result.Count);
-            Assert.IsTrue(result.Any(a => a.Id == 1));
-            Assert.IsTrue(result.Any(a => a.Id == 3));
+        //[TestMethod]
+        //public void CanGetStorysByIds()
+        //{
+        //    LoadStories();
+        //    var result = target.Get(new[] { 1, 3 }).ToList();
+        //    var expected = GetAllStories().Where(w => w.Id == 1 || w.Id == 3).ToList();
+        //    Assert.AreEqual(2, result.Count);
+        //    Assert.IsTrue(result.Any(a => a.Id == 1));
+        //    Assert.IsTrue(result.Any(a => a.Id == 3));
 
-        }
+        //}
 
-        [TestMethod]
-        public void CanCreateStory()
-        {
-            var story = GetAllStories().Single(s => s.Id == 1);
-            var command = new AddUpdateStoryCommand
-            {
-                Title = story.Title,
-                Synopsis = story.Synopsis
-            };
+        //[TestMethod]
+        //public void CanCreateStory()
+        //{
+        //    var story = GetAllStories().Single(s => s.Id == 1);
+        //    var command = new AddUpdateStoryCommand
+        //    {
+        //        Title = story.Title,
+        //        Synopsis = story.Synopsis
+        //    };
 
-            target.AddOrUpdate(command);
-            var result = target.Get(command.Id);
-            Assert.AreEqual(story.Synopsis, result.Synopsis);
-            Assert.AreEqual(story.Title, result.Title);
+        //    target.AddOrUpdate(command);
+        //    var result = target.Get(command.Id);
+        //    Assert.AreEqual(story.Synopsis, result.Synopsis);
+        //    Assert.AreEqual(story.Title, result.Title);
 
-        }
+        //}
 
-        [TestMethod]
-        public void CanUpdateStory()
-        {
-            LoadStories();
-            var expectedTitle = "NewTitle";
-            var story = GetAllStories().Single(s => s.Id == 1);
-            var command = new AddUpdateStoryCommand
-            {
-                Id = story.Id,
-                Title = expectedTitle,
-                Synopsis = story.Synopsis
-            };
+        //[TestMethod]
+        //public void CanUpdateStory()
+        //{
+        //    LoadStories();
+        //    var expectedTitle = "NewTitle";
+        //    var story = GetAllStories().Single(s => s.Id == 1);
+        //    var command = new AddUpdateStoryCommand
+        //    {
+        //        Id = story.Id,
+        //        Title = expectedTitle,
+        //        Synopsis = story.Synopsis
+        //    };
 
-            target.AddOrUpdate(command);
-            var result = target.Get(story.Id);
-            Assert.AreEqual(story.Synopsis, result.Synopsis);
-            Assert.AreEqual(expectedTitle, result.Title);
+        //    target.AddOrUpdate(command);
+        //    var result = target.Get(story.Id);
+        //    Assert.AreEqual(story.Synopsis, result.Synopsis);
+        //    Assert.AreEqual(expectedTitle, result.Title);
 
-        }
+        //}
 
       
         [TestMethod]

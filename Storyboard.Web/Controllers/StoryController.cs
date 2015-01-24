@@ -4,12 +4,13 @@ using Storyboard.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Storyboard.Web.Controllers
 {
-    public class StoryController : Controller
+    public class StoryController : AsyncController
     {
         private readonly IStoryRepository repository;
         private readonly IStoryReadService service;
@@ -52,9 +53,9 @@ namespace Storyboard.Web.Controllers
         }
 
         // GET: Story/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var story = repository.Get(id);
+            var story = await repository.GetAsync(id);
             if(story == null)
                 return RedirectToAction("Index");
             return View(story.ToAddUpdateCommand());

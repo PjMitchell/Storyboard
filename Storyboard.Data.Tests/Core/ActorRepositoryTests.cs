@@ -15,7 +15,7 @@ namespace Storyboard.Data.Tests
     [TestClass]
     public class ActorRepositoryTests
     {
-        private IActorRepository target;
+        private ActorRepository target;
         private ILinkDataService linkDataService;
 
         [TestInitialize]
