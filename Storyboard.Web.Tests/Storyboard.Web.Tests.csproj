@@ -115,10 +115,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Storyboard.Domain.Test\Storyboard.Domain.Test.csproj">
-      <Project>{3d7cd2ca-d1bc-4fa8-b273-1a2e32b6e1b8}</Project>
-      <Name>Storyboard.Domain.Test</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Storyboard.Domain\Storyboard.Domain.csproj">
       <Project>{fe1bd647-7363-4c06-9d6a-4dfbe75cd95a}</Project>
       <Name>Storyboard.Domain</Name>

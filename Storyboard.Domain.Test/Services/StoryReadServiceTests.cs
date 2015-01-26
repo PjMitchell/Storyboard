@@ -27,9 +27,9 @@ namespace Storyboard.Domain.Test
             target = new StoryReadService(storyRepos, nodeService);
             testStory = new Story { Id = 1, Title = "A Story", Synopsis = "A Summary" };
             Mock.Arrange(() => storyRepos.GetAsync(testStory.Id))
-                .Returns(() => MockTaskAdaptor.MockTaskResult(()=> testStory));
+                .Returns(() => Task.FromResult(testStory));
             Mock.Arrange(() => nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<INodeType>()))
-                .Returns(() => MockTaskAdaptor.MockTaskResult(() => new List<INode>()));
+                .Returns(() => Task.FromResult(new List<INode>()));
         }
         
         [TestMethod]
@@ -49,7 +49,7 @@ namespace Storyboard.Domain.Test
         public async Task GetStorySummaries_GetsStorySummary()
         {
             Mock.Arrange(() => storyRepos.GetAsync())
-                .Returns(() =>MockTaskAdaptor.MockTaskResult(()=> new List<Story> { testStory, testStory }));
+                .Returns(() => Task.FromResult(new List<Story> { testStory, testStory }));
             var list = await target.GetStorySummaries();
 
             Assert.AreEqual(2, list.Count);
@@ -79,7 +79,7 @@ namespace Storyboard.Domain.Test
             var actor = new Actor{Id = 10, Name = "Actor"};
             var actors = new List<Actor> { actor };
             Mock.Arrange(()=> nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<INodeType>()))
-                .Returns((INode node, INodeType nodetype) => MockTaskAdaptor.MockTaskResult(()=> 
+                .Returns((INode node, INodeType nodetype) => Task.FromResult( 
                     node.Id == testStory.Id 
                     && node.NodeType == testStory.NodeType 
                     && nodetype == StoryboardNodeTypes.Actor

@@ -11,7 +11,6 @@ using Storyboard.Domain.Data;
 using Telerik.JustMock;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Services;
-using Storyboard.Domain.Test;
 using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Controllers
@@ -38,7 +37,7 @@ namespace Storyboard.Web.Tests.Controllers
         {
             var stories = GetTestList();
             Mock.Arrange(() => repo.GetAsync())
-                .Returns(() => MockTaskAdaptor.MockTaskResult(()=> stories));
+                .Returns(() => Task.FromResult(stories));
             // Act
             ViewResult result = target.Index() as ViewResult;
             var model = result.Model as List<Story>;
@@ -58,7 +57,7 @@ namespace Storyboard.Web.Tests.Controllers
                 Synopsis = "Synposis"
             };
             Mock.Arrange(() => repo.Add(command))
-                .Returns(() => MockTaskAdaptor.MockTaskResult(() => 1))
+                .Returns(() => Task.FromResult(1))
                 .MustBeCalled();
                 
             // Act

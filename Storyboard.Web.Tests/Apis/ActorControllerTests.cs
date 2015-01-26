@@ -4,7 +4,6 @@ using Storyboard.Web.API;
 using Storyboard.Domain.Data;
 using Telerik.JustMock;
 using Storyboard.Domain.Core.Commands;
-using Storyboard.Domain.Test;
 using System.Net.Http;
 using System.Web.Http;
 using Storyboard.Web.Tests.Helpers;
@@ -34,7 +33,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var command = new AddUpdateActorCommand();
             Mock.Arrange(() => repo.Add(command))
-                .Returns(()=> MockTaskAdaptor.MockTaskResult(()=> 1))
+                .Returns(()=> Task.FromResult(1))
                 .MustBeCalled();
             await target.Post(command);
             Mock.Assert(repo);
@@ -45,7 +44,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var command = new AddUpdateActorCommand();
             Mock.Arrange(() => repo.Add(command))
-                .Returns(() => MockTaskAdaptor.MockTaskResult(() => 1));
+                .Returns(() => Task.FromResult(1));
                 
             var result = await target.Post(command);
             Assert.AreEqual(1, HttpTestHelper.GetHttpMessAgeContent<int>(result));
@@ -56,7 +55,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var id =1;
             Mock.Arrange(() => repo.Delete(id))
-                .Returns(() => MockTaskAdaptor.MockTaskAction())
+                .Returns(() => Task.FromResult(true))
                 .MustBeCalled();
             await target.Delete(id);
             Mock.Assert(repo);

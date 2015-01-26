@@ -57,7 +57,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MockTaskAdaptor.cs" />
     <Compile Include="Services\StoryReadServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -9,7 +9,6 @@ using System.Linq;
 using Storyboard.Domain.Models;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Services;
-using Storyboard.Domain.Test;
 using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Apis
@@ -35,7 +34,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var stories = GetTestList().Select(s=> new StorySummary{Id = s.Id}).ToList();
             Mock.Arrange(() => service.GetStorySummaries())
-                .Returns(() =>MockTaskAdaptor.MockTaskResult(()=> stories));
+                .Returns(() => Task.FromResult(stories));
             // Act
             
             var result = await target.Get();
@@ -52,7 +51,7 @@ namespace Storyboard.Web.Tests.Apis
             var id = 1;
             var story = new StoryOverview();
             Mock.Arrange(() => service.GetStoryOverview(id))
-                .Returns(() => MockTaskAdaptor.MockTaskResult(() => story));
+                .Returns(() => Task.FromResult(story));
             // Act
 
             var result =await target.Get(id);
@@ -66,7 +65,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var newStory = new AddUpdateStoryCommand();
             Mock.Arrange(() => repo.Add(newStory))
-                .Returns(()=> MockTaskAdaptor.MockTaskResult(()=> 1))
+                .Returns(()=> Task.FromResult(1))
                 .MustBeCalled();
                 
             // Act
@@ -78,14 +77,15 @@ namespace Storyboard.Web.Tests.Apis
         }
 
         [TestMethod]
-        public void Delete_DeletesStory()
+        public async Task Delete_DeletesStory()
         {
             Mock.Arrange(() => repo.Delete(1))
+                .Returns(()=> Task.FromResult(true))
                 .MustBeCalled();
 
             // Act
 
-            target.Delete(1);
+            await target.Delete(1);
             // Assert
             Mock.Assert(repo);
 
