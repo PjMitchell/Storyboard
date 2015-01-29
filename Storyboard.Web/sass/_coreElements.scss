@@ -39,7 +39,8 @@ table {
   background-color: transparent;
   border-color: transparent;
   margin-bottom: 5px;
-
+  padding:3px;
+  
   &:hover{
       background-color: $accentColour
   }
