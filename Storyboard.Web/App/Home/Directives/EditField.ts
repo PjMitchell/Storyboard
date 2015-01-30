@@ -8,7 +8,7 @@ module Home {
         };
         public require = 'E';
         public templateUrl = 'App/Home/Views/Directives/EditTitle.html';
-        public controller = ($scope) => new editController($scope);
+        public controller = 'EditController';
         //public controllerAs = 'vm';
         //public bindToController = true;
         //constructor() {
@@ -37,11 +37,11 @@ module Home {
         };
         public require = 'E';
         public templateUrl = 'App/Home/Views/Directives/EditArea.html';
-        public controller = ($scope) => new editController($scope);
+        public controller = 'EditController';
 
     }
 
-    interface IEditFieldScope  {
+    export interface IEditFieldScope  {
         editfield: string
         onSaved: any //Has to be any to invoke
         isEditing?: boolean
@@ -50,8 +50,8 @@ module Home {
         cancel?: ()=> void
     }
 
-    class editController {
-       
+    export class EditController {
+        static $inject = ['$scope'];
         public scope;
         private storedProp: string
 

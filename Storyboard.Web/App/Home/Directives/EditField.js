@@ -9,7 +9,7 @@ var Home;
             };
             this.require = 'E';
             this.templateUrl = 'App/Home/Views/Directives/EditTitle.html';
-            this.controller = function ($scope) { return new editController($scope); };
+            this.controller = 'EditController';
         }
         return EditTitle;
     })();
@@ -22,13 +22,13 @@ var Home;
             };
             this.require = 'E';
             this.templateUrl = 'App/Home/Views/Directives/EditArea.html';
-            this.controller = function ($scope) { return new editController($scope); };
+            this.controller = 'EditController';
         }
         return EditArea;
     })();
     Home.EditArea = EditArea;
-    var editController = (function () {
-        function editController($scope) {
+    var EditController = (function () {
+        function EditController($scope) {
             var _this = this;
             this.scope = $scope;
             this.scope.isEditing = false;
@@ -48,7 +48,9 @@ var Home;
                 $scope.editfield = _this.storedProp;
             };
         }
-        return editController;
+        EditController.$inject = ['$scope'];
+        return EditController;
     })();
+    Home.EditController = EditController;
 })(Home || (Home = {}));
 //# sourceMappingURL=EditField.js.map

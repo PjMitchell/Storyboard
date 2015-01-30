@@ -7,6 +7,7 @@ var app = angular.module('storyboardApp', ['ngRoute','ui.bootstrap']);
 app.factory('StoryOverviewDataService', ($http: ng.IHttpService) => new Home.StoryOverviewDataService($http));
 app.factory('ActorDataService', ($http: ng.IHttpService) => new Home.ActorDataService($http));
 app.factory('LinkDataService', ($http: ng.IHttpService) => new Home.LinkDataService($http));
+app.controller('EditController', ($scope: Home.IEditFieldScope) => new Home.EditController($scope));
 app.directive('sbEditTitle', () => new Home.EditTitle());
 app.directive('sbEditArea', () => new Home.EditArea());
 app.controller('SummaryController', Home.SummaryController);
