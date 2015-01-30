@@ -41,7 +41,8 @@ namespace Storyboard.Web
                 "~/App/Home/Models/CreateLinkCommand.js",
                 "~/App/Home/Services/ActorDataService.js",
                 "~/App/Home/Services/LinkDataService.js",
-                "~/App/Home/Services/StoryOverviewDataService.js"));
+                "~/App/Home/Services/StoryOverviewDataService.js",
+                "~/App/Home/Directives/EditField.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

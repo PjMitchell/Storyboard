@@ -6,6 +6,7 @@ var app = angular.module('storyboardApp', ['ngRoute', 'ui.bootstrap']);
 app.factory('StoryOverviewDataService', function ($http) { return new Home.StoryOverviewDataService($http); });
 app.factory('ActorDataService', function ($http) { return new Home.ActorDataService($http); });
 app.factory('LinkDataService', function ($http) { return new Home.LinkDataService($http); });
+app.directive('sbEditfield', function () { return new Home.EditField(); });
 app.controller('SummaryController', Home.SummaryController);
 app.controller('CreateStoryDialogController', Home.CreateStoryDialogController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);

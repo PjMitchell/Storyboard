@@ -16,6 +16,9 @@ var Home;
         StoryOverviewDataService.prototype.add = function (command) {
             return this.http.post(this.apiRoute, command);
         };
+        StoryOverviewDataService.prototype.put = function (command) {
+            return this.http.put(this.apiRoute + '/' + command.Id, command);
+        };
         StoryOverviewDataService.prototype.delete = function (id) {
             return this.http.delete(this.apiRoute + '/' + id);
         };

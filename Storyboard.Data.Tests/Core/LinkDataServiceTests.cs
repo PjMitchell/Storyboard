@@ -16,7 +16,7 @@ namespace Storyboard.Data.Tests.Core
     public class LinkDataServiceTests
     {
 
-        private ILinkDataService target;
+        //private ILinkDataService target;
         
         //[TestInitialize]
         //public void Init()

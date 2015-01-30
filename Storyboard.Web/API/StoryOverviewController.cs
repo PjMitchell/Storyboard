@@ -43,10 +43,11 @@ namespace Storyboard.Web.API
             await repository.Add(addUpdateStoryCommand);
         }
 
-        //// PUT api/<controller>/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        // PUT api/<controller>/5
+        public Task Put(int id, [FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
+        {
+            return repository.Update(addUpdateStoryCommand);
+        }
 
         // DELETE api/StoryOverview/5
         public async Task Delete(int id)

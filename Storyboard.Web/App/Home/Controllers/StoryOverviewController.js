@@ -39,6 +39,9 @@ var Home;
             };
             this.modalService.open(settings).result.then(this.onActorSaved);
         };
+        StoryOverviewController.prototype.update = function () {
+            this.storyDataService.put(this.Overview.Summary);
+        };
         StoryOverviewController.prototype.deleteActorCommand = function (id) {
             var _this = this;
             this.actorDataService.delete(id).then(function (arg) { return _this.removeActor(id); });

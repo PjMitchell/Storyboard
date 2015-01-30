@@ -114,7 +114,7 @@ namespace Storyboard.Data.Tests
         {
             LoadStories();
 
-            target.Delete(1);
+            await target.Delete(1);
             var result = await target.GetAsync();
             Assert.AreEqual(2, result.Count);
 

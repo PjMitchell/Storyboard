@@ -225,6 +225,7 @@
     <Content Include="App\Home\Controllers\CreateStoryDialogController.js" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js" />
     <Content Include="App\Home\Controllers\SummaryController.js" />
+    <Content Include="App\Home\Directives\EditField.js" />
     <Content Include="App\Home\HomeModule.js" />
     <Content Include="App\Home\Models\AddUpdateActorCommand.js" />
     <Content Include="App\Home\Models\AddUpdateStoryCommand.js" />
@@ -235,6 +236,7 @@
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
     <Content Include="App\Home\Views\CreateStoryDialogView.html" />
     <Content Include="App\Home\Views\CreateActorDialogView.html" />
+    <Content Include="App\Home\Views\Directives\EditField.html" />
     <Content Include="App\Home\Views\OverviewShellView.html" />
     <Content Include="App\Tests\Home\CreateActorDialogControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js" />
@@ -404,6 +406,7 @@
     <Content Include="sass\_coreElements.scss" />
     <Content Include="sass\_textProperties.scss" />
     <Content Include="App\Home\Controllers\CreateStoryDialogController.js.map" />
+    <Content Include="App\Home\Directives\EditField.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1226,6 +1229,7 @@
     <TypeScriptCompile Include="App\Home\Controllers\CreateStoryDialogController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\CreateActorDialogController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\StoryOverviewController.ts" />
+    <TypeScriptCompile Include="App\Home\Directives\EditField.ts" />
     <TypeScriptCompile Include="App\Home\HomeModule.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateActorCommand.ts" />
     <TypeScriptCompile Include="App\Home\Models\AddUpdateStoryCommand.ts" />

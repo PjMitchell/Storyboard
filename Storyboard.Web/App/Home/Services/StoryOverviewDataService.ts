@@ -6,12 +6,14 @@ module Home {
         getAll(): ng.IHttpPromise<Home.IStorySummary[]>;
         get(id: number): ng.IHttpPromise<Home.StoryOverview>;
         add(command: Home.AddUpdateStoryCommand): ng.IHttpPromise<{}>;
+        put(command: Home.AddUpdateStoryCommand): ng.IHttpPromise<{}>;
         delete(id: number): ng.IHttpPromise<{}>;
     }
 
     export class StoryOverviewDataService implements IStoryOverviewDataService {
         private http: ng.IHttpService;
         private apiRoute = '/api/StoryOverview';
+
         constructor($http: ng.IHttpService) {
             this.http = $http;
         }
@@ -25,6 +27,10 @@ module Home {
 
         public add(command: Home.AddUpdateStoryCommand) {
             return this.http.post(this.apiRoute, command);
+        }
+
+        public put(command: Home.AddUpdateStoryCommand) {
+            return this.http.put(this.apiRoute + '/' + command.Id, command);
         }
 
         public delete(id: number) {

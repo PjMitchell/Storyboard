@@ -76,6 +76,23 @@ namespace Storyboard.Web.Tests.Apis
 
         }
 
+
+        [TestMethod]
+        public async Task Put_UpdatesStory()
+        {
+            var newStory = new AddUpdateStoryCommand();
+            Mock.Arrange(() => repo.Update(newStory))
+                .Returns(() => Task.FromResult(1))
+                .MustBeCalled();
+
+            // Act
+
+            await target.Put(1,newStory);
+            // Assert
+            Mock.Assert(repo);
+
+        }
+
         [TestMethod]
         public async Task Delete_DeletesStory()
         {

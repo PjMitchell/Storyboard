@@ -55,6 +55,10 @@ module Home {
                 }
             this.modalService.open(settings).result.then(this.onActorSaved);
         }
+        public update() {
+            this.storyDataService.put(this.Overview.Summary)
+        }
+
 
         public deleteActorCommand(id: number) {
             this.actorDataService.delete(id).then(arg=> this.removeActor(id))
