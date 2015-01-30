@@ -1,32 +1,32 @@
 /// <reference path="../../../scripts/typings/angularjs/angular.d.ts" />
 var Home;
 (function (Home) {
-    var EditField = (function () {
-        function EditField() {
+    var EditTitle = (function () {
+        function EditTitle() {
             this.scope = {
                 editfield: '=sbInput',
                 onSaved: '&sbSaved'
             };
             this.require = 'E';
-            this.templateUrl = 'App/Home/Views/Directives/EditField.html';
+            this.templateUrl = 'App/Home/Views/Directives/EditTitle.html';
             this.controller = function ($scope) { return new editController($scope); };
         }
-        return EditField;
+        return EditTitle;
     })();
-    Home.EditField = EditField;
-    //class editController {
-    //    public isEditing : boolean;
-    //    public editfield: string;
-    //    public save() {
-    //        this.isEditing = false;
-    //    }
-    //    public edit() {
-    //        this.isEditing = true;
-    //    }
-    //    constructor() {
-    //        this.isEditing = true;
-    //    }
-    //}
+    Home.EditTitle = EditTitle;
+    var EditArea = (function () {
+        function EditArea() {
+            this.scope = {
+                editfield: '=sbInput',
+                onSaved: '&sbSaved'
+            };
+            this.require = 'E';
+            this.templateUrl = 'App/Home/Views/Directives/EditArea.html';
+            this.controller = function ($scope) { return new editController($scope); };
+        }
+        return EditArea;
+    })();
+    Home.EditArea = EditArea;
     var editController = (function () {
         function editController($scope) {
             var _this = this;

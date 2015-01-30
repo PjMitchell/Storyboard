@@ -1,13 +1,13 @@
 ﻿/// <reference path="../../../scripts/typings/angularjs/angular.d.ts" />
 module Home {
 
-    export class EditField implements ng.IDirective {
+    export class EditTitle implements ng.IDirective {
         public scope : IEditFieldScope = {
             editfield: '=sbInput',
             onSaved: '&sbSaved'
         };
         public require = 'E';
-        public templateUrl = 'App/Home/Views/Directives/EditField.html';
+        public templateUrl = 'App/Home/Views/Directives/EditTitle.html';
         public controller = ($scope) => new editController($scope);
         //public controllerAs = 'vm';
         //public bindToController = true;
@@ -29,6 +29,18 @@ module Home {
         
         
     }
+
+    export class EditArea implements ng.IDirective {
+        public scope: IEditFieldScope = {
+            editfield: '=sbInput',
+            onSaved: '&sbSaved'
+        };
+        public require = 'E';
+        public templateUrl = 'App/Home/Views/Directives/EditArea.html';
+        public controller = ($scope) => new editController($scope);
+
+    }
+
     interface IEditFieldScope  {
         editfield: string
         onSaved: any //Has to be any to invoke
@@ -37,20 +49,6 @@ module Home {
         save?: () => void
         cancel?: ()=> void
     }
-
-    //class editController {
-    //    public isEditing : boolean;
-    //    public editfield: string;
-    //    public save() {
-    //        this.isEditing = false;
-    //    }
-    //    public edit() {
-    //        this.isEditing = true;
-    //    }
-    //    constructor() {
-    //        this.isEditing = true;
-    //    }
-    //}
 
     class editController {
        

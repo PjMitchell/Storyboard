@@ -1,5 +1,5 @@
 ﻿<div style="display:inline">
-    <h3 style="margin:0;" ng-hide="isEditing">{{editfield}}<button class="btn btn-icon glyphicon glyphicon-pencil" ng-click="edit()"></button></h3>
+    <h3 style="margin:0;" ng-hide="isEditing">{{editfield}}<button class="btn btn-icon glyphicon glyphicon-pencil faint" ng-click="edit()"></button></h3>
     <input type="text" style="width: calc(100% - 50px)" maxlength="200" ng-model="editfield" placeholder="Enter a name here" ng-show="isEditing">
     <div class="btn-group" role="group" aria-label="..." ng-show="isEditing">
         <button class="btn btn-icon glyphicon glyphicon-floppy-disk" ng-click="save()"></button>
