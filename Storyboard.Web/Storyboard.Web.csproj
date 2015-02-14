@@ -221,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\AppBootstrapper.js" />
+    <Content Include="App\Home\Controllers\ActorOverviewController.js" />
     <Content Include="App\Home\Controllers\CreateActorDialogController.js" />
     <Content Include="App\Home\Controllers\CreateStoryDialogController.js" />
     <Content Include="App\Home\Controllers\StoryOverviewController.js" />
@@ -234,11 +235,12 @@
     <Content Include="App\Home\Services\ActorDataService.js" />
     <Content Include="App\Home\Services\LinkDataService.js" />
     <Content Include="App\Home\Services\StoryOverviewDataService.js" />
+    <Content Include="App\Home\Views\ActorOverviewShellView.html" />
     <Content Include="App\Home\Views\CreateStoryDialogView.html" />
     <Content Include="App\Home\Views\CreateActorDialogView.html" />
     <Content Include="App\Home\Views\Directives\EditArea.html" />
     <Content Include="App\Home\Views\Directives\EditTitle.html" />
-    <Content Include="App\Home\Views\OverviewShellView.html" />
+    <Content Include="App\Home\Views\StoryOverviewShellView.html" />
     <Content Include="App\Tests\Home\CreateActorDialogControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewControllerTests.js" />
     <Content Include="App\Tests\Home\StoryOverviewDataServiceTests.js" />
@@ -408,6 +410,7 @@
     <Content Include="sass\_textProperties.scss" />
     <Content Include="App\Home\Controllers\CreateStoryDialogController.js.map" />
     <Content Include="App\Home\Directives\EditField.js.map" />
+    <Content Include="App\Home\Controllers\ActorOverviewController.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1227,6 +1230,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\AppBootstrapper.ts" />
+    <TypeScriptCompile Include="App\Home\Controllers\ActorOverviewController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\CreateStoryDialogController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\CreateActorDialogController.ts" />
     <TypeScriptCompile Include="App\Home\Controllers\StoryOverviewController.ts" />

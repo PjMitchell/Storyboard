@@ -1,0 +1,5 @@
+﻿<h3 ng-show="!vm.IsLoaded">Loading...</h3>
+<a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/{{vm.StoryId}}" style="float:left"></a>
+<sb-edit-title style="width:calc(100% - 30px); float:left" sb-input="vm.Overview.Name" sb-saved="vm.update()"></sb-edit-title>
+<sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Description" sb-saved="vm.update()"></sb-edit-area>
+

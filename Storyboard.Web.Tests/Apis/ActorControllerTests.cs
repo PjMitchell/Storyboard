@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Storyboard.Web.Tests.Helpers;
 using System.Threading.Tasks;
+using Storyboard.Domain.Core;
 
 namespace Storyboard.Web.Tests.Apis
 {
@@ -27,7 +28,18 @@ namespace Storyboard.Web.Tests.Apis
             request.SetConfiguration(new HttpConfiguration());
             target.Request = request;
         }
-        
+
+        [TestMethod]
+        public async Task Get_CallsRepository()
+        {
+            var expected = new Actor();
+            var id = 3;
+            Mock.Arrange(() => repo.GetAsync(id))
+                .Returns(() => Task.FromResult(expected));
+            var result = await target.Get(id);
+            Assert.AreEqual(expected, result);
+        }
+
         [TestMethod]
         public async Task Post_CallsRepository()
         {

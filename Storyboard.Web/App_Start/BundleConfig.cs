@@ -36,6 +36,7 @@ namespace Storyboard.Web
                 "~/App/Home/Controllers/CreateActorDialogController.js",
                 "~/App/Home/Controllers/CreateStoryDialogController.js",
                 "~/App/Home/Controllers/StoryOverviewController.js",
+                "~/App/Home/Controllers/ActorOverviewController.js",
                 "~/App/Home/Models/AddUpdateStoryCommand.js",
                 "~/App/Home/Models/AddUpdateActorCommand.js",
                 "~/App/Home/Models/CreateLinkCommand.js",

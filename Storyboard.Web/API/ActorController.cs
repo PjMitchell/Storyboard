@@ -1,4 +1,5 @@
-﻿using Storyboard.Domain.Core.Commands;
+﻿using Storyboard.Domain.Core;
+using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,24 @@ namespace Storyboard.Web.API
             repository = repo;
         }
         
+        //Get ap/Actor/1
+        public async Task<Actor> Get(int id)
+        {
+            return await repository.GetAsync(id);
+        }
+
         // Post api/Actor
         public async Task<HttpResponseMessage> Post(AddUpdateActorCommand command)
         {
-            
             var id = await repository.Add(command);
             return Request.CreateResponse<int>(HttpStatusCode.Created, id);
+        }
+
+        // Post api/Actor
+        public async Task<HttpResponseMessage> Put(int id, AddUpdateActorCommand command)
+        {
+            await repository.Update(command);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         //Delete api/Actor/1

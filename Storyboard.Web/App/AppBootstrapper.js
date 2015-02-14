@@ -12,6 +12,7 @@ app.directive('sbEditArea', function () { return new Home.EditArea(); });
 app.controller('SummaryController', Home.SummaryController);
 app.controller('CreateStoryDialogController', Home.CreateStoryDialogController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);
+app.controller('ActorOverviewController', Home.ActorOverviewController);
 app.controller('CreateActorDialogController', Home.CreateActorDialogController);
 app.config(function ($routeProvider) {
     $routeProvider.when('/', {
@@ -25,7 +26,11 @@ app.config(function ($routeProvider) {
     }).when('/story/:id', {
         controller: 'StoryOverviewController',
         controllerAs: 'vm',
-        templateUrl: 'App/Home/Views/OverviewShellView.html'
+        templateUrl: 'App/Home/Views/StoryOverviewShellView.html'
+    }).when('/actor/:id/s/:storyId', {
+        controller: 'ActorOverviewController',
+        controllerAs: 'vm',
+        templateUrl: 'App/Home/Views/ActorOverviewShellView.html'
     }).otherwise({ redirectTo: '/' });
 });
 //# sourceMappingURL=AppBootstrapper.js.map
