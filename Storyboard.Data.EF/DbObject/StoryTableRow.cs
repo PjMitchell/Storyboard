@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Data.EF.DbObject
 {
-    [Table("Story", Schema = "Story")]
+    [Table("Story", Schema = DbSchemas.Story)]
     public class StoryTableRow
     {
         [Key]

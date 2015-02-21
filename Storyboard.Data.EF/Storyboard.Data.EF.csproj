@@ -64,6 +64,7 @@
     <Compile Include="DbObject\ActorTableRow.cs" />
     <Compile Include="DbObject\LinkTableRow.cs" />
     <Compile Include="DbObject\StoryTableRow.cs" />
+    <Compile Include="DbSchemas.cs" />
     <Compile Include="Helpers\LinqHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoryboardContext.cs" />

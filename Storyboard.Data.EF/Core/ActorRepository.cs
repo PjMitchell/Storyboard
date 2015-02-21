@@ -103,7 +103,7 @@ namespace Storyboard.Data.EF.Core
                 db.Entry(row).State = EntityState.Deleted;
                 await db.SaveChangesAsync();
             }
-            linkDataService.Remove(new Node(id, StoryboardNodeTypes.Actor));
+            await linkDataService.Remove(new Node(id, StoryboardNodeTypes.Actor));
         }
 
         public async Task Update(AddUpdateActorCommand command)

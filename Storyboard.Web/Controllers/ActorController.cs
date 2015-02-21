@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Storyboard.Web.Controllers
 {
+    [Authorize]
     public class ActorController : AsyncController
     {
         private readonly IActorRepository repository;

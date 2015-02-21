@@ -13,7 +13,7 @@ namespace Storyboard.Data.EF.DbObject
     /// Representation of the Link Table row
     /// </summary>
     //[assembly: InternalsVisibleTo("Storyboard.Data.Tests")] Todo find out why this isn't working
-    [Table("Link", Schema="Story")]
+    [Table("Link", Schema = DbSchemas.Story)]
     public class LinkTableRow
     {
         [Key]

@@ -111,7 +111,7 @@ namespace Storyboard.Data.EF.Core
                 db.Entry(row).State = EntityState.Deleted;
                 await db.SaveChangesAsync();
             }
-            linkDataService.Remove(new Node(id, StoryboardNodeTypes.Story));
+            await linkDataService.Remove(new Node(id, StoryboardNodeTypes.Story));
         }
 
         /// <summary>
