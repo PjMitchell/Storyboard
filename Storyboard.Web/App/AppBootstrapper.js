@@ -18,19 +18,19 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/', {
         controller: 'SummaryController',
         controllerAs: 'vm',
-        templateUrl: 'App/Home/Views/SummaryShellView.html'
+        templateUrl: '/App/Home/Views/SummaryShellView.html'
     }).when('/story/add', {
         controller: 'AddStoryController',
         controllerAs: 'vm',
-        templateUrl: 'App/Home/Views/AddStoryShellView.html'
+        templateUrl: '/App/Home/Views/AddStoryShellView.html'
     }).when('/story/:id', {
         controller: 'StoryOverviewController',
         controllerAs: 'vm',
-        templateUrl: 'App/Home/Views/StoryOverviewShellView.html'
+        templateUrl: '/App/Home/Views/StoryOverviewShellView.html'
     }).when('/actor/:id/s/:storyId', {
         controller: 'ActorOverviewController',
         controllerAs: 'vm',
-        templateUrl: 'App/Home/Views/ActorOverviewShellView.html'
+        templateUrl: '/App/Home/Views/ActorOverviewShellView.html'
     }).otherwise({ redirectTo: '/' });
 });
 //# sourceMappingURL=AppBootstrapper.js.map

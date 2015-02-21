@@ -39,17 +39,7 @@ namespace Storyboard.Web.Controllers
             }
         }
 
-        //
-        // GET: /Account/Login
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
         private ApplicationSignInManager _signInManager;
-
         public ApplicationSignInManager SignInManager
         {
             get
@@ -58,6 +48,17 @@ namespace Storyboard.Web.Controllers
             }
             private set { _signInManager = value; }
         }
+
+        //
+        // GET: /Account/Login
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View(this.CreateViewModel<LoginViewModel>());
+        }
+
+
 
         //
         // POST: /Account/Login
@@ -104,7 +105,12 @@ namespace Storyboard.Web.Controllers
             {
                 var code = await UserManager.GenerateTwoFactorTokenAsync(user.Id, provider);
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+
+            var vm = this.CreateViewModel<VerifyCodeViewModel>();
+            vm.Provider = provider;
+            vm.ReturnUrl = returnUrl;
+            vm.RememberMe = rememberMe;
+            return View(vm);
         }
 
         //
@@ -142,7 +148,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         //
@@ -182,10 +188,10 @@ namespace Storyboard.Web.Controllers
         {
             if (userId == 0 || code == null)
             {
-                return View("Error");
+                return View("Error", this.CreateViewModel());
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            return View(result.Succeeded ? "ConfirmEmail" : "Error", this.CreateViewModel());
         }
 
         //
@@ -193,7 +199,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         //
@@ -209,7 +215,7 @@ namespace Storyboard.Web.Controllers
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    return View("ForgotPasswordConfirmation", this.CreateViewModel());
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -229,7 +235,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         //
@@ -237,7 +243,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            return code == null ? View("Error") : View(this.CreateViewModel());
         }
 
         //
@@ -263,7 +269,7 @@ namespace Storyboard.Web.Controllers
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             AddErrors(result);
-            return View();
+            return View(this.CreateViewModel());
         }
 
         //
@@ -271,7 +277,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         //
@@ -388,22 +394,23 @@ namespace Storyboard.Web.Controllers
             return View(model);
         }
 
-        //
+                //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken] Todo is this wise
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
 
+
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         #region Helpers

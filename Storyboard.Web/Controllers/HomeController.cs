@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Storyboard.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,27 +12,28 @@ namespace Storyboard.Web.Controllers
         
         public ActionResult Index()
         {
-            return View();
+            
+            return View(this.CreateViewModel());
         }
 
         [Authorize]
         public ActionResult App()
         {
-            return View();
+            return View(this.CreateViewModel());
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(this.CreateViewModel());
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View(this.CreateViewModel());
         }
     }
 }

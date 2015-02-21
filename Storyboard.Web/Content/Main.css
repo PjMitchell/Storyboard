@@ -4900,11 +4900,15 @@ header {
   background: burlywood;
   margin: 0 0 20px 0;
   padding: 5px; }
-  header h3 {
-    margin: 0;
-    color: #0F0F43;
-    text-align: left;
-    font-size: 24px; }
+
+.titleBlock {
+  float: left;
+  color: #0F0F43;
+  text-align: left;
+  font-size: 24px; }
+
+.userBlock {
+  float: right; }
 
 main {
   padding: 0 5px; }

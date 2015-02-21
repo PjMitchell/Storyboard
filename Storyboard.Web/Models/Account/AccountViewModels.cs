@@ -23,7 +23,7 @@ namespace Storyboard.Web.Models
         public bool RememberMe { get; set; }
     }
 
-    public class VerifyCodeViewModel
+    public class VerifyCodeViewModel : ViewModelBase
     {
         [Required]
         public string Provider { get; set; }
@@ -46,7 +46,7 @@ namespace Storyboard.Web.Models
         public string Email { get; set; }
     }
 
-    public class LoginViewModel
+    public class LoginViewModel : ViewModelBase
     {
         [Required]
         [Display(Name = "Email")]
@@ -62,7 +62,7 @@ namespace Storyboard.Web.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel : ViewModelBase
     {
         [Required]
         [EmailAddress]
@@ -81,7 +81,7 @@ namespace Storyboard.Web.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class ResetPasswordViewModel
+    public class ResetPasswordViewModel : ViewModelBase
     {
         [Required]
         [EmailAddress]
@@ -102,7 +102,7 @@ namespace Storyboard.Web.Models
         public string Code { get; set; }
     }
 
-    public class ForgotPasswordViewModel
+    public class ForgotPasswordViewModel : ViewModelBase
     {
         [Required]
         [EmailAddress]
