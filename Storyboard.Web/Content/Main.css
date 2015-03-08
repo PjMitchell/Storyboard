@@ -4901,6 +4901,10 @@ header {
   margin: 0 0 20px 0;
   padding: 5px; }
 
+footer {
+  margin: 20px 5px;
+  font-size: 12px; }
+
 .titleBlock {
   float: left;
   color: #0F0F43;

@@ -148,7 +148,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View(this.CreateViewModel());
+            return View(this.CreateViewModel<RegisterViewModel>());
         }
 
         //
