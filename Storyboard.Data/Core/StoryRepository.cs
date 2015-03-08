@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryRepository : IStoryRepository, INodeRepository<Story>, INodeRepository, IAsyncNodeRepository
+    public class StoryRepository : IStoryRepository, INodeRepository<Story>
     {
         private readonly ILinkDataService linkDataService;
         

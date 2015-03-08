@@ -18,6 +18,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98C2CD38-03DB-4147-BA74-1E48575EB497}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CC279737-9F5A-443B-A3C3-67C704153EB2}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storyboard.Domain.Test", "Storyboard.Domain.Test\Storyboard.Domain.Test.csproj", "{3D7CD2CA-D1BC-4FA8-B273-1A2E32B6E1B8}"
 EndProject

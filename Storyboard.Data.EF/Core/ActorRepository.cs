@@ -94,7 +94,7 @@ namespace Storyboard.Data.EF.Core
                 return result;
             }
         }
-        
+
         public async Task Delete(int id)
         {
             using (var db = new StoryboardContext())

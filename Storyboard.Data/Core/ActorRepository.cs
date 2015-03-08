@@ -12,7 +12,7 @@ using Storyboard.Data.Helpers;
 
 namespace Storyboard.Data.Core
 {
-    public class ActorRepository : IActorRepository, INodeRepository<Actor>, INodeRepository, IAsyncNodeRepository
+    public class ActorRepository : IActorRepository, INodeRepository<Actor>
     {
         private readonly ILinkDataService linkDataService;
         

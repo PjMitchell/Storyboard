@@ -17,7 +17,7 @@ namespace Storyboard.Domain.Core.Commands
         /// </summary>
         public int Id { get; set; }
         
-        private readonly NodeType nodeType = StoryboardNodeTypes.Actor;
+        private readonly INodeType nodeType = StoryboardNodeTypes.Actor;
         /// <summary>
         /// Actor Node
         /// </summary>

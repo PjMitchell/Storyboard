@@ -25,5 +25,11 @@ namespace Storyboard.Data.Core
                 return new StoryRepository(linkDataService);
             throw new ArgumentOutOfRangeException("nodeType", "Could not find repository for nodeType");
         }
+
+        public IAsyncNodeRepository<T> CreateRepository<T>(INodeType<T> nodeType) where T: INode
+        {
+            return (IAsyncNodeRepository<T>)CreateRepository((INodeType)nodeType);
+
+        }
     }
 }

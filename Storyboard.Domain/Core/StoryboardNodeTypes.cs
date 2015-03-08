@@ -10,18 +10,18 @@ namespace Storyboard.Domain.Core
     public static class StoryboardNodeTypes
     {
         
-        private static NodeType story = new NodeType(1, "StoryRepository");
-        private static NodeType actor = new NodeType(2, "ActorRepository");
+        private static NodeType<Story> story = new NodeType<Story>(1);
+        private static NodeType<Actor> actor = new NodeType<Actor>(2);
 
-        public static NodeType Story { get { return story; } }
-        public static NodeType Actor { get { return actor; } }
+        public static NodeType<Story> Story { get { return story; } }
+        public static NodeType<Actor> Actor { get { return actor; } }
 
         /// <summary>
         /// Gets NodeType From Id
         /// </summary>
         /// <param name="id">Id of Node Type</param>
         /// <returns>Storyboard NodeTypes</returns>
-        public static NodeType GetFromValue(int id)
+        public static INodeType GetFromValue(int id)
         {
             switch(id)
             {

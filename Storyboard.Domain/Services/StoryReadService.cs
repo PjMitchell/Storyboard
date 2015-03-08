@@ -35,7 +35,7 @@ namespace Storyboard.Domain.Services
             var getSummary = GetStorySummary(id);
             var getActor = nodeService.Get(new Node(id, StoryboardNodeTypes.Story), StoryboardNodeTypes.Actor);
             result.Summary = await getSummary;
-            result.Actors = (await getActor).OfType<Actor>().ToList();
+            result.Actors = await getActor;
             return result;
         }
 
