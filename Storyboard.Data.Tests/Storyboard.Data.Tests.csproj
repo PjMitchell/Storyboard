@@ -37,15 +37,16 @@
   <ItemGroup>
     <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HDLink.1.0.0-CI00004\lib\portable-net45+win+wpa81+wp80\HDLink.dll</HintPath>
+      <HintPath>..\packages\HDLink.1.0.0-CI00006\lib\portable-net45+win+wpa81+wp80\HDLink.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Simple.Data">
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="Telerik.JustMock">
-      <HintPath>..\packages\JustMock.2014.3.1021.2\lib\Net35\Telerik.JustMock.dll</HintPath>
+    <Reference Include="Telerik.JustMock, Version=2015.1.224.3, Culture=neutral, PublicKeyToken=721b6c5bc0326b3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\JustMock.2015.1.224.3\lib\Net35\Telerik.JustMock.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>

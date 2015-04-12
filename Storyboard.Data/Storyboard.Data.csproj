@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="HDLink, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HDLink.1.0.0-CI00004\lib\portable-net45+win+wpa81+wp80\HDLink.dll</HintPath>
+      <HintPath>..\packages\HDLink.1.0.0-CI00006\lib\portable-net45+win+wpa81+wp80\HDLink.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data">
       <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>

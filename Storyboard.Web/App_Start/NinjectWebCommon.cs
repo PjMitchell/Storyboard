@@ -51,7 +51,6 @@ namespace Storyboard.Web.App_Start
                 kernel.Bind<IStoryRepository>().To<StoryRepository>();
                 kernel.Bind<IActorRepository>().To<ActorRepository>();
                 kernel.Bind<IStoryReadService>().To<StoryReadService>();
-                //kernel.Bind<ILinkRepository>().To<LinkRepository>();
                 kernel.Bind<IAsyncLinkRepository>().To<LinkRepository>();
                 kernel.Bind<ILinkDataService>().To<LinkDataService>();
                 kernel.Bind<IAsyncNodeRepositoryFactory>().To<StoryboardNodeRepositoryFactory>();
