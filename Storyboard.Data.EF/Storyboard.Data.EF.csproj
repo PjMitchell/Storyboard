@@ -68,6 +68,7 @@
     <Compile Include="Core\StoryRepository.cs" />
     <Compile Include="DbObject\ActorTableRow.cs" />
     <Compile Include="DbObject\LinkTableRow.cs" />
+    <Compile Include="DbObject\StorySectionTableRow.cs" />
     <Compile Include="DbObject\StoryTableRow.cs" />
     <Compile Include="DbSchemas.cs" />
     <Compile Include="Helpers\LinqHelpers.cs" />

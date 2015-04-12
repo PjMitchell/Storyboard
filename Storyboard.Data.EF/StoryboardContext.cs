@@ -19,14 +19,14 @@ namespace Storyboard.Data.EF
         public DbSet<ActorTableRow> Actor { get; set; }
         public DbSet<StoryTableRow> Story { get; set; }
         public DbSet<LinkTableRow> Link { get; set; }
-
+        public DbSet<StorySectionTableRow> StorySection { get; set; }
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ActorTableRow>();
             modelBuilder.Entity<StoryTableRow>();
             modelBuilder.Entity<LinkTableRow>();
-
+            modelBuilder.Entity<StorySectionTableRow>();
         }
     }
 }
