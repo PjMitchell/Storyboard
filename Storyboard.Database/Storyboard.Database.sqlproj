@@ -68,6 +68,8 @@
     <Build Include="Tables\Story\Story.sql" />
     <Build Include="Tables\Story\Actor.sql" />
     <Build Include="Tables\Story\Link.sql" />
+    <Build Include="Tables\Story\StorySection.sql" />
+    <None Include="Data\Seed\StorySectionSeed.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Storyboard.Database.Local.publish.xml" />
