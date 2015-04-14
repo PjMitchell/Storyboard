@@ -66,6 +66,7 @@
     <Compile Include="Core\LinkRepository.cs" />
     <Compile Include="Core\StoryboardNodeRepositoryFactory.cs" />
     <Compile Include="Core\StoryRepository.cs" />
+    <Compile Include="Core\StorySectionRepository.cs" />
     <Compile Include="DbObject\ActorTableRow.cs" />
     <Compile Include="DbObject\LinkTableRow.cs" />
     <Compile Include="DbObject\StorySectionTableRow.cs" />
