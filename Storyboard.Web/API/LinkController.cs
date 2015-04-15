@@ -24,33 +24,11 @@ namespace Storyboard.Web.API
             this.dataService = dataService;
         }
         
-        // GET: api/Link
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        // GET: api/Link/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST: api/Link
         public void Post([FromBody]CreateLinkRequest request)
         {
             dataService.Add(MapRequest(request));
         }
-
-        // PUT: api/Link/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        // DELETE: api/Link/5
-        //public void Delete(int id)
-        //{
-        //}
 
         private CreateLinkCommand MapRequest(CreateLinkRequest request)
         {

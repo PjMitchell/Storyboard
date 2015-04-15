@@ -10,6 +10,6 @@ namespace Storyboard.Domain.Data
 {
     public interface IStorySectionRepository : IAsyncNodeRepository<StorySection>
     {
-        OrderedHierarchicalTree<StorySection> GetTreeForStory(int storyId);
+        Task<OrderedHierarchicalTree<StorySection>> GetTreeForStory(int storyId);
     }
 }

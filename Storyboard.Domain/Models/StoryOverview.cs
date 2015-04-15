@@ -1,5 +1,6 @@
 ﻿using Storyboard.Domain.Core;
 using System.Collections.Generic;
+using HDLink;
 
 namespace Storyboard.Domain.Models
 {
@@ -8,6 +9,7 @@ namespace Storyboard.Domain.Models
     /// </summary>
     public class StoryOverview
     {
+        public List<StorySection> Sections { get; set; }
         public StorySummary Summary { get; set; }
         public List<Actor> Actors { get; set; }
 

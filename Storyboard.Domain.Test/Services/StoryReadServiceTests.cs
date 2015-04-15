@@ -17,6 +17,7 @@ namespace Storyboard.Domain.Test
         private IStoryReadService target;
         private IStoryRepository storyRepos;
         private IAsyncNodeService nodeService;
+        private IStorySectionRepository storySectionRepository;
         private Story testStory;
         
         [TestInitialize]
@@ -24,12 +25,15 @@ namespace Storyboard.Domain.Test
         {
             storyRepos = Mock.Create<IStoryRepository>();
             nodeService = Mock.Create<IAsyncNodeService>();
-            target = new StoryReadService(storyRepos, nodeService);
+            storySectionRepository = Mock.Create<IStorySectionRepository>();
+            target = new StoryReadService(storyRepos, nodeService, storySectionRepository);
             testStory = new Story { Id = 1, Title = "A Story", Synopsis = "A Summary" };
             Mock.Arrange(() => storyRepos.GetAsync(testStory.Id))
                 .Returns(() => Task.FromResult(testStory));
             Mock.Arrange(() => nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<NodeType<Actor>>()))
                 .Returns(() => Task.FromResult(new List<Actor>()));
+            Mock.Arrange(() => storySectionRepository.GetTreeForStory(Arg.AnyInt))
+                .Returns(() => Task.FromResult(new OrderedHierarchicalTree<StorySection>()));
         }
         
         [TestMethod]
@@ -90,7 +94,20 @@ namespace Storyboard.Domain.Test
             Assert.AreEqual(1, result.Actors.Count);
             Assert.AreEqual(10, result.Actors[0].Id);
 
-            
+        }
+
+        [TestMethod]
+        [Timeout(500)]
+        public async Task GetStoryOverview_GetsStorySections()
+        {
+            var storySection = new StorySection { Id = 10, Description = "Chapter One", Order = 1, HierarchyLevel = 1 };
+            var storySections = new OrderedHierarchicalTree<StorySection> ( new []{ storySection}) ;
+            Mock.Arrange(() => storySectionRepository.GetTreeForStory(testStory.Id))
+                .Returns(()=> Task.FromResult(storySections));
+
+            var result = await target.GetStoryOverview(testStory.Id);
+            Assert.AreEqual(1, result.Sections.Count);
+            Assert.AreEqual(10, result.Sections[0].Id);
 
         }
     }
