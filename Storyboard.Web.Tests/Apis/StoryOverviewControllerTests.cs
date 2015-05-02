@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using Storyboard.Domain.Data;
 using Storyboard.Web.API;
 using Telerik.JustMock;
@@ -13,15 +13,13 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Apis
 {
-    [TestClass]
     public class StoryOverviewControllerTests
     {
         private IStoryRepository repo;
         private IStoryReadService service;
         private StoryOverviewController target;
 
-        [TestInitialize]
-        public void Init()
+        public StoryOverviewControllerTests()
         {
             repo = Mock.Create<IStoryRepository>();
             service = Mock.Create<IStoryReadService>();
@@ -29,7 +27,7 @@ namespace Storyboard.Web.Tests.Apis
         }
 
 
-        [TestMethod]
+        [Fact(DisplayName = "StoryOverviewController Get Gets All StoryOverviewSummaries")]
         public async Task Get_GetsAllStoryOverviewSummaries()
         {
             var stories = GetTestList().Select(s=> new StorySummary{Id = s.Id}).ToList();
@@ -39,13 +37,13 @@ namespace Storyboard.Web.Tests.Apis
             
             var result = await target.Get();
             // Assert
-            Assert.AreEqual(stories.Count, result.Count());
+            Assert.Equal(stories.Count, result.Count());
             AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 1), GetTestList().SingleOrDefault(s => s.Id == 1));
             AssertOverviewSummaryEqual(result.SingleOrDefault(s => s.Id == 2), GetTestList().SingleOrDefault(s => s.Id == 2));
 
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "StoryOverviewController Get(Id) Gets GetsStoryOverview")]
         public async Task Get_Id_GetsStoryOverview()
         {
             var id = 1;
@@ -56,11 +54,11 @@ namespace Storyboard.Web.Tests.Apis
 
             var result =await target.Get(id);
             // Assert
-            Assert.AreEqual(story, result);
+            Assert.Equal(story, result);
             
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "StoryOverviewController Post Creates New Story")]
         public async Task Post_CreatesNewStory()
         {
             var newStory = new AddUpdateStoryCommand();
@@ -77,7 +75,7 @@ namespace Storyboard.Web.Tests.Apis
         }
 
 
-        [TestMethod]
+        [Fact(DisplayName = "StoryOverviewController Put updates Story")]
         public async Task Put_UpdatesStory()
         {
             var newStory = new AddUpdateStoryCommand();
@@ -93,7 +91,7 @@ namespace Storyboard.Web.Tests.Apis
 
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "StoryOverviewController Delete Deletes Story")]
         public async Task Delete_DeletesStory()
         {
             Mock.Arrange(() => repo.Delete(1))
@@ -112,11 +110,11 @@ namespace Storyboard.Web.Tests.Apis
 
         private void AssertOverviewSummaryEqual(StorySummary summary, Story story)
         {
-            Assert.IsNotNull(summary);
-            Assert.IsNotNull(story);
-            Assert.AreEqual(summary.Id, summary.Id);
-            Assert.AreEqual(summary.Title, summary.Title);
-            Assert.AreEqual(summary.Synopsis, summary.Synopsis);
+            Assert.NotNull(summary);
+            Assert.NotNull(story);
+            Assert.Equal(summary.Id, summary.Id);
+            Assert.Equal(summary.Title, summary.Title);
+            Assert.Equal(summary.Synopsis, summary.Synopsis);
 
         }
 

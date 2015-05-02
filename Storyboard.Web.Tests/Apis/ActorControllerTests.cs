@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Storyboard.Web.API;
 using Storyboard.Domain.Data;
 using Telerik.JustMock;
@@ -9,18 +8,18 @@ using System.Web.Http;
 using Storyboard.Web.Tests.Helpers;
 using System.Threading.Tasks;
 using Storyboard.Domain.Core;
+using Xunit;
+
 
 namespace Storyboard.Web.Tests.Apis
 {
-    [TestClass]
     public class ActorControllerTests
     {
         private IActorRepository repo; 
         private ActorController target;
         private HttpRequestMessage request;
         
-        [TestInitialize]
-        public void Init()
+        public ActorControllerTests()
         {
             repo = Mock.Create<IActorRepository>();
             target = new ActorController(repo);
@@ -29,7 +28,7 @@ namespace Storyboard.Web.Tests.Apis
             target.Request = request;
         }
 
-        [TestMethod]
+        [Fact(DisplayName ="ActorController: Get Calls Repository")]
         public async Task Get_CallsRepository()
         {
             var expected = new Actor();
@@ -37,10 +36,10 @@ namespace Storyboard.Web.Tests.Apis
             Mock.Arrange(() => repo.GetAsync(id))
                 .Returns(() => Task.FromResult(expected));
             var result = await target.Get(id);
-            Assert.AreEqual(expected, result);
+            Assert.Equal(expected, result);
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "ActorController: Post Calls Repository")]
         public async Task Post_CallsRepository()
         {
             var command = new AddUpdateActorCommand();
@@ -51,7 +50,7 @@ namespace Storyboard.Web.Tests.Apis
             Mock.Assert(repo);
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "ActorController: Post Returns Id")]
         public async Task Post_ReturnsId()
         {
             var command = new AddUpdateActorCommand();
@@ -59,10 +58,10 @@ namespace Storyboard.Web.Tests.Apis
                 .Returns(() => Task.FromResult(1));
                 
             var result = await target.Post(command);
-            Assert.AreEqual(1, HttpTestHelper.GetHttpMessAgeContent<int>(result));
+            Assert.Equal(1, HttpTestHelper.GetHttpMessAgeContent<int>(result));
             
         }
-        [TestMethod]
+        [Fact(DisplayName = "ActorController: Delete Calls Repository")]
         public async Task Delete_RemovesActor()
         {
             var id =1;

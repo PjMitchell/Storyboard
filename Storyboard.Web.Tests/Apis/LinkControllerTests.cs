@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using Storyboard.Domain.Data;
 using Telerik.JustMock;
 using Storyboard.Web.API;
@@ -10,15 +10,14 @@ using HDLink;
 
 namespace Storyboard.Web.Tests.Apis
 {
-    [TestClass]
+
     public class LinkControllerTests
     {
         private ILinkDataService dataService;
         private LinkController target;
         private CreateLinkRequest defaultRequest;
 
-        [TestInitialize]
-        public void Init()
+        public LinkControllerTests()
         {
             dataService = Mock.Create<ILinkDataService>();
             target = new LinkController(dataService);
@@ -34,7 +33,7 @@ namespace Storyboard.Web.Tests.Apis
             };
 
         }
-        [TestMethod]
+        [Fact(DisplayName = "LinkController: Post Calls Link Data Service")]
         public void PostCallsLinkDataService()
         {
             Mock.Arrange(() => dataService.Add(Arg.IsAny<CreateLinkCommand>())).Occurs(1);
@@ -42,7 +41,7 @@ namespace Storyboard.Web.Tests.Apis
             Mock.Assert(dataService);
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "LinkController: Post Correctly maps request")]
         public void PostCorrectlyMapsRequest()
         {
             CreateLinkCommand command = null;
@@ -51,14 +50,14 @@ namespace Storyboard.Web.Tests.Apis
             
             target.Post(defaultRequest);
 
-            Assert.AreEqual(defaultRequest.NodeAId, command.NodeA.Id);
-            Assert.AreEqual(defaultRequest.NodeAType, command.NodeA.NodeType.Id);
-            Assert.AreEqual(defaultRequest.NodeBId, command.NodeB.Id);
-            Assert.AreEqual(defaultRequest.NodeBType, command.NodeB.NodeType.Id);
+            Assert.Equal(defaultRequest.NodeAId, command.NodeA.Id);
+            Assert.Equal(defaultRequest.NodeAType, command.NodeA.NodeType.Id);
+            Assert.Equal(defaultRequest.NodeBId, command.NodeB.Id);
+            Assert.Equal(defaultRequest.NodeBType, command.NodeB.NodeType.Id);
 
-            Assert.AreEqual(LinkFlow.AtoB, command.Direction);
-            Assert.AreEqual(defaultRequest.Strength, command.Strength);
-            Assert.AreEqual(defaultRequest.Type, command.Type.Id);
+            Assert.Equal(LinkFlow.AtoB, command.Direction);
+            Assert.Equal(defaultRequest.Strength, command.Strength);
+            Assert.Equal(defaultRequest.Type, command.Type.Id);
 
 
 

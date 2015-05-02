@@ -1,5 +1,4 @@
 ﻿using HDLink;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Storyboard.Domain.Core;
 using Storyboard.Domain.Data;
 using Storyboard.Domain.Models;
@@ -8,10 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Telerik.JustMock;
+using Xunit;
 
 namespace Storyboard.Domain.Test
 {
-    [TestClass]
     public class StoryReadServiceTests
     {
         private IStoryReadService target;
@@ -20,8 +19,8 @@ namespace Storyboard.Domain.Test
         private IStorySectionRepository storySectionRepository;
         private Story testStory;
         
-        [TestInitialize]
-        public void Init()
+
+        public StoryReadServiceTests()
         {
             storyRepos = Mock.Create<IStoryRepository>();
             nodeService = Mock.Create<IAsyncNodeService>();
@@ -35,49 +34,45 @@ namespace Storyboard.Domain.Test
             Mock.Arrange(() => storySectionRepository.GetTreeForStory(Arg.AnyInt))
                 .Returns(() => Task.FromResult(new OrderedHierarchicalTree<StorySection>()));
         }
-        
-        [TestMethod]
-        [Timeout(500)]
+
+        [Fact(DisplayName = "StoryReadService: GetStorySummary does just that")]
         public async Task GetStorySummary_GetsStorySummary()
         {
             var result = await target.GetStorySummary(testStory.Id);
             
-            Assert.AreEqual(testStory.Id, result.Id);
-            Assert.AreEqual(testStory.Title, result.Title);
-            Assert.AreEqual(testStory.Synopsis, result.Synopsis);
+            Assert.Equal(testStory.Id, result.Id);
+            Assert.Equal(testStory.Title, result.Title);
+            Assert.Equal(testStory.Synopsis, result.Synopsis);
 
         }
 
-        [TestMethod]
-        [Timeout(500)]
+        [Fact(DisplayName = "StoryReadService: GetStorySummaries Gets StorySummary")]
         public async Task GetStorySummaries_GetsStorySummary()
         {
             Mock.Arrange(() => storyRepos.GetAsync())
                 .Returns(() => Task.FromResult(new List<Story> { testStory, testStory }));
             var list = await target.GetStorySummaries();
 
-            Assert.AreEqual(2, list.Count);
+            Assert.Equal(2, list.Count);
             var result = list[0];
-            Assert.AreEqual(testStory.Id, result.Id);
-            Assert.AreEqual(testStory.Title, result.Title);
-            Assert.AreEqual(testStory.Synopsis, result.Synopsis);
+            Assert.Equal(testStory.Id, result.Id);
+            Assert.Equal(testStory.Title, result.Title);
+            Assert.Equal(testStory.Synopsis, result.Synopsis);
 
         }
 
-        [TestMethod]
-        [Timeout(500)]
+        [Fact(DisplayName = "StoryReadService: GetStoryOverview Gets StorySummary")]
         public async Task GetStoryOverview_GetsStorySummary()
         {
             var result = await target.GetStoryOverview(testStory.Id);
 
-            Assert.AreEqual(testStory.Id, result.Summary.Id);
-            Assert.AreEqual(testStory.Title, result.Summary.Title);
-            Assert.AreEqual(testStory.Synopsis, result.Summary.Synopsis);
+            Assert.Equal(testStory.Id, result.Summary.Id);
+            Assert.Equal(testStory.Title, result.Summary.Title);
+            Assert.Equal(testStory.Synopsis, result.Summary.Synopsis);
 
         }
 
-        [TestMethod]
-        [Timeout(500)]
+        [Fact(DisplayName = "StoryReadService: GetStoryOverview Gets Actors")]
         public async Task GetStoryOverview_GetsActors()
         {
             var actor = new Actor{Id = 10, Name = "Actor"};
@@ -91,13 +86,12 @@ namespace Storyboard.Domain.Test
                     : new List<Actor>()));
             
             var result = await target.GetStoryOverview(testStory.Id);
-            Assert.AreEqual(1, result.Actors.Count);
-            Assert.AreEqual(10, result.Actors[0].Id);
+            Assert.Equal(1, result.Actors.Count);
+            Assert.Equal(10, result.Actors[0].Id);
 
         }
 
-        [TestMethod]
-        [Timeout(500)]
+        [Fact(DisplayName = "StoryReadService: GetStoryOverview Gets StorySection")]
         public async Task GetStoryOverview_GetsStorySections()
         {
             var storySection = new StorySection { Id = 10, Description = "Chapter One", Order = 1, HierarchyLevel = 1 };
@@ -106,8 +100,8 @@ namespace Storyboard.Domain.Test
                 .Returns(()=> Task.FromResult(storySections));
 
             var result = await target.GetStoryOverview(testStory.Id);
-            Assert.AreEqual(1, result.Sections.Count);
-            Assert.AreEqual(10, result.Sections[0].Id);
+            Assert.Equal(1, result.Sections.Count);
+            Assert.Equal(10, result.Sections[0].Id);
 
         }
     }

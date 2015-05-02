@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using Storyboard.Web;
 using Storyboard.Web.Controllers;
 using Storyboard.Domain.Core;
@@ -15,7 +15,6 @@ using System.Threading.Tasks;
 
 namespace Storyboard.Web.Tests.Controllers
 {
-    [TestClass]
     public class StoryControllerTest
     {
         private IStoryRepository repo;
@@ -23,8 +22,7 @@ namespace Storyboard.Web.Tests.Controllers
 
         private StoryController target;
         
-        [TestInitialize]
-        public void Init()
+        public StoryControllerTest()
         {
             repo = Mock.Create<IStoryRepository>();
             service = Mock.Create<IStoryReadService>();
@@ -32,7 +30,7 @@ namespace Storyboard.Web.Tests.Controllers
         }
         
         
-        [TestMethod]
+        [Fact(DisplayName="Index Gets All Stories")]
         public void Index_GetsAllStories()
         {
             var stories = GetTestList();
@@ -42,13 +40,13 @@ namespace Storyboard.Web.Tests.Controllers
             ViewResult result = target.Index() as ViewResult;
             var model = result.Model as List<Story>;
             // Assert
-            Assert.IsNotNull(model);
-            Assert.AreEqual(stories.Count, model.Count());
-            Assert.AreEqual(stories[0].Id, model[0].Id);
-            Assert.AreEqual(stories[1].Id, model[1].Id);
+            Assert.NotNull(model);
+            Assert.Equal(stories.Count, model.Count());
+            Assert.Equal(stories[0].Id, model[0].Id);
+            Assert.Equal(stories[1].Id, model[1].Id);
         }
 
-        [TestMethod]
+        [Fact(DisplayName = "Create calls repository if valid")]
         public async Task Create_CallsRepositoryIfValid()
         {
             var command = new AddUpdateStoryCommand
