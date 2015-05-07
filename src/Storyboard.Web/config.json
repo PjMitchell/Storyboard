@@ -1,0 +1,10 @@
+{
+    "AppSettings": {
+        "SiteTitle": "Storyboard"
+    },
+    "Data": {
+        "DefaultConnection": {
+            "ConnectionString": "Data Source=(localdb)\\ProjectsV12;Initial Catalog=StoryBoard;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"
+        }
+    }
+}

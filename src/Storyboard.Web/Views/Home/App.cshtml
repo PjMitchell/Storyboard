@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Storyboard";
+    Layout = "~/Views/Shared/_AngularLayout.cshtml";
+}
+
+<main ng-app="storyboardApp">
+    <div ng-view=></div>
+</main>
+
+@section scripts
+{
+    <script src="~/App/Home.js"></script>
+    <script src="~/App/AppBootstrapper.js"></script>
+}

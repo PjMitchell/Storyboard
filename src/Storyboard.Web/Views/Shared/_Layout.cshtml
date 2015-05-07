@@ -1,0 +1,70 @@
+﻿@model Storyboard.Web.Models.ViewModelBase
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @await Html.PartialAsync("_CommonStylePartial")
+    <meta name="description" content="@ViewBag.Description" />
+</head>
+<body>
+    <header>
+        <div class="titleBlock">
+            Storyboard
+        </div>
+        <div class="userBlock">
+            @if (Model.IsLoggedIn)
+            {
+                @Model.Username
+                <div class="dropdown" style="display:inline">
+                    <button class="btn btn-icon glyphicon glyphicon-cog dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation">@Html.ActionLink("Log out", "LogOff", "Account",null , new { role="menuitem", tabindex="-1"})
+                        </li>
+                    </ul>
+
+                </div>
+
+            }
+            else
+            {
+               @Html.ActionLink("Log in", "LogIn", "Account")
+            }
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+    @RenderBody()
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Storyboard</p>
+    </footer>
+    <environment names="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="~/lib/hammer.js/hammer.js"></script>
+        <script src="~/lib/bootstrap-touch-carousel/js/bootstrap-touch-carousel.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-1.10.2.min.js"
+                asp-fallback-src="~/lib/jquery/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="//ajax.aspnetcdn.com/ajax/hammer.js/2.0.4/hammer.min.js"
+                asp-fallback-src="~/lib/hammer.js/hammer.js"
+                asp-fallback-test="window.Hammer">
+        </script>
+        <script src="//ajax.aspnetcdn.com/ajax/bootstrap-touch-carousel/0.8.0/js/bootstrap-touch-carousel.js"
+                asp-fallback-src="~/lib/bootstrap-touch-carousel/js/bootstrap-touch-carousel.js"
+                asp-fallback-test="window.Zepto">
+        </script>
+    </environment>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+
