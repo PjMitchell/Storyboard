@@ -13,73 +13,60 @@ namespace Storyboard.Data.Core
 {
     public class StorySectionRepository : IStorySectionRepository
     {
-        public StorySectionRepository()
+        private readonly StoryboardContext dbContext;
+
+        public StorySectionRepository(StoryboardContext dbContext)
         {
+            this.dbContext = dbContext;
             Mapper.CreateMap<StorySectionTableRow, StorySection>();
         }
         
         public async Task<OrderedHierarchicalTree<StorySection>> GetTreeForStory(int storyId)
         {
-            using (var db = new StoryboardContext())
-            {
-                var rows = await(from row in db.StorySection
-                                 where row.StoryId == storyId
-                                 select row).ToListAsync();
-                return new OrderedHierarchicalTree<StorySection>(rows.Select(Mapper.Map<StorySection>));
-
-            }
+            var rows = await(from row in dbContext.StorySection
+                                where row.StoryId == storyId
+                                select row).ToListAsync();
+            return new OrderedHierarchicalTree<StorySection>(rows.Select(Mapper.Map<StorySection>));
         }
 
         public async Task<List<StorySection>> GetAsync(IEnumerable<int> ids)
         {
             var chunkedIds = ids.Chunk(1000);
             var result = new List<StorySection>();
-            using (var db = new StoryboardContext())
+            foreach (var chunk in chunkedIds)
             {
-                foreach (var chunk in chunkedIds)
-                {
-                    var range = await (from row in db.StorySection
-                                       where chunk.Contains(row.Id)
-                                       select row).ToListAsync();
-                    result.AddRange(range.Select(Mapper.Map<StorySection>));
-                }
-
-                return result;
+                var range = await (from row in dbContext.StorySection
+                                    where chunk.Contains(row.Id)
+                                    select row).ToListAsync();
+                result.AddRange(range.Select(Mapper.Map<StorySection>));
             }
+
+            return result;
         }
 
         public async Task<StorySection> GetAsync(int id)
         {
-            using (var db = new StoryboardContext())
-            {
-                return Mapper.Map<StorySection>(await db.StorySection.SingleOrDefaultAsync(r => r.Id == id));
-            }
+            return Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
         }
 
         async Task<List<INode>> IAsyncNodeRepository.GetAsync(IEnumerable<int> ids)
         {
             var chunkedIds = ids.Chunk(1000);
             var result = new List<INode>();
-            using (var db = new StoryboardContext())
+            foreach (var chunk in chunkedIds)
             {
-                foreach (var chunk in chunkedIds)
-                {
-                    var range = await(from row in db.StorySection
-                                      where chunk.Contains(row.Id)
-                                      select row).ToListAsync();
-                    result.AddRange(range.Select(Mapper.Map<StorySection>));
-                }
-
-                return result;
+                var range = await(from row in dbContext.StorySection
+                                    where chunk.Contains(row.Id)
+                                    select row).ToListAsync();
+                result.AddRange(range.Select(Mapper.Map<StorySection>));
             }
+
+            return result;
         }
 
         async Task<INode> HDLink.IAsyncNodeRepository.GetAsync(int id)
         {
-            using (var db = new StoryboardContext())
-            {
-                return Mapper.Map<StorySection>(await db.StorySection.SingleOrDefaultAsync(r => r.Id == id));
-            }
+            return Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
         }
     }
 }

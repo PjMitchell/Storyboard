@@ -60,12 +60,10 @@ namespace Storyboard.Web
             services.AddEntityFramework()
                 .AddSqlServer()
                 .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]))
+                .AddDbContext<StoryboardContext>(options =>
                     options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
-                
-            //services.AddEntityFramework()
-            //   .AddSqlServer()
-            //   .AddDbContext<StoryboardContext>(options =>
-            //        options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+
             // Add Identity services to the services container.
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()

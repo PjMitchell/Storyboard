@@ -16,10 +16,12 @@ namespace Storyboard.Data.Core
     public class StoryRepository : IStoryRepository, IAsyncNodeRepository
     {
         private readonly ILinkDataService linkDataService;
-        
-        public StoryRepository(ILinkDataService linkDataService)
+        private readonly StoryboardContext dbContext;
+
+        public StoryRepository(ILinkDataService linkDataService, StoryboardContext dbContext)
         {
             this.linkDataService = linkDataService;
+            this.dbContext = dbContext;
             Mapper.CreateMap<StoryTableRow, Story>();
             Mapper.CreateMap<AddUpdateStoryCommand, StoryTableRow>();
             
@@ -31,13 +33,9 @@ namespace Storyboard.Data.Core
         /// <returns>All Stories</returns>
         public async Task<List<Story>> GetAsync()
         {
-            using(var db = new StoryboardContext())
-            {
-                var rows = await (from row in db.Story
-                        select row).ToListAsync();
-                return rows.Select(Mapper.Map<Story>).ToList();
-                    
-            }
+            var rows = await (from row in dbContext.Story
+                    select row).ToListAsync();
+            return rows.Select(Mapper.Map<Story>).ToList();
         }
 
         /// <summary>
@@ -47,18 +45,12 @@ namespace Storyboard.Data.Core
         /// <returns>Requested Story or Null if none is found</returns>
         public async Task<Story> GetAsync(int id)
         {
-            using (var db = new StoryboardContext())
-            {
-                return Mapper.Map<Story>(await db.Story.SingleOrDefaultAsync(r=> r.Id == id));
-            }
+            return Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r=> r.Id == id));
         }
 
         async Task<INode> IAsyncNodeRepository.GetAsync(int id)
         {
-            using (var db = new StoryboardContext())
-            {
-                return Mapper.Map<Story>(await db.Story.SingleOrDefaultAsync(r => r.Id == id));
-            }
+            return Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r => r.Id == id));
         }
 
 
@@ -66,36 +58,30 @@ namespace Storyboard.Data.Core
         {
             var chunkedIds = ids.Chunk(1000);
             var result = new List<Story>();
-            using (var db = new StoryboardContext())
+            foreach (var chunk in chunkedIds)
             {
-                foreach (var chunk in chunkedIds)
-                {
-                    var range = await (from row in db.Story
-                                 where chunk.Contains(row.Id)
-                                 select row).ToListAsync();
-                    result.AddRange(range.Select(Mapper.Map<Story>));
-                }
-
-                return result;
+                var range = await (from row in dbContext.Story
+                                where chunk.Contains(row.Id)
+                                select row).ToListAsync();
+                result.AddRange(range.Select(Mapper.Map<Story>));
             }
+
+            return result;
         }
 
         async Task<List<INode>> IAsyncNodeRepository.GetAsync(IEnumerable<int> ids)
         {
             var chunkedIds = ids.Chunk(1000);
             var result = new List<INode>();
-            using (var db = new StoryboardContext())
+            foreach (var chunk in chunkedIds)
             {
-                foreach (var chunk in chunkedIds)
-                {
-                    var range = await(from row in db.Story
-                                      where chunk.Contains(row.Id)
-                                      select row).ToListAsync();
-                    result.AddRange(range.Select(Mapper.Map<Story>));
-                }
-
-                return result;
+                var range = await(from row in dbContext.Story
+                                    where chunk.Contains(row.Id)
+                                    select row).ToListAsync();
+                result.AddRange(range.Select(Mapper.Map<Story>));
             }
+
+            return result;
         }
 
         /// <summary>
@@ -104,12 +90,9 @@ namespace Storyboard.Data.Core
         /// <param name="id">Story Id</param>
         public async Task Delete(int id)
         {
-            using (var db = new StoryboardContext())
-            {
-                var row = new StoryTableRow { Id = id };
-                db.Entry(row).State = EntityState.Deleted;
-                await db.SaveChangesAsync();
-            }
+            var row = new StoryTableRow { Id = id };
+            dbContext.Entry(row).State = EntityState.Deleted;
+            await dbContext.SaveChangesAsync();
             await linkDataService.Remove(new Node(id, StoryboardNodeTypes.Story));
         }
 
@@ -119,13 +102,10 @@ namespace Storyboard.Data.Core
         /// <param name="command">Story to be created</param>
         public async Task<int> Add(AddUpdateStoryCommand command)
         {
-            using (var db = new StoryboardContext())
-            {
-                var row = Mapper.Map<StoryTableRow>(command);
-                db.Story.Add(row);
-                await db.SaveChangesAsync();
-                return row.Id;
-            }
+            var row = Mapper.Map<StoryTableRow>(command);
+            dbContext.Story.Add(row);
+            await dbContext.SaveChangesAsync();
+            return row.Id;
         }
 
         /// <summary>
@@ -136,13 +116,10 @@ namespace Storyboard.Data.Core
         {
             if (command.Id == 0)
                 throw new ArgumentOutOfRangeException("command", "Tried update a story with Id of 0");
-            using (var db = new StoryboardContext())
-            {
-                var row = Mapper.Map<StoryTableRow>(command);
-                db.Story.Attach(row);
-                db.Entry(row).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-            }
+            var row = Mapper.Map<StoryTableRow>(command);
+            dbContext.Story.Attach(row);
+            dbContext.Entry(row).State = EntityState.Modified;
+            await dbContext.SaveChangesAsync();
         }
 
     }

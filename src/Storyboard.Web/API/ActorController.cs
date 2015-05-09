@@ -52,7 +52,7 @@ namespace Storyboard.Web.API
         public async Task<HttpStatusCodeResult> Delete(int id)
         {
             await repository.Delete(id);
-            return new OkResult();
+            return new NoContentResult();
 
         }
 

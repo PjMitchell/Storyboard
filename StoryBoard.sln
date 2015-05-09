@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{37A9F59B-2
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Storyboard.Database", "data\Storyboard.Database\Storyboard.Database.sqlproj", "{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Storyboard.Data.Tests", "test\Storyboard.Data.Tests\Storyboard.Data.Tests.xproj", "{D8240C6B-673D-4D23-84C3-6C4B57935B56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D8240C6B-673D-4D23-84C3-6C4B57935B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8240C6B-673D-4D23-84C3-6C4B57935B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8240C6B-673D-4D23-84C3-6C4B57935B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8240C6B-673D-4D23-84C3-6C4B57935B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,5 +75,6 @@ Global
 		{93623A23-4010-477D-BFCC-2CDFEF84C20B} = {F82141D1-0D0E-4663-B68E-24509D9954E4}
 		{5DCFE956-EA7C-472E-B811-91B81C7FABDA} = {EBFAE4B6-81F9-4664-9C25-5C4E53267FCE}
 		{1DA4C54A-49A1-452B-8F30-0D504B0C39BC} = {37A9F59B-28C4-4C85-843F-2BC0397A5F37}
+		{D8240C6B-673D-4D23-84C3-6C4B57935B56} = {F82141D1-0D0E-4663-B68E-24509D9954E4}
 	EndGlobalSection
 EndGlobal
