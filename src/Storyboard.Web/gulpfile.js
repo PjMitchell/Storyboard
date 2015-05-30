@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='sass' Clean='clean' />
+﻿/// <binding AfterBuild='sass, typeScript, copy' Clean='clean' />
 
 var gulp = require("gulp"),
   rimraf = require("rimraf"),
