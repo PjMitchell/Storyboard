@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='sass, typeScript, copy' Clean='clean' />
+﻿/// <binding AfterBuild='sass, typeScript, copy' Clean='clean' ProjectOpened='watch' />
 
 var gulp = require("gulp"),
   rimraf = require("rimraf"),
@@ -6,7 +6,8 @@ var gulp = require("gulp"),
   fs = require("fs"),
   tsc = require("gulp-typescript"),
   concat = require("gulp-concat"),
-  flatten = require('gulp-flatten');
+  flatten = require('gulp-flatten'),
+  watch = require('gulp-watch');
 
 eval("var project = " + fs.readFileSync("./project.json"));
 
@@ -35,12 +36,18 @@ gulp.task('sass', function(){
 gulp.task('typeScript', function () {
     gulp.src('./Scripts/AppBootstrapper.ts')
     .pipe(tsc().js).pipe(gulp.dest(paths.app));
-    gulp.src(['./Scripts/Home/**/*.ts'])   
+    gulp.src(['./Scripts/Home/**/*.ts'])
     .pipe(tsc().js)
     .pipe(flatten())
     .pipe(concat('home.js'))
     .pipe(gulp.dest(paths.app));
-})
+});
+
+gulp.task('watch', function () {
+    gulp.watch('./sass/*.scss', ['sass']);
+    gulp.watch('./Scripts/**/*.ts', ['typeScript']);
+   
+});
 
 gulp.task("copy", ["clean"], function () {
   var bower = {
