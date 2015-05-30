@@ -7,7 +7,7 @@
     "licenseUrl": "",
 
     "dependencies": {
-        "HDLink": "1.0.0-CI00006",
+        "HDLink": "1.0.0-*",
         "System.Threading.Tasks": "4.0.10-beta-22830",
         "System.Collections": "4.0.10-beta-22830",
         "System.ComponentModel.Annotations": "4.0.10-beta-22830",

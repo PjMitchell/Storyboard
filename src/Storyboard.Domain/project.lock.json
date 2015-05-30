@@ -3,7 +3,7 @@
   "version": -9998,
   "projectFileDependencyGroups": {
     "": [
-      "HDLink >= 1.0.0-CI00006",
+      "HDLink >= 1.0.0-*",
       "System.Threading.Tasks >= 4.0.10-beta-22830",
       "System.Collections >= 4.0.10-beta-22830",
       "System.ComponentModel.Annotations >= 4.0.10-beta-22830",
@@ -19,36 +19,49 @@
     ]
   },
   "libraries": {
-    "HDLink/1.0.0-CI00006": {
+    "HDLink/1.0.0-t150530125448": {
       "serviceable": false,
-      "sha": "Ibwd99BbtfKnaaIw6/eh9+wMiTqGDXwvWYwblf7rCqvXI+INBmsRAVoSSK0Byy6ajmjYsMKufHuR4PY+h/OGtQ==",
+      "sha": "oFOgFkn+Z/v5ZbuxGChfSOT4LEKjzaWVP1pc2XM/4EHN+blhP4qWpWaRMNRWOBPVtOc4CpwCVkN1xxr2FBqbmQ==",
       "frameworks": {
         "DNX,Version=v4.5.1": {
           "dependencies": {},
-          "frameworkAssemblies": [],
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
           "runtimeAssemblies": [
-            "lib/portable-net45+win+wpa81+wp80/HDLink.dll"
+            "lib/dnx451/HDLink.dll"
           ],
           "compileAssemblies": [
-            "lib/portable-net45+win+wpa81+wp80/HDLink.dll"
+            "lib/dnx451/HDLink.dll"
           ]
         },
         "DNXCore,Version=v5.0": {
-          "dependencies": {},
+          "dependencies": {
+            "System.Collections": "4.0.10-beta-22913",
+            "System.Linq": "4.0.0-beta-22913",
+            "System.Threading": "4.0.10-beta-22913",
+            "Microsoft.CSharp": "4.0.0-beta-22913"
+          },
           "frameworkAssemblies": [],
           "runtimeAssemblies": [
-            "lib/portable-net45+win+wpa81+wp80/HDLink.dll"
+            "lib/dnxcore50/HDLink.dll"
           ],
           "compileAssemblies": [
-            "lib/portable-net45+win+wpa81+wp80/HDLink.dll"
+            "lib/dnxcore50/HDLink.dll"
           ]
         }
       },
       "files": [
-        "HDLink.1.0.0-CI00006.nupkg",
-        "HDLink.1.0.0-CI00006.nupkg.sha512",
+        "HDLink.1.0.0-t150530125448.nupkg",
+        "HDLink.1.0.0-t150530125448.nupkg.sha512",
         "HDLink.nuspec",
-        "lib/portable-net45+win+wpa81+wp80/HDLink.dll"
+        "lib/dnx451/HDLink.dll",
+        "lib/dnx451/HDLink.xml",
+        "lib/dnxcore50/HDLink.dll",
+        "lib/dnxcore50/HDLink.xml"
       ]
     },
     "Microsoft.AspNet.Authentication/1.0.0-beta4": {

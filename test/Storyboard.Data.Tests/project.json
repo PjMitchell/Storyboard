@@ -12,8 +12,8 @@
         "HDLink": "1.0.0-*",
         "JustMock": "2015.1.224.3",
         "Storyboard.Data": "1.0.0-*",
-        "EntityFramework": "7.0.0-*",
-        "EntityFramework.InMemory" :  "7.0.0-*"
+        "EntityFramework": "7.0.0-beta4",
+        "EntityFramework.InMemory" :  "7.0.0-beta4"
 
     },
     "commands": {
@@ -21,14 +21,6 @@
     },
 
     "frameworks": {
-        "dnx451": { }//,
-        //"dnxcore50": {
-        //    "dependencies": {
-        //        "System.Collections": "4.0.10-beta-22816",
-        //        "System.Linq": "4.0.0-beta-22816",
-        //        "System.Threading": "4.0.10-beta-22816",
-        //        "Microsoft.CSharp": "4.0.0-beta-22816"
-        //    }
-        //}
+        "dnx451": { }
     }
 }
