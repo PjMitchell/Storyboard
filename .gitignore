@@ -45,6 +45,9 @@ Temporary Items
 .apdisk
 *.suo
 /packages
+/.vs
+/data/Storyboard.Database/bin
+/data/Storyboard.Database/obj
 /src/Storyboard.Data/Bin
 /src/Storyboard.Data/obj
 /test/Storyboard.Data.Tests/Bin
@@ -55,9 +58,14 @@ Temporary Items
 /src/Storyboard.Domain/obj
 /src/Storyboard.Web/Bin
 /src/Storyboard.Web/obj
+/src/Storyboard.Web/bower_components
+/src/Storyboard.Web/node_modules
 /test/Storyboard.Web.Tests/Bin
 /test/Storyboard.Web.Tests/obj
 /src/Storyboard.Web/wwwroot/lib
+/src/Storyboard.Web/wwwroot/css
+/src/Storyboard.Web/wwwroot/App
+/src/Storyboard.Web/wwwroot/_references.js
 *.suo
 *.dbmdl
 *.user
