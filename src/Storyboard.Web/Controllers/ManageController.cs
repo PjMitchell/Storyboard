@@ -21,9 +21,9 @@ namespace Storyboard.Web.Controllers
             SignInManager = signInManager;
         }
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public UserManager<ApplicationUser> UserManager { get; }
 
-        public SignInManager<ApplicationUser> SignInManager { get; private set; }
+        public SignInManager<ApplicationUser> SignInManager { get; }
 
         //
         // GET: /Account/Index

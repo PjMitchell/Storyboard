@@ -7,7 +7,7 @@ namespace Storyboard.Domain.Core
 
         public string Description { get; set; }
 
-        public INodeType NodeType { get { return StoryboardNodeTypes.StorySection; } }
+        public INodeType NodeType => StoryboardNodeTypes.StorySection;
 
         public int HierarchyLevel { get; set; }
 

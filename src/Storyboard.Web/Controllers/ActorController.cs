@@ -42,7 +42,7 @@ namespace Storyboard.Web.Controllers
                 return View();
 
             await repository.Add(command);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Actor/Edit/5
@@ -50,7 +50,7 @@ namespace Storyboard.Web.Controllers
         {
             var actor = await repository.GetAsync(id);
             if (actor == null)
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             return View(actor.ToAddUpdateCommand());
         }
 
@@ -62,14 +62,14 @@ namespace Storyboard.Web.Controllers
                 return View();
 
             await repository.Update(command);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Actor/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             await repository.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

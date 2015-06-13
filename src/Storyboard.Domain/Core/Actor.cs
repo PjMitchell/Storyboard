@@ -6,10 +6,8 @@ namespace Storyboard.Domain.Core
     public class Actor : INode
     {
         public int Id { get; set; }
-        public INodeType NodeType
-        {
-            get { return StoryboardNodeTypes.Actor; }
-        }
+        public INodeType NodeType => StoryboardNodeTypes.Actor;
+
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -17,9 +15,9 @@ namespace Storyboard.Domain.Core
         {
             return new AddUpdateActorCommand
             {
-                Id = this.Id,
-                Name = this.Name,
-                Description = this.Description
+                Id = Id,
+                Name = Name,
+                Description = Description
             };
         }
     }

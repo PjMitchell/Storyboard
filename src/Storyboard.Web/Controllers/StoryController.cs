@@ -49,7 +49,7 @@ namespace Storyboard.Web.Controllers
                 return View();
             
             await repository.Add(command);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Story/Edit/5
@@ -57,7 +57,7 @@ namespace Storyboard.Web.Controllers
         {
             var story = await repository.GetAsync(id);
             if(story == null)
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             return View(story.ToAddUpdateCommand());
         }
 
@@ -69,14 +69,14 @@ namespace Storyboard.Web.Controllers
                 return View();
 
             await repository.Update(command);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Story/Delete/5
         public ActionResult Delete(int id)
         {
             repository.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
         #endregion
 

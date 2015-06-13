@@ -12,10 +12,9 @@ namespace Storyboard.Domain.Core.Commands
         /// </summary>
         public int Id { get; set; }
         
-        private readonly INodeType nodeType = StoryboardNodeTypes.Actor;
         /// <summary>
         /// Actor Node
         /// </summary>
-        public INodeType NodeType { get { return nodeType; } }
+        public INodeType NodeType => StoryboardNodeTypes.Actor;
     }
 }

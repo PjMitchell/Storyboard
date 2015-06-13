@@ -44,10 +44,8 @@ namespace Storyboard.Data.Core
             return result;
         }
 
-        public async Task<StorySection> GetAsync(int id)
-        {
-            return Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
-        }
+        public async Task<StorySection> GetAsync(int id) =>
+            Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
 
         async Task<List<INode>> IAsyncNodeRepository.GetAsync(IEnumerable<int> ids)
         {
@@ -64,9 +62,7 @@ namespace Storyboard.Data.Core
             return result;
         }
 
-        async Task<INode> HDLink.IAsyncNodeRepository.GetAsync(int id)
-        {
-            return Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
-        }
+        async Task<INode> HDLink.IAsyncNodeRepository.GetAsync(int id) =>
+            Mapper.Map<StorySection>(await dbContext.StorySection.SingleOrDefaultAsync(r => r.Id == id));
     }
 }

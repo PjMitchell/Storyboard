@@ -6,10 +6,8 @@ namespace Storyboard.Domain.Core
     public class Story : INode
     {
         public int Id { get; set; }
-        public INodeType NodeType
-        {
-            get { return StoryboardNodeTypes.Story; }
-        }
+        public INodeType NodeType => StoryboardNodeTypes.Story;
+
         public string Title { get; set; }
         public string Synopsis { get; set; }
 

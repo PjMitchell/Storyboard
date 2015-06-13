@@ -13,7 +13,7 @@ using Microsoft.Data.Entity;
 
 namespace Storyboard.Data.Core
 {
-    public class StoryRepository : IStoryRepository, IAsyncNodeRepository
+    public class StoryRepository : IStoryRepository
     {
         private readonly ILinkDataService linkDataService;
         private readonly StoryboardContext dbContext;
@@ -43,15 +43,12 @@ namespace Storyboard.Data.Core
         /// </summary>
         /// <param name="id">Story Id</param>
         /// <returns>Requested Story or Null if none is found</returns>
-        public async Task<Story> GetAsync(int id)
-        {
-            return Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r=> r.Id == id));
-        }
+        public async Task<Story> GetAsync(int id) =>
+            Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r=> r.Id == id));
 
-        async Task<INode> IAsyncNodeRepository.GetAsync(int id)
-        {
-            return Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r => r.Id == id));
-        }
+        async Task<INode> IAsyncNodeRepository.GetAsync(int id) =>
+             Mapper.Map<Story>(await dbContext.Story.SingleOrDefaultAsync(r => r.Id == id));
+
 
 
         public async Task<List<Story>> GetAsync(IEnumerable<int> ids)

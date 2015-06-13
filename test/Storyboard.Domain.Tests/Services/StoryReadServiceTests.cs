@@ -78,8 +78,8 @@ namespace Storyboard.Domain.Test
             Mock.Arrange(()=> nodeService.Get(Arg.IsAny<INode>(), Arg.IsAny<NodeType<Actor>>()))
                 .Returns((INode node, INodeType nodetype) => Task.FromResult( 
                     node.Id == testStory.Id 
-                    && node.NodeType == testStory.NodeType 
-                    && nodetype == StoryboardNodeTypes.Actor
+                    && node.NodeType.Equals(testStory.NodeType) 
+                    && nodetype.Equals(StoryboardNodeTypes.Actor)
                     ? actors
                     : new List<Actor>()));
             

@@ -5,14 +5,9 @@ namespace Storyboard.Domain.Core
 {
     public static class StoryboardNodeTypes
     {
-        
-        private static NodeType<Story> story = new NodeType<Story>(1);
-        private static NodeType<Actor> actor = new NodeType<Actor>(2);
-        private static NodeType<StorySection> storySection = new NodeType<StorySection>(3);
-
-        public static NodeType<Story> Story { get { return story; } }
-        public static NodeType<Actor> Actor { get { return actor; } }
-        public static NodeType<StorySection> StorySection { get { return storySection; } }
+        public static readonly NodeType<Story> Story = new NodeType<Story>(1);
+        public static readonly NodeType<Actor> Actor = new NodeType<Actor>(2);
+        public static readonly NodeType<StorySection> StorySection = new NodeType<StorySection>(3);
 
 
         /// <summary>
@@ -25,13 +20,13 @@ namespace Storyboard.Domain.Core
             switch(id)
             {
                 case 1 :
-                    return story;
+                    return Story;
                 case 2 :
-                    return actor;
+                    return Actor;
                 case 3 :
-                    return storySection;
+                    return StorySection;
                 default:
-                    throw new ArgumentOutOfRangeException("id");
+                    throw new ArgumentOutOfRangeException(nameof(id));
             }
         }
    }

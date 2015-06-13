@@ -23,13 +23,12 @@ namespace Storyboard.Data.Core
                 return new ActorRepository(linkDataService, dbContext);
             if (nodeType == StoryboardNodeTypes.Story)
                 return new StoryRepository(linkDataService, dbContext);
-            throw new ArgumentOutOfRangeException("nodeType", "Could not find repository for nodeType");
+            throw new ArgumentOutOfRangeException(nameof(nodeType), "Could not find repository for nodeType");
         }
 
 
-        public IAsyncNodeRepository<T> CreateRepository<T>(INodeType<T> nodeType) where T : INode
-        {
-            return (IAsyncNodeRepository<T>)CreateRepository((INodeType) nodeType);
-        }
+        public IAsyncNodeRepository<T> CreateRepository<T>(INodeType<T> nodeType) where T : INode =>
+            (IAsyncNodeRepository<T>)CreateRepository((INodeType) nodeType);
+
     }
 }
