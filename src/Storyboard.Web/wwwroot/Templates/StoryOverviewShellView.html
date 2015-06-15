@@ -4,20 +4,25 @@
 <sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Summary.Synopsis" sb-saved="vm.update()"></sb-edit-area>
 <div ng-show="vm.IsLoaded">
     <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
-    <table>
-        <tr ng-repeat="actor in vm.Overview.Actors">
-            <td>
-                {{ actor.Name}}
-            </td>
-            <td>
-                {{ actor.Description}}
-            </td>
-            <td>
-                <a class="btn btn-icon glyphicon glyphicon-search" href="#actor/{{actor.Id}}/s/{{vm.Overview.Summary.Id}}"></a>
-            </td>
-            <td>
-                <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="vm.deleteActorCommand(actor.Id)"></button>
-            </td>
-        </tr>
-    </table>
+    <section style="width:calc(70% - 10px); float:left">
+        <table style="">
+            <tr ng-repeat="actor in vm.Overview.Actors">
+                <td>
+                    {{ actor.Name}}
+                </td>
+                <td>
+                    {{ actor.Description}}
+                </td>
+                <td>
+                    <a class="btn btn-icon glyphicon glyphicon-search" href="#actor/{{actor.Id}}/s/{{vm.Overview.Summary.Id}}"></a>
+                </td>
+                <td>
+                    <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="vm.deleteActorCommand(actor.Id)"></button>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <aside ng-repeat="section in vm.Overview.Sections">
+        <p>{{section.Description}}</p>
+    </aside>
 </div>
