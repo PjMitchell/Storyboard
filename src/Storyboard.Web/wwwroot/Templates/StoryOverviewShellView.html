@@ -3,9 +3,9 @@
 <sb-edit-title style="width:calc(100% - 30px); float:left" sb-input="vm.Overview.Summary.Title" sb-saved="vm.update()"></sb-edit-title>
 <sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Summary.Synopsis" sb-saved="vm.update()"></sb-edit-area>
 <div ng-show="vm.IsLoaded">
-    <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
-    <section style="width:calc(70% - 10px); float:left">
-        <table style="">
+    <section style="width:calc(80% - 10px);float:left;">
+        <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
+        <table>
             <tr ng-repeat="actor in vm.Overview.Actors">
                 <td>
                     {{ actor.Name}}
@@ -22,7 +22,8 @@
             </tr>
         </table>
     </section>
-    <aside ng-repeat="section in vm.Overview.Sections">
-        <p>{{section.Description}}</p>
+    <aside class="sideMenu" style="width:calc(20% - 10px);float:right;">
+        <h3>Section</h3>
+        <p ng-repeat="section in vm.Overview.Sections">{{section.Description}}</p>
     </aside>
 </div>
