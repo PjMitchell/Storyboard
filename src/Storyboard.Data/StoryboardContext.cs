@@ -17,21 +17,21 @@ namespace Storyboard.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ActorTableRow>().ForSqlServer().Table(nameof(Actor), DbSchemas.Story);
+            modelBuilder.Entity<ActorTableRow>().ToSqlServerTable(nameof(Actor), DbSchemas.Story);
             modelBuilder.Entity<ActorTableRow>().Key(r=> r.Id);
-            modelBuilder.Entity<ActorTableRow>().Property(r => r.Id).ForSqlServer().UseIdentity();
+            modelBuilder.Entity<ActorTableRow>().Property(r => r.Id).UseSqlServerIdentityColumn();
 
-            modelBuilder.Entity<StoryTableRow>().ForSqlServer().Table(nameof(Story), DbSchemas.Story);
+            modelBuilder.Entity<StoryTableRow>().ToSqlServerTable(nameof(Story), DbSchemas.Story);
             modelBuilder.Entity<StoryTableRow>().Key(r => r.Id);
-            modelBuilder.Entity<StoryTableRow>().Property(r => r.Id).ForSqlServer().UseIdentity();
+            modelBuilder.Entity<StoryTableRow>().Property(r => r.Id).UseSqlServerIdentityColumn();
 
-            modelBuilder.Entity<LinkTableRow>().ForSqlServer().Table(nameof(Link), DbSchemas.Story);
+            modelBuilder.Entity<LinkTableRow>().ToSqlServerTable(nameof(Link), DbSchemas.Story);
             modelBuilder.Entity<LinkTableRow>().Key(r => r.Id);
-            modelBuilder.Entity<LinkTableRow>().Property(r => r.Id).ForSqlServer().UseIdentity();
+            modelBuilder.Entity<LinkTableRow>().Property(r => r.Id).UseSqlServerIdentityColumn();
 
-            modelBuilder.Entity<StorySectionTableRow>().ForSqlServer().Table(nameof(StorySection), DbSchemas.Story); ;
+            modelBuilder.Entity<StorySectionTableRow>().ToSqlServerTable(nameof(StorySection), DbSchemas.Story); ;
             modelBuilder.Entity<StorySectionTableRow>().Key(r=> r.Id);
-            modelBuilder.Entity<StorySectionTableRow>().Property(r => r.Id).ForSqlServer().UseIdentity();
+            modelBuilder.Entity<StorySectionTableRow>().Property(r => r.Id).UseSqlServerIdentityColumn();
         }
 
     }

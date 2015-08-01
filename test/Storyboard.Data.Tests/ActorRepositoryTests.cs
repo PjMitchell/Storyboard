@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using HDLink;
 using Storyboard.Data.Core;
 using Xunit;
 using Storyboard.Domain.Data;
-using Microsoft.Data.Entity;
 using Telerik.JustMock;
 using Storyboard.Data.DbObject;
 using Storyboard.Domain.Core;
+using Microsoft.Data.Entity;
 
 namespace Storyboard.Data.Tests
 {
@@ -23,8 +21,8 @@ namespace Storyboard.Data.Tests
 
         public ActorRepositoryTests()
         {
-            var builder = new DbContextOptionsBuilder();
-            builder.UseInMemoryStore();
+            var builder = new DbContextOptionsBuilder<StoryboardContext>();
+            builder.UseInMemoryDatabase();
             
             context = new StoryboardContext(builder.Options);
             target = new ActorRepository(Mock.Create<ILinkDataService>(), context);

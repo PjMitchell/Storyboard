@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Storyboard.Domain.Core;
 using Storyboard.Data.DbObject;
+using Microsoft.Data.Entity;
 
 namespace Storyboard.Data.Core
 {

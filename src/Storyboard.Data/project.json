@@ -7,21 +7,21 @@
     "licenseUrl": "",
 
     "dependencies": {
-        "HDLink": "1.0.0-t150530125448",
+        "HDLink": "1.0.0-t150801095415",
         "Storyboard.Domain": "1.0.0-*",
         "AutoMapper": "4.0.0-alpha1",
-        "EntityFramework.Core": "7.0.0-beta4",
-        "EntityFramework.SqlServer": "7.0.0-beta4"
+        "EntityFramework.Core": "7.0.0-beta6",
+        "EntityFramework.SqlServer": "7.0.0-beta6"
     },
 
     "frameworks": {
         "dnx451": { },
         "dnxcore50": {
             "dependencies": {
-                "System.Collections": "4.0.10-beta-22816",
-                "System.Linq": "4.0.0-beta-22816",
-                "System.Threading": "4.0.10-beta-22816",
-                "Microsoft.CSharp": "4.0.0-beta-22816"
+                "System.Collections": "4.0.10",
+                "System.Linq": "4.0.0",
+                "System.Threading": "4.0.10",
+                "Microsoft.CSharp": "4.0.0"
             }
         }
     }

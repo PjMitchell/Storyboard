@@ -17,7 +17,7 @@ namespace Storyboard.Web.Models
             // Create the database and schema if it doesn't exist
             if (!_created)
             {
-                Database.AsRelational().ApplyMigrations();
+                Database.ApplyMigrations();
                 _created = true;
             }
         }
