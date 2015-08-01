@@ -26,17 +26,21 @@ app.config(function ($routeProvider) {
         controller: 'SummaryController',
         controllerAs: 'vm',
         templateUrl: '/Templates/SummaryShellView.html'
-    }).when('/story/add', {
+    })
+        .when('/story/add', {
         controller: 'AddStoryController',
         controllerAs: 'vm',
         templateUrl: '/Templates/AddStoryShellView.html'
-    }).when('/story/:id', {
+    })
+        .when('/story/:id', {
         controller: 'StoryOverviewController',
         controllerAs: 'vm',
         templateUrl: '/Templates/StoryOverviewShellView.html'
-    }).when('/actor/:id/s/:storyId', {
+    })
+        .when('/actor/:id/s/:storyId', {
         controller: 'ActorOverviewController',
         controllerAs: 'vm',
         templateUrl: '/Templates/ActorOverviewShellView.html'
-    }).otherwise({ redirectTo: '/' });
+    })
+        .otherwise({ redirectTo: '/' });
 });

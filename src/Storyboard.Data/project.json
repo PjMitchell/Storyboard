@@ -1,4 +1,4 @@
-﻿{
+{
     "version": "1.0.0-*",
     "description": "",
     "authors": [ "" ],
@@ -7,9 +7,9 @@
     "licenseUrl": "",
 
     "dependencies": {
-        "HDLink": "1.0.0-*",
+        "HDLink": "1.0.0-t150530125448",
         "Storyboard.Domain": "1.0.0-*",
-        "AutoMapper": "4.0.0-ci1056",
+        "AutoMapper": "4.0.0-alpha1",
         "EntityFramework.Core": "7.0.0-beta4",
         "EntityFramework.SqlServer": "7.0.0-beta4"
     },

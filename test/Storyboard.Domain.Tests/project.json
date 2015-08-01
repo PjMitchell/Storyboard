@@ -7,7 +7,7 @@
     "licenseUrl": "",
 
     "dependencies": {
-        "HDLink": "1.0.0-CI00006",
+        "HDLink": "1.0.0-t150530125448",
         "Storyboard.Domain": "1.0.0-*",
         "JustMock": "2015.1.224.3",
         "xunit": "2.1.0-*",
@@ -19,7 +19,7 @@
     },
 
     "frameworks": {
-        "dnx451": { }//,
+        "dnx451": { } //,
         //"dnxcore50": {
         //    "dependencies": {
         //        "System.Collections": "4.0.10-beta-22816",

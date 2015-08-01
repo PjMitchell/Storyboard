@@ -35,4 +35,3 @@ describe('SummaryController', function () {
         expect(target.Summaries[0].Id).toEqual(1);
     });
 });
-//# sourceMappingURL=SummaryControllerTests.js.map

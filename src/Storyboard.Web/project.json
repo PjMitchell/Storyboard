@@ -27,7 +27,7 @@
         "Microsoft.Framework.Logging": "1.0.0-beta4",
         "Microsoft.Framework.Logging.Console": "1.0.0-beta4",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta4",
-        "HDLink": "1.0.0-*",
+        "HDLink": "1.0.0-t150530125448",
         "Storyboard.Domain": "1.0.0-*",
         "Storyboard.Data": "1.0.0-*"
     },

@@ -1,4 +1,4 @@
-﻿{
+{
     "version": "1.0.0-*",
     "description": "",
     "authors": [ "" ],
@@ -9,11 +9,11 @@
     "dependencies": {
         "xunit": "2.1.0-*",
         "xunit.runner.dnx": "2.1.0-*",
-        "HDLink": "1.0.0-*",
+        "HDLink": "1.0.0-t150530125448",
         "JustMock": "2015.1.224.3",
         "Storyboard.Data": "1.0.0-*",
         "EntityFramework": "7.0.0-beta4",
-        "EntityFramework.InMemory" :  "7.0.0-beta4"
+        "EntityFramework.InMemory": "7.0.0-beta5"
 
     },
     "commands": {

@@ -11,8 +11,7 @@ describe('CreateActorDialogController', function () {
     var actorDataService;
     beforeEach(function () {
         modalInstance = {};
-        modalInstance.dismiss = function (arg) {
-        };
+        modalInstance.dismiss = function (arg) { };
         actorDataService = {};
         target = new Home.CreateActorDialogController(modalInstance, actorDataService);
     });
@@ -22,4 +21,3 @@ describe('CreateActorDialogController', function () {
         expect(modalInstance.dismiss).toHaveBeenCalled();
     });
 });
-//# sourceMappingURL=CreateActorDialogControllerTests.js.map

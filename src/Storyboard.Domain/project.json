@@ -7,13 +7,13 @@
     "licenseUrl": "",
 
     "dependencies": {
-        "HDLink": "1.0.0-*",
+        "HDLink": "1.0.0-t150530125448",
         "System.Threading.Tasks": "4.0.10-beta-22830",
         "System.Collections": "4.0.10-beta-22830",
         "System.ComponentModel.Annotations": "4.0.10-beta-22830",
         "Microsoft.AspNet.Mvc": "6.0.0-beta4",
         "System.Runtime": "4.0.20-beta-22830"
-        
+
     },
 
     "frameworks": {

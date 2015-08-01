@@ -15,9 +15,7 @@ describe('StoryOverviewDataService', function () {
         var httpResult;
         beforeEach(function () {
             httpResult = {};
-            fakeHttpService.get = function (input) {
-                return httpResult;
-            };
+            fakeHttpService.get = function (input) { return httpResult; };
         });
         it('Calls StoryOverview api', function () {
             spyOn(fakeHttpService, 'get');
@@ -43,9 +41,7 @@ describe('StoryOverviewDataService', function () {
         var httpResult, command;
         beforeEach(function () {
             httpResult = {};
-            fakeHttpService.post = function (input, data) {
-                return httpResult;
-            };
+            fakeHttpService.post = function (input, data) { return httpResult; };
             command = new Home.AddUpdateStoryCommand();
             command.Id = 1;
         });
@@ -63,9 +59,7 @@ describe('StoryOverviewDataService', function () {
         var httpResult;
         beforeEach(function () {
             httpResult = {};
-            fakeHttpService.delete = function (input) {
-                return httpResult;
-            };
+            fakeHttpService.delete = function (input) { return httpResult; };
         });
         it('Call StoryOverview api', function () {
             spyOn(fakeHttpService, 'delete');
@@ -79,4 +73,3 @@ describe('StoryOverviewDataService', function () {
         });
     });
 });
-//# sourceMappingURL=StoryOverviewDataServiceTests.js.map
