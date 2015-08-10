@@ -17,7 +17,7 @@ namespace Storyboard.Data.Tests
     {
         private readonly ActorRepository target;
         private readonly StoryboardContext context;
-        private readonly ILinkDataService dataService;
+        //private readonly ILinkDataService dataService;
 
         public ActorRepositoryTests()
         {
