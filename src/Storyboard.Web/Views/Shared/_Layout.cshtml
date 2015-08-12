@@ -1,5 +1,4 @@
-﻿@model Storyboard.Web.Models.ViewModelBase
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,32 +8,7 @@
     <meta name="description" content="@ViewBag.Description" />
 </head>
 <body>
-    <header>
-        <div class="titleBlock">
-            Storyboard
-        </div>
-        <div class="userBlock">
-            @if (Model.IsLoggedIn)
-            {
-                @Model.Username
-                <div class="dropdown" style="display:inline">
-                    <button class="btn btn-icon glyphicon glyphicon-cog dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"></button>
-                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation">@Html.ActionLink("Log out", "LogOff", "Account",null , new { role="menuitem", tabindex="-1"})
-                        </li>
-                    </ul>
-
-                </div>
-
-            }
-            else
-            {
-               @Html.ActionLink("Log in", "LogIn", "Account")
-            }
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    @Component.Invoke("Header")
     @RenderBody()
     <footer>
         <p>&copy; @DateTime.Now.Year - Storyboard</p>
