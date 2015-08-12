@@ -1,8 +1,11 @@
-﻿@model LoginViewModel
-@using System.Collections.Generic
+﻿@using System.Collections.Generic
 @using Microsoft.AspNet.Http
 @using Microsoft.AspNet.Http.Authentication
-@inject SignInManager<ApplicationUser> SignInManager
+@using Microsoft.AspNet.Identity
+@using Storyboard.Web.Models
+@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+@model  LoginViewModel
+@inject  SignInManager<ApplicationUser> SignInManager
 
 @{
     ViewBag.Title = "Log in";
