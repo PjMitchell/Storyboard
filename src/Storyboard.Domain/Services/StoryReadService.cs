@@ -47,6 +47,10 @@ namespace Storyboard.Domain.Services
                     throw new InvalidOperationException("Multiple Hierarchical levels not supported");
                 result.Sections = tree.GetHierarchicalLevel(tree.Hierarchies[0]).ToList();
             }
+            else
+            {
+                result.Sections = new List<StorySection>();
+            }
             return result;
         }
 
