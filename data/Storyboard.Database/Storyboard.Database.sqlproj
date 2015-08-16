@@ -62,6 +62,7 @@
     <Folder Include="Tables\Story" />
     <Folder Include="Data" />
     <Folder Include="Data\Seed" />
+    <Folder Include="Tables\dbo" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Story.sql" />
@@ -70,6 +71,12 @@
     <Build Include="Tables\Story\Link.sql" />
     <Build Include="Tables\Story\StorySection.sql" />
     <None Include="Data\Seed\StorySectionSeed.sql" />
+    <Build Include="Tables\dbo\AspNetUsers.sql" />
+    <Build Include="Tables\dbo\AspNetRoles.sql" />
+    <Build Include="Tables\dbo\AspNetUserClaims.sql" />
+    <Build Include="Tables\dbo\AspNetRoleClaims.sql" />
+    <Build Include="Tables\dbo\AspNetUserLogins.sql" />
+    <Build Include="Tables\dbo\AspNetUserRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Storyboard.Database.Local.publish.xml" />
