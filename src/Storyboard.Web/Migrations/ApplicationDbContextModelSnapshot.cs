@@ -6,7 +6,7 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Metadata.Builders;
 using Storyboard.Web.Models;
-using Microsoft.Data.Entity.Migrations.Infrastructure;
+
 
 namespace Storyboard.Web.Migrations
 {

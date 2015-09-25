@@ -11,8 +11,7 @@
         "HDLink": "1.0.0-t150801095415",
         "JustMock": "2015.2.715.1",
         "xunit": "2.1.0-*",
-        "xunit.runner.dnx": "2.1.0-beta3-build99",
-        "System.Threading.Tasks": "4.0.10"
+        "xunit.runner.dnx": "2.1.0-beta3-build99"
     },
     "commands": {
         "test": "xunit.runner.dnx"
