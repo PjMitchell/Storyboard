@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Storyboard.Web.Models.Home
+﻿namespace Storyboard.Web.Models.Home
 {
     public class CreateLinkRequest
     {

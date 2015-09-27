@@ -3,26 +3,32 @@ using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
-using Microsoft.Framework.ConfigurationModel;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
-using Microsoft.Framework.Runtime;
 using Storyboard.Web.Models;
 using Storyboard.Domain.Services;
 using Storyboard.Domain.Data;
 using Storyboard.Data.Core;
 using HDLink;
 using Storyboard.Data;
+using Microsoft.Dnx.Runtime;
+using Microsoft.Framework.Configuration;
 
 namespace Storyboard.Web
 {
     public class Startup
     {
+        private IHostingEnvironment env;
+        private IApplicationEnvironment appEnv;
+        public IConfigurationRoot Configuration { get; set; }
+
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
-            // Setup configuration sources.
-            var configuration = new Configuration(appEnv.ApplicationBasePath);
-            configuration.AddJsonFile("config.json");
+            this.env = env;
+            this.appEnv = appEnv;
+            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+                .AddJsonFile("config.json")
+                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
             //.AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
@@ -30,13 +36,13 @@ namespace Storyboard.Web
             {
                 // This reads the configuration keys from the secret store.
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                configuration.AddUserSecrets();
+                builder.AddUserSecrets();
             }
-            configuration.AddEnvironmentVariables();
-            Configuration = configuration;
+            builder.AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
-        public IConfiguration Configuration { get; set; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -84,6 +90,9 @@ namespace Storyboard.Web
 
             // Add MVC services to the services container.
             services.AddMvc();
+
+
+
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.
