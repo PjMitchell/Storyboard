@@ -63,7 +63,7 @@ namespace Storyboard.Web.Models
         public string Email { get; set; }
     }
 
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel
     {
         [Required]
         [Display(Name = "Email")]
@@ -79,7 +79,7 @@ namespace Storyboard.Web.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel : ViewModelBase
+    public class RegisterViewModel
     {
         [Required]
         [Display(Name = "Email")]

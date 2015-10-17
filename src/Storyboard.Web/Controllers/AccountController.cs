@@ -34,7 +34,7 @@ namespace Storyboard.Web.Controllers
         public IActionResult Login(string returnUrl = null)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View(this.CreateViewModel<LoginViewModel>());
+            return View();
         }
 
         //
@@ -79,7 +79,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public IActionResult Register()
         {
-            return View(this.CreateViewModel<RegisterViewModel>());
+            return View();
         }
 
         //
@@ -232,7 +232,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
-            return View(this.CreateViewModel());
+            return View();
         }
 
         //
@@ -279,7 +279,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public IActionResult ResetPassword(string code = null)
         {
-            return code == null ? View("Error") : View(this.CreateViewModel());
+            return code == null ? View("Error") : View();
         }
 
         //
@@ -305,7 +305,7 @@ namespace Storyboard.Web.Controllers
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             AddErrors(result);
-            return View(this.CreateViewModel());
+            return View();
         }
 
         //
@@ -314,7 +314,7 @@ namespace Storyboard.Web.Controllers
         [AllowAnonymous]
         public IActionResult ResetPasswordConfirmation()
         {
-            return View(this.CreateViewModel());
+            return View();
         }
 
         //

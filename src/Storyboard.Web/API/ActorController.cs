@@ -3,10 +3,9 @@ using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using System.Net;
-using System.Net.Http;
 
 using System.Threading.Tasks;
-using System.Web.Http;
+
 
 namespace Storyboard.Web.API
 {
@@ -44,7 +43,7 @@ namespace Storyboard.Web.API
         public async Task<HttpStatusCodeResult> Put(int id, [FromBody]AddUpdateActorCommand command)
         {
             await repository.Update(command);
-            return new OkResult();
+            return new HttpOkResult();
         }
 
         //Delete api/Actor/1
