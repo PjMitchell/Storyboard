@@ -14,6 +14,8 @@ using Storyboard.Data;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 
+
+
 namespace Storyboard.Web
 {
     public class Startup
@@ -26,7 +28,8 @@ namespace Storyboard.Web
         {
             this.env = env;
             this.appEnv = appEnv;
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
@@ -111,14 +114,14 @@ namespace Storyboard.Web
             if (env.IsEnvironment("Development"))
             {
                 app.UseBrowserLink();
-                app.UseErrorPage();
+                app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
             else
             {
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
-                app.UseErrorHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/Error");
             }
 
             // Add static files to the request pipeline.

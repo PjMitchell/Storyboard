@@ -9,7 +9,7 @@
     "dependencies": {
         "HDLink": "1.0.0-t150801095415",
         "Storyboard.Domain": "1.0.0-*",
-        "JustMock": "2015.2.715.1",
+        "JustMock": "2015.3.929.5",
         "xunit": "2.1.0-*",
         "xunit.runner.dnx": "2.1.0-beta3-build99"
     },
