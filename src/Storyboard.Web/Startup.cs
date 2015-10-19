@@ -26,7 +26,8 @@ namespace Storyboard.Web
         {
             this.env = env;
             this.appEnv = appEnv;
-            var builder = new ConfigurationBuilder(appEnv.ApplicationBasePath)
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("config.json")
                 .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
 
@@ -103,7 +104,7 @@ namespace Storyboard.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
             // Configure the HTTP request pipeline.
-
+            
             // Add the console logger.
             loggerfactory.AddConsole(minLevel: LogLevel.Warning);
 
@@ -111,16 +112,16 @@ namespace Storyboard.Web
             if (env.IsEnvironment("Development"))
             {
                 app.UseBrowserLink();
-                app.UseErrorPage();
+                app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
             }
             else
             {
                 // Add Error handling middleware which catches all application specific errors and
                 // sends the request to the following path or controller action.
-                app.UseErrorHandler("/Home/Error");
+                app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseIISPlatformHandler();
             // Add static files to the request pipeline.
             app.UseStaticFiles();
 
@@ -145,6 +146,7 @@ namespace Storyboard.Web
                // Uncomment the following line to add a route for porting Web API 2 controllers.
                routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
+            
         }
     }
 }
