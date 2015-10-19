@@ -14,6 +14,7 @@ app.factory('StoryOverviewDataService', function ($http) { return new Home.Story
 app.factory('ActorDataService', function ($http) { return new Home.ActorDataService($http); });
 app.factory('LinkDataService', function ($http) { return new Home.LinkDataService($http); });
 app.controller('EditController', function ($scope) { return new Home.EditController($scope); });
+app.controller('SidebarController', function ($scope) { return new Home.SidebarController($scope); });
 app.directive('sbEditTitle', function () { return new Home.EditTitle(); });
 app.directive('sbEditArea', function () { return new Home.EditArea(); });
 app.directive('sbSidebar', function () { return new Home.SideBar(); });

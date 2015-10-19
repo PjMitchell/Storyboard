@@ -16,6 +16,7 @@ app.factory('StoryOverviewDataService', ($http: ng.IHttpService) => new Home.Sto
 app.factory('ActorDataService', ($http: ng.IHttpService) => new Home.ActorDataService($http));
 app.factory('LinkDataService', ($http: ng.IHttpService) => new Home.LinkDataService($http));
 app.controller('EditController', ($scope: Home.IEditFieldScope) => new Home.EditController($scope));
+app.controller('SidebarController', ($scope: Home.ISidebarScope) => new Home.SidebarController($scope));
 app.directive('sbEditTitle', () => new Home.EditTitle());
 app.directive('sbEditArea', () => new Home.EditArea());
 app.directive('sbSidebar', () => new Home.SideBar());

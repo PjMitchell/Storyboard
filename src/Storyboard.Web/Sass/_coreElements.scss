@@ -21,7 +21,9 @@ footer {
     margin: 20px 5px;
     font-size: $smallFont;
 }
-
+.page-content {
+    padding: 0 5px
+}
 .titleBlock {
     float: left;
     color: $fontColour;
@@ -33,7 +35,7 @@ footer {
 } 
 
 main {
-    padding: 0 5px;
+    padding: 0;
 }
 
 table {
