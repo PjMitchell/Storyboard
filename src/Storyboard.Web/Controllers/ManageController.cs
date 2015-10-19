@@ -288,7 +288,7 @@ namespace Storyboard.Web.Controllers
         {
             // Request a redirect to the external login provider to link a login for the current user
             var redirectUrl = Url.Action("LinkLoginCallback", "Manage");
-            var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, User.GetUserId());
+            var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, HttpContext.User.GetUserId());
             return new ChallengeResult(provider, properties);
         }
 
@@ -302,7 +302,7 @@ namespace Storyboard.Web.Controllers
             {
                 return View("Error");
             }
-            var info = await SignInManager.GetExternalLoginInfoAsync(User.GetUserId());
+            var info = await SignInManager.GetExternalLoginInfoAsync(HttpContext.User.GetUserId());
             if (info == null)
             {
                 return RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });

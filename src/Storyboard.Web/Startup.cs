@@ -14,8 +14,6 @@ using Storyboard.Data;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 
-
-
 namespace Storyboard.Web
 {
     public class Startup
@@ -106,7 +104,7 @@ namespace Storyboard.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerfactory)
         {
             // Configure the HTTP request pipeline.
-
+            
             // Add the console logger.
             loggerfactory.AddConsole(minLevel: LogLevel.Warning);
 
@@ -123,7 +121,7 @@ namespace Storyboard.Web
                 // sends the request to the following path or controller action.
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseIISPlatformHandler();
             // Add static files to the request pipeline.
             app.UseStaticFiles();
 
@@ -148,6 +146,7 @@ namespace Storyboard.Web
                // Uncomment the following line to add a route for porting Web API 2 controllers.
                routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
+            
         }
     }
 }
