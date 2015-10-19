@@ -34,13 +34,10 @@ namespace Storyboard.Domain.Services
         public async Task<StoryOverview> GetStoryOverview(int id)
         {
             var result = new StoryOverview();
-            var getSummary = GetStorySummary(id);
-            var getStorySections = storySectionRepository.GetTreeForStory(id);
-            var getActor = nodeService.Get(new Node(id, StoryboardNodeTypes.Story), StoryboardNodeTypes.Actor);
-            var tree = await getStorySections;
+            result.Summary = await GetStorySummary(id);
+            var tree = await storySectionRepository.GetTreeForStory(id);
+            result.Actors = await nodeService.Get(new Node(id, StoryboardNodeTypes.Story), StoryboardNodeTypes.Actor);
             
-            result.Summary = await getSummary;
-            result.Actors = await getActor;
             if (tree != null && tree.Hierarchies.Count != 0)
             {
                 if (tree.Hierarchies.Count != 1)
