@@ -1,34 +1,33 @@
 ﻿using System;
 using HDLink;
 using Storyboard.Domain.Core;
-using Storyboard.Domain.Data;
-using Storyboard.Data.Core;
+using Microsoft.Framework.DependencyInjection;
 
 namespace Storyboard.Data.Core
 {
     public class StoryboardNodeRepositoryFactory : IAsyncNodeRepositoryFactory
     {
-        private readonly ILinkDataService linkDataService;
-        private readonly StoryboardContext dbContext;
-
-        public StoryboardNodeRepositoryFactory(ILinkDataService linkDataService, StoryboardContext dbContext)
+        private readonly IServiceProvider serviceProvider;
+        
+        public StoryboardNodeRepositoryFactory(IServiceProvider serviceProvider)
         {
-            this.linkDataService = linkDataService;
-            this.dbContext = dbContext;
+            this.serviceProvider = serviceProvider;
         }
 
         public IAsyncNodeRepository CreateRepository(INodeType nodeType)
         {
             if (nodeType == StoryboardNodeTypes.Actor)
-                return new ActorRepository(linkDataService, dbContext);
+                return serviceProvider.GetService<ActorRepository>();
             if (nodeType == StoryboardNodeTypes.Story)
-                return new StoryRepository(linkDataService, dbContext);
+                return serviceProvider.GetService<StoryRepository>();
             throw new ArgumentOutOfRangeException(nameof(nodeType), "Could not find repository for nodeType");
         }
 
 
-        public IAsyncNodeRepository<T> CreateRepository<T>(INodeType<T> nodeType) where T : INode =>
-            (IAsyncNodeRepository<T>)CreateRepository((INodeType) nodeType);
+        public IAsyncNodeRepository<T> CreateRepository<T>(INodeType<T> nodeType) where T : INode
+        {
+            return serviceProvider.GetService<IAsyncNodeRepository<T>>();
+        }
 
     }
 }

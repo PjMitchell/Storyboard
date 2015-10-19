@@ -13,6 +13,7 @@ using HDLink;
 using Storyboard.Data;
 using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
+using Storyboard.Domain.Core;
 
 namespace Storyboard.Web
 {
@@ -72,6 +73,10 @@ namespace Storyboard.Web
             services.AddTransient<IAsyncLinkRepository, LinkRepository>();
             services.AddTransient<IAsyncNodeRepositoryFactory, StoryboardNodeRepositoryFactory>();
             services.AddTransient<ILinkDataService, LinkDataService>();
+            services.AddTransient<IAsyncNodeRepository<Actor>, ActorRepository>();
+            services.AddTransient<IAsyncNodeRepository<Story>, StoryRepository>();
+            
+
 
 
             // Configure the options for the authentication middleware.
