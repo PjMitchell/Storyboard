@@ -1,29 +1,35 @@
-﻿<h3 ng-show="!vm.IsLoaded">Loading...</h3>
-<a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/" style="float:left"></a>
-<sb-edit-title style="width:calc(100% - 30px); float:left" sb-input="vm.Overview.Summary.Title" sb-saved="vm.update()"></sb-edit-title>
-<sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Summary.Synopsis" sb-saved="vm.update()"></sb-edit-area>
-<div ng-show="vm.IsLoaded">
-    <section style="width:calc(80% - 10px);float:left;">
-        <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
-        <table>
-            <tr ng-repeat="actor in vm.Overview.Actors">
-                <td>
-                    {{ actor.Name}}
-                </td>
-                <td>
-                    {{ actor.Description}}
-                </td>
-                <td>
-                    <a class="btn btn-icon glyphicon glyphicon-search" href="#actor/{{actor.Id}}/s/{{vm.Overview.Summary.Id}}"></a>
-                </td>
-                <td>
-                    <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="vm.deleteActorCommand(actor.Id)"></button>
-                </td>
-            </tr>
-        </table>
-    </section>
-    <aside class="sideMenu" style="width:calc(20% - 10px);float:right;">
+﻿<div class="grid">
+    <div class="gridCell" style="width:100%">
+        <h3 ng-show="!vm.IsLoaded">Loading...</h3>
+        <a class="btn btn-icon glyphicon glyphicon-chevron-left" href="#story/" style="float:left"></a>
+        <sb-edit-title style="width:calc(100% - 30px); float:left" sb-input="vm.Overview.Summary.Title" sb-saved="vm.update()"></sb-edit-title>
+        <sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Summary.Synopsis" sb-saved="vm.update()"></sb-edit-area>
+        <div ng-show="vm.IsLoaded">
+            <section>
+                <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" ng-click="vm.openCreateActorDialog()"></button></h3>
+                <table>
+                    <tr ng-repeat="actor in vm.Overview.Actors">
+                        <td>
+                            {{ actor.Name}}
+                        </td>
+                        <td>
+                            {{ actor.Description}}
+                        </td>
+                        <td>
+                            <a class="btn btn-icon glyphicon glyphicon-search" href="#actor/{{actor.Id}}/s/{{vm.Overview.Summary.Id}}"></a>
+                        </td>
+                        <td>
+                            <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="vm.deleteActorCommand(actor.Id)"></button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+    <sb-sidebar class="gridCell">
         <h3>Section</h3>
-        <p ng-repeat="section in vm.Overview.Sections">{{section.Description}}</p>
-    </aside>
+        <div ng-show="vm.IsLoaded">
+            <p ng-repeat="section in vm.Overview.Sections">{{section.Description}}</p>
+        </div>
+    </sb-sidebar>
 </div>

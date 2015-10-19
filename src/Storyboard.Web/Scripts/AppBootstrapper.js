@@ -16,6 +16,7 @@ app.factory('LinkDataService', function ($http) { return new Home.LinkDataServic
 app.controller('EditController', function ($scope) { return new Home.EditController($scope); });
 app.directive('sbEditTitle', function () { return new Home.EditTitle(); });
 app.directive('sbEditArea', function () { return new Home.EditArea(); });
+app.directive('sbSidebar', function () { return new Home.SideBar(); });
 app.controller('SummaryController', Home.SummaryController);
 app.controller('CreateStoryDialogController', Home.CreateStoryDialogController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);

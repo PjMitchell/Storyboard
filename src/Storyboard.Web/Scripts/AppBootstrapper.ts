@@ -18,6 +18,8 @@ app.factory('LinkDataService', ($http: ng.IHttpService) => new Home.LinkDataServ
 app.controller('EditController', ($scope: Home.IEditFieldScope) => new Home.EditController($scope));
 app.directive('sbEditTitle', () => new Home.EditTitle());
 app.directive('sbEditArea', () => new Home.EditArea());
+app.directive('sbSidebar', () => new Home.SideBar());
+
 app.controller('SummaryController', Home.SummaryController);
 app.controller('CreateStoryDialogController', Home.CreateStoryDialogController);
 app.controller('StoryOverviewController', Home.StoryOverviewController);
