@@ -71,3 +71,4 @@ Temporary Items
 *.user
 *.publish.xml
 *.pubxml
+*.lock.json
