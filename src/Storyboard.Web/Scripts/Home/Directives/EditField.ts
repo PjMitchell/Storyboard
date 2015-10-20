@@ -6,7 +6,7 @@ module Home {
             editfield: '=sbInput',
             onSaved: '&sbSaved'
         };
-        public require = 'E';
+        public restrict = 'E';
         public templateUrl = '/Templates/Directives/EditTitle.html';
         public controller = 'EditController';
        
@@ -17,7 +17,7 @@ module Home {
             editfield: '=sbInput',
             onSaved: '&sbSaved'
         };
-        public require = 'E';
+        public restrict = 'E';
         public templateUrl = '/Templates/Directives/EditArea.html';
         public controller = 'EditController';
 

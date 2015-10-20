@@ -12,7 +12,7 @@ body{
 
 header {
     background: $accentColour;
-    margin:0 0 20px 0;
+    margin:0 0 0 0;
     padding:5px;
 
 }
@@ -21,7 +21,9 @@ footer {
     margin: 20px 5px;
     font-size: $smallFont;
 }
-
+.page-content {
+    padding: 0 5px
+}
 .titleBlock {
     float: left;
     color: $fontColour;
@@ -33,7 +35,7 @@ footer {
 } 
 
 main {
-    padding: 0 5px;
+    padding: 0;
 }
 
 table {
@@ -59,9 +61,5 @@ table {
     color: $fontfaintColour;
 }
 
-aside.sideMenu {
-    padding-left: 5px;
-    border: 2px solid $accentColour;
-    background-color: $accentFaintColour;
-}
+
 

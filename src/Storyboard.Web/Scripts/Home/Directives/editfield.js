@@ -7,7 +7,7 @@ var Home;
                 editfield: '=sbInput',
                 onSaved: '&sbSaved'
             };
-            this.require = 'E';
+            this.restrict = 'E';
             this.templateUrl = '/Templates/Directives/EditTitle.html';
             this.controller = 'EditController';
         }
@@ -20,7 +20,7 @@ var Home;
                 editfield: '=sbInput',
                 onSaved: '&sbSaved'
             };
-            this.require = 'E';
+            this.restrict = 'E';
             this.templateUrl = '/Templates/Directives/EditArea.html';
             this.controller = 'EditController';
         }
