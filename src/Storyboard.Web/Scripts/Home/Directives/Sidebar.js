@@ -3,13 +3,18 @@ var Home;
 (function (Home) {
     var SideBar = (function () {
         function SideBar() {
-            this.scope = {
-                header: '&sbHeader'
-            };
-            this.require = 'E';
+            this.restrict = 'E';
             this.templateUrl = '/Templates/Directives/Sidebar.html';
             this.transclude = true;
             this.controller = 'SidebarController';
+            this.link = function (scope, instanceElement, instanceAttributes) {
+                var header = instanceAttributes['sidebarHeader'];
+                if (header)
+                    scope.header = header;
+                var openWidth = instanceAttributes['sidebarWidth'];
+                if (openWidth)
+                    scope.openWidth = openWidth;
+            };
         }
         return SideBar;
     })();
