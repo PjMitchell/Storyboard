@@ -3,17 +3,17 @@ using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
 using Storyboard.Web.Models;
 using Storyboard.Domain.Services;
 using Storyboard.Domain.Data;
 using Storyboard.Data.Core;
 using HDLink;
 using Storyboard.Data;
-using Microsoft.Dnx.Runtime;
-using Microsoft.Framework.Configuration;
 using Storyboard.Domain.Core;
+using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Storyboard.Web
 {
@@ -118,7 +118,7 @@ namespace Storyboard.Web
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
+                app.UseDatabaseErrorPage();
             }
             else
             {

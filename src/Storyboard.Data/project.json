@@ -9,9 +9,9 @@
     "dependencies": {
         "HDLink": "1.0.0-t150801095415",
         "Storyboard.Domain": "1.0.0-*",
-        "AutoMapper": "4.0.4",
-        "EntityFramework.Core": "7.0.0-beta8",
-        "EntityFramework.SqlServer": "7.0.0-beta8"
+        "AutoMapper": "4.1.1",
+        "EntityFramework.Core": "7.0.0-rc1-final",
+        "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final"
     },
 
     "frameworks": {

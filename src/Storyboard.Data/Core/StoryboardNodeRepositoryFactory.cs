@@ -1,7 +1,7 @@
 ﻿using System;
 using HDLink;
 using Storyboard.Domain.Core;
-using Microsoft.Framework.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Storyboard.Data.Core
 {
