@@ -3,12 +3,24 @@
     Layout = "~/Views/Shared/_AngularLayout.cshtml";
 }
 
-<main ng-app="storyboardApp">
-    <div ng-view=></div>
-</main>
+<app-home>Loading...</app-home>
 
 @section scripts
 {
-    <script src="~/App/Home.js"></script>
-    <script src="~/App/AppBootstrapper.js"></script>
+    <script src="~/lib/systemjs/dist/system.src.js"></script>
+    <script src="~/lib/rxjs/bundles/rx.js"></script>
+    <script src="~/lib/angular2/bundles/angular2.dev.js"></script>
+    <script src="~/lib/angular2/bundles/router.dev.js"></script>   
+    <script src="~/lib/reflect-metadata/reflect.js"></script>
+    <script>
+        System.config({
+            packages: {
+                '../app': {
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('../app/app.bootstrapper').catch(console.log.bind(console));
+    </script>
+
 }

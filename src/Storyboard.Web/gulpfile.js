@@ -8,7 +8,8 @@ var gulp = require("gulp"),
   concat = require("gulp-concat"),
   flatten = require('gulp-flatten'),
   watch = require('gulp-watch'),
-  tsd = require('gulp-tsd');
+  tsd = require('gulp-tsd'),
+  npmFile = require('gulp-npm-files');
 
 eval("var project = " + fs.readFileSync("./project.json"));
 
@@ -16,13 +17,20 @@ var paths = {
   bower: "./bower_components/",
   lib: "./" + project.webroot + "/lib/",
   css: "./" + project.webroot + "/css/",
-  app: "./" + project.webroot + "/app/"
+  app: "./" + project.webroot + "/app/",
+  webroot: "./" + project.webroot +"/"
 };
-
-var tsOption = {
-    sortOutput: true,
-    target: 'ES5'
+var npmConfig = {
+    libBase: 'node_modules',
+    libs: [
+         require.resolve('systemjs/dist/system.src.js'),
+         require.resolve('angular2/bundles/angular2.dev.js'),
+         require.resolve('angular2/bundles/router.dev.js'),
+         require.resolve('rxjs/bundles/rx.js')
+    ]
 }
+var tsProject = tsc.createProject('tsconfig.json');
+
 
 gulp.task('declaration', function (callback) {
     tsd({
@@ -42,13 +50,10 @@ gulp.task('sass', function(){
 });
 
 gulp.task('typeScript', function () {
-    gulp.src('./Scripts/AppBootstrapper.ts')
-    .pipe(tsc().js).pipe(gulp.dest(paths.app));
-    gulp.src(['./Scripts/Home/**/*.ts'])
-    .pipe(tsc().js)
-    .pipe(flatten())
-    .pipe(concat('home.js'))
-    .pipe(gulp.dest(paths.app));
+    var tsResult = tsProject.src() 
+            .pipe(tsc(tsProject));
+
+    tsResult.js.pipe(gulp.dest(paths.webroot));
 });
 
 gulp.task('watch', function () {
@@ -67,13 +72,16 @@ gulp.task("copy", ["clean"], function () {
     "jquery-validation-unobtrusive": "jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
     "angular": "angular/angular.*{js,map}",
     "angular-route": "angular-route/angular-route.*{js,map}",
-    "angular-bootstrap": "angular-bootstrap/*.{js,map,css}"
+    "angular-bootstrap": "angular-bootstrap/*.{js,map,css}",
+    "reflect-metadata": "reflect-metadata/*.{js,map}"
   }
 
   for (var destinationDir in bower) {
     gulp.src(paths.bower + bower[destinationDir])
       .pipe(gulp.dest(paths.lib + destinationDir));
   }
+    gulp.src(npmConfig.libs, { base: npmConfig.libBase })
+    .pipe(gulp.dest(paths.lib))
 });
 
 
