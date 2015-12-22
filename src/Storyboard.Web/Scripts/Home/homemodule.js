@@ -6,4 +6,5 @@
 /// <reference path="controllers/createactordialogcontroller.ts" />
 /// <reference path="controllers/createstorydialogcontroller.ts" />
 /// <reference path="controllers/storyoverviewcontroller.ts" />
+/// <reference path="directives/sidebar.ts" />
 /// <reference path="controllers/summarycontroller.ts" />

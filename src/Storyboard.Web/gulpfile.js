@@ -7,7 +7,8 @@ var gulp = require("gulp"),
   tsc = require("gulp-typescript"),
   concat = require("gulp-concat"),
   flatten = require('gulp-flatten'),
-  watch = require('gulp-watch');
+  watch = require('gulp-watch'),
+  tsd = require('gulp-tsd');
 
 eval("var project = " + fs.readFileSync("./project.json"));
 
@@ -22,6 +23,13 @@ var tsOption = {
     sortOutput: true,
     target: 'ES5'
 }
+
+gulp.task('declaration', function (callback) {
+    tsd({
+        command: 'reinstall',
+        config: './tsd.json'
+    }, callback);
+});
 
 gulp.task("clean", function (cb) {
   rimraf(paths.lib, cb);
@@ -67,3 +75,5 @@ gulp.task("copy", ["clean"], function () {
       .pipe(gulp.dest(paths.lib + destinationDir));
   }
 });
+
+
