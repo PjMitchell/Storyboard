@@ -1,26 +1,28 @@
 ﻿@{
     ViewBag.Title = "Storyboard";
-    Layout = "~/Views/Shared/_AngularLayout.cshtml";
 }
-
+@section head
+{
+    <base href="/Home/App">
+}
 <app-home>Loading...</app-home>
 
 @section scripts
 {
-    <script src="~/lib/systemjs/dist/system.src.js"></script>
-    <script src="~/lib/rxjs/bundles/rx.js"></script>
-    <script src="~/lib/angular2/bundles/angular2.dev.js"></script>
-    <script src="~/lib/angular2/bundles/router.dev.js"></script>   
-    <script src="~/lib/reflect-metadata/reflect.js"></script>
+    <script src="../../lib/systemjs/dist/system.src.js"></script>
+    <script src="../../lib/rxjs/bundles/rx.js"></script>
+    <script src="../../lib/angular2/bundles/angular2.dev.js"></script>
+    <script src="../../lib/angular2/bundles/router.dev.js"></script>   
+    <script src="../../lib/reflect-metadata/reflect.js"></script>
     <script>
         System.config({
             packages: {
-                '../app': {
+                '../../app': {
                     defaultExtension: 'js'
                 }
             }
         });
-        System.import('../app/app.bootstrapper').catch(console.log.bind(console));
+        System.import('../../app/app.bootstrapper').catch(console.log.bind(console));
     </script>
 
 }

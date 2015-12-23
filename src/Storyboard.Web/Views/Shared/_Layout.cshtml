@@ -6,6 +6,7 @@
     <title>@ViewBag.Title</title>
     @await Html.PartialAsync("_CommonStylePartial")
     <meta name="description" content="@ViewBag.Description" />
+    @RenderSection("head", required: false)
 </head>
 <body>
     @Component.Invoke("Header")
