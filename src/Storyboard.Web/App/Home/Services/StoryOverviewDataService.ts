@@ -9,7 +9,7 @@ import * as rx from 'rxjs/Rx';
 export interface IStoryOverviewDataService {
     getAll(): Promise<models.IStorySummary[]>;
     get(id: number): Promise<models.IStoryOverview>;
-    //add(command: AddUpdateStoryCommand): Promise<boolean>;
+    add(command: AddUpdateStoryCommand): Promise<void>;
     //put(command: AddUpdateStoryCommand): Promise<boolean>;
     delete(id: number): Promise<void>;
 }
@@ -27,11 +27,9 @@ export class StoryOverviewDataService implements IStoryOverviewDataService {
         return this.http.get<models.IStoryOverview>(this.apiRoute + '/' + id)
     }
 
-    //public add(command: AddUpdateStoryCommand) {
-    //    return this.http.post(this.apiRoute, JSON.stringify(command))
-    //        .map(response => true)
-    //        .toPromise();
-    //}
+    public add(command: AddUpdateStoryCommand) {
+        return this.http.post(this.apiRoute, command);
+    }
 
     //public put(command: AddUpdateStoryCommand) {
     //    return this.http.put(this.apiRoute + '/' + command.Id, JSON.stringify(command))
