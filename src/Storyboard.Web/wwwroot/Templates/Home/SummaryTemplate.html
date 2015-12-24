@@ -1,1 +1,16 @@
-﻿Hello world2
+﻿<div class="page-content">
+    <h3>Stories <button class="btn btn-icon glyphicon glyphicon-plus" (click)="openCreateStoryDialog()"></button></h3>
+    <table>
+        <tr *ngFor="#summary of Summaries">
+            <td>
+                <a href="#story/{{summary.Id}}">{{ summary.Title}}</a>
+            </td>
+            <td>
+                {{ summary.Synopsis}}
+            </td>
+            <td>
+                <button class="btn btn-icon glyphicon glyphicon-trash" (click)="deleteStoryCommand(summary.Id)"></button>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -65,7 +65,7 @@ Temporary Items
 /src/Storyboard.Web/wwwroot/lib
 /src/Storyboard.Web/wwwroot/css
 /src/Storyboard.Web/wwwroot/app
-/src/Storyboard.Web/app/*js
+/src/Storyboard.Web/app/**/*js
 
 /src/Storyboard.Web/wwwroot/_references.js
 *.suo

@@ -24,8 +24,10 @@ var npmConfig = {
     libBase: 'node_modules',
     libs: [
          require.resolve('systemjs/dist/system.src.js'),
+         require.resolve('zone.js/dist/zone.js'),
          require.resolve('angular2/bundles/angular2.dev.js'),
          require.resolve('angular2/bundles/router.dev.js'),
+         require.resolve('angular2/bundles/http.dev.js'),
          require.resolve('rxjs/bundles/rx.js')
     ]
 }
@@ -73,7 +75,8 @@ gulp.task("copy", ["clean"], function () {
     "angular": "angular/angular.*{js,map}",
     "angular-route": "angular-route/angular-route.*{js,map}",
     "angular-bootstrap": "angular-bootstrap/*.{js,map,css}",
-    "reflect-metadata": "reflect-metadata/*.{js,map}"
+    "reflect-metadata": "reflect-metadata/*.{js,map}",
+    "es6-shim": "es6-shim/*.{js,map}"
   }
 
   for (var destinationDir in bower) {
