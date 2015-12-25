@@ -1,4 +1,10 @@
-﻿export class AddUpdateStoryCommand {
+﻿export interface IAddUpdateStoryCommand {
+    Id: number
+    Title: string
+    Synopsis: string
+}
+
+export class AddUpdateStoryCommand implements IAddUpdateStoryCommand {
     Id: number
     Title: string
     Synopsis: string

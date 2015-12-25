@@ -2,7 +2,7 @@
 export interface IHttpAdaptor {
     get<Tresult>(url: string): Promise<Tresult>;
     delete(url: string): Promise<void>;
-    post(url: string, data: any): Promise<void>;
+    post<T>(url: string, data: any): Promise<IPostResult<T>>;
     put(url: string, data: any): Promise<void>;
 }
 @Injectable()
@@ -28,11 +28,52 @@ export class HttpAdaptor implements IHttpAdaptor {
             });
             return promise;
     }
-    public post(url: string, data: any) {
-        return this.sendData(url, 'POST', data);
+    public post<T>(url: string, data: any) {
+        var request = new XMLHttpRequest(),
+            promise = new Promise<IPostResult<T>>((success, reject) => {
+                request.open('POST', url, true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        let location = request.getResponseHeader('Location'),
+                            value = <T>JSON.parse(request.responseText);
+                        success({
+                            location: location,
+                            value: value
+                        });
+                    } else {
+                        reject();
+                    }
+                };
+
+                request.onerror = function () {
+                    reject();
+                };
+
+                request.send(JSON.stringify(data));
+            });
+        return promise;
     }
     public put(url: string, data: any) {
-        return this.sendData(url, 'PUT', data);
+        var request = new XMLHttpRequest(),
+            promise = new Promise<void>((success, reject) => {
+                request.open('PUT', url, true);
+                request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        success();
+                    } else {
+                        reject();
+                    }
+                };
+
+                request.onerror = function () {
+                    reject();
+                };
+
+                request.send(JSON.stringify(data));
+            });
+        return promise;
     }
     public delete(url: string) {
         var request = new XMLHttpRequest(),
@@ -54,26 +95,10 @@ export class HttpAdaptor implements IHttpAdaptor {
             });
         return promise;
     }
+       
+}
 
-    private sendData(url: string, verb: string, data: any) {
-        var request = new XMLHttpRequest(),
-            promise = new Promise<void>((success, reject) => {
-                request.open(verb, url, true);
-                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-                request.onload = function () {
-                    if (request.status >= 200 && request.status < 400) {
-                        success();
-                    } else {
-                        reject();
-                    }
-                };
-
-                request.onerror = function () {
-                    reject();
-                };
-
-                request.send(data);
-            });
-        return promise;
-    }
+export interface IPostResult<T> {
+    location: string;
+    value: T;
 }

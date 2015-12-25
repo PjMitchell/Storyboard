@@ -2,14 +2,14 @@
 
 import {Injectable, Inject} from 'angular2/core';
 import * as models from '../Models/StoryModels';
-import {AddUpdateStoryCommand} from '../Models/AddUpdateStoryCommand';
+import {IAddUpdateStoryCommand} from '../Models/AddUpdateStoryCommand';
 import {HttpAdaptor, IHttpAdaptor} from '../../Core/HttpAdaptor';
 import * as rx from 'rxjs/Rx';
 
 export interface IStoryOverviewDataService {
     getAll(): Promise<models.IStorySummary[]>;
     get(id: number): Promise<models.IStoryOverview>;
-    add(command: AddUpdateStoryCommand): Promise<void>;
+    add(command: IAddUpdateStoryCommand): Promise<number>;
     //put(command: AddUpdateStoryCommand): Promise<boolean>;
     delete(id: number): Promise<void>;
 }
@@ -27,8 +27,9 @@ export class StoryOverviewDataService implements IStoryOverviewDataService {
         return this.http.get<models.IStoryOverview>(this.apiRoute + '/' + id)
     }
 
-    public add(command: AddUpdateStoryCommand) {
-        return this.http.post(this.apiRoute, command);
+    public add(command: IAddUpdateStoryCommand) {
+        return this.http.post<IAddUpdateStoryCommand>(this.apiRoute, command)
+            .then(value => value.value.Id);
     }
 
     //public put(command: AddUpdateStoryCommand) {

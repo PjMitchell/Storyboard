@@ -1,5 +1,4 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using Storyboard.Domain.Data;
 using Storyboard.Web.API;
 using Telerik.JustMock;
@@ -52,7 +51,7 @@ namespace Storyboard.Web.Tests.Apis
                 .Returns(() => Task.FromResult(story));
             // Act
 
-            var result = await target.Get(id);
+            var result = await target.GetOverview(id);
             // Assert
             Assert.Equal(story, result);
 
@@ -63,7 +62,7 @@ namespace Storyboard.Web.Tests.Apis
         {
             var newStory = new AddUpdateStoryCommand();
             Mock.Arrange(() => repo.Add(newStory))
-                .Returns(() => Task.FromResult(1))
+                .Returns(() => Task.FromResult(newStory))
                 .MustBeCalled();
 
             // Act
@@ -74,6 +73,42 @@ namespace Storyboard.Web.Tests.Apis
 
         }
 
+        [Fact(DisplayName = "StoryOverviewController returns Completed Command")]
+        public async Task Post_ReturnsCompletedCommand()
+        {
+            var newId = 42;
+            var newStory = new AddUpdateStoryCommand();
+            Mock.Arrange(() => repo.Add(newStory))
+                .Returns(() =>
+                {
+                    newStory.Id = newId;
+                    return Task.FromResult(newStory);
+                });
+            // Act
+            var result = await target.Post(newStory);
+            // Assert
+            var completedCommand = result.Value as AddUpdateStoryCommand;
+            Assert.NotNull(completedCommand);
+            Assert.Equal(newId, completedCommand.Id);
+        }
+
+        [Fact(DisplayName = "StoryOverviewController returns Correct location")]
+        public async Task Post_ReturnsCorrectLocation()
+        {
+            var newId = 42;
+            var newStory = new AddUpdateStoryCommand();
+            Mock.Arrange(() => repo.Add(newStory))
+                .Returns(() =>
+                {
+                    newStory.Id = newId;
+                    return Task.FromResult(newStory);
+                });
+            // Act
+            var result = await target.Post(newStory);
+            // Assert
+            Assert.Equal(nameof(target.GetOverview), result.ActionName);
+            Assert.Equal(newId, result.RouteValues["id"]);
+        }
 
         [Fact(DisplayName = "StoryOverviewController Put updates Story")]
         public async Task Put_UpdatesStory()

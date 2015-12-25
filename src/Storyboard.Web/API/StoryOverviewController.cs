@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Mvc;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using Storyboard.Domain.Models;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace Storyboard.Web.API
 {
     [Route("api/[controller]")]
+    //todo Consider breaking up concept of storysummary story creation and overview
     public class StoryOverviewController : Controller
     {
         private readonly IStoryRepository repository;
@@ -29,16 +31,17 @@ namespace Storyboard.Web.API
         }
 
         [HttpGet("{id:int}")]
-        public async Task<StoryOverview> Get(int id)
+        public async Task<StoryOverview> GetOverview(int id)
         {
             return await storyReadService.GetStoryOverview(id);
         }
 
         // POST api/StoryOverview
         [HttpPost]
-        public async Task Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
+        public async Task<CreatedAtActionResult> Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
         {
-            await repository.Add(addUpdateStoryCommand);
+            var resultingCommand = await repository.Add(addUpdateStoryCommand);           
+            return CreatedAtAction(nameof(GetOverview), new { id = resultingCommand.Id }, resultingCommand);
         }
 
         // PUT api/<controller>/5

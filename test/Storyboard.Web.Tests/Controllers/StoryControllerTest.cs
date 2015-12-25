@@ -52,7 +52,7 @@ namespace Storyboard.Web.Tests.Controllers
                 Synopsis = "Synposis"
             };
             Mock.Arrange(() => repo.Add(command))
-                .Returns(() => Task.FromResult(1))
+                .Returns(() => Task.FromResult(command))
                 .MustBeCalled();
 
             // Act
