@@ -1,8 +1,8 @@
 ﻿import {Component, Inject} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {StoryOverviewDataService, IStoryOverviewDataService} from '../Services/StoryOverviewDataService';
-import * as model from '../Models/StoryModels';
-import {AddUpdateStoryCommand} from '../Models/AddUpdateStoryCommand';
+import {StoryOverviewDataService, IStoryOverviewDataService} from '../services/storyoverviewdataservice';
+import * as model from '../models/storymodels';
+import {AddUpdateStoryCommand} from '../models/addupdatestorycommand';
 
 
 @Component({

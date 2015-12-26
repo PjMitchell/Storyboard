@@ -3,7 +3,7 @@
     <table>
         <tr *ngFor="#summary of Summaries">
             <td>
-                <a href="#story/{{summary.Id}}">{{ summary.Title}}</a>
+                <a [routerLink]="['StoryOverview', { id: summary.Id }]">{{ summary.Title}}</a>
             </td>
             <td>
                 {{ summary.Synopsis}}

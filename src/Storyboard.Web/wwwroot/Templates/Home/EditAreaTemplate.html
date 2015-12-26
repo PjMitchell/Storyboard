@@ -1,0 +1,8 @@
+﻿<div style="display:inline">
+    <p style="margin:0;" ng-hide="isEditing">{{editfield}}<button class="btn btn-icon glyphicon glyphicon-pencil faint" ng-click="edit()"></button></p>
+    <textarea style="width: calc(100% - 50px)" maxlength="4000" rows="5" ng-model="editfield" placeholder="Enter a synopsis here" ng-show="isEditing"></textarea>
+    <div class="btn-group" role="group" aria-label="..." ng-show="isEditing">
+        <button class="btn btn-icon glyphicon glyphicon-floppy-disk" ng-click="save()"></button>
+        <button class="btn btn-icon glyphicon glyphicon-remove" ng-click="cancel()"></button>
+    </div>
+</div>
