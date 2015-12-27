@@ -2,11 +2,11 @@
 import {Router, RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import {StoryOverviewDataService, IStoryOverviewDataService } from '../services/storyoverviewdataservice';
 import * as models from '../models/storymodels';
-import {EditTextBoxComponent, IEditFieldEventArg} from './editfield'
+import {EditTextBoxComponent, EditTextAreaComponent, IEditFieldEventArg} from './editfieldcomponents'
 
 @Component({
     templateUrl: '/Templates/Home/StoryOverviewTemplate.html',
-    directives: [ROUTER_DIRECTIVES, EditTextBoxComponent]
+    directives: [ROUTER_DIRECTIVES, EditTextBoxComponent, EditTextAreaComponent]
 })
 export class StoryOverviewController implements OnInit {
     //private modalService: ng.ui.bootstrap.IModalService;
@@ -64,7 +64,11 @@ export class StoryOverviewController implements OnInit {
         this.storyDataService.put(this.Overview.Summary)
             .catch(reason => { this.Overview.Summary.Title = arg.OldValue; });
     }
-
+    updateSynopsis(arg: IEditFieldEventArg) {
+        this.Overview.Summary.Synopsis = arg.NewValue;
+        this.storyDataService.put(this.Overview.Summary)
+            .catch(reason => { this.Overview.Summary.Synopsis = arg.OldValue; });
+    }
     //public update() {
     //    this.storyDataService.put(this.Overview.Summary)
     //}

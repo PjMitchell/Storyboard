@@ -3,7 +3,7 @@
         <h3 *ngIf="!IsLoaded">Loading...</h3>
         <a class="btn btn-icon glyphicon glyphicon-chevron-left" [routerLink]="['Summary']" style="float:left"></a>
         <sb-EditTextBox *ngIf="IsLoaded" style="width:calc(100% - 30px); float:left" [Value]="Overview.Summary.Title" (saveRequest)="updateTitle($event)"></sb-EditTextBox>
-        <!--<sb-edit-area style="width:calc(100% - 30px);" sb-input="vm.Overview.Summary.Synopsis" sb-saved="vm.update()"></sb-edit-area>-->
+        <sb-EditTextArea *ngIf="IsLoaded" style="width:calc(100% - 30px);" [Value]="Overview.Summary.Synopsis" (saveRequest)="updateSynopsis($event)"></sb-EditTextArea>
         <div *ngIf="IsLoaded">
             <h3>Actors <button class="btn btn-icon glyphicon glyphicon-plus" (click)="openCreateActorDialog()"></button></h3>
             <table>

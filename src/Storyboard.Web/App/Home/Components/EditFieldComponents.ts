@@ -1,12 +1,16 @@
 ﻿import {Component,Input, Output, EventEmitter} from 'angular2/core';
+export interface IEditFieldEventArg {
+    NewValue: string;
+    OldValue: string;
+}
+
 @Component({
     selector: 'sb-EditTextBox',
     templateUrl: '/Templates/Home/EditTextBoxTemplate.html',
     inputs: ['Value'],
     outputs: ['saveRequest']
-
 })
-export class EditTextBoxComponent {
+export class EditTextBoxComponent{
     constructor() {
         this.saveRequest = new EventEmitter<IEditFieldEventArg>();
     }
@@ -33,12 +37,13 @@ export class EditTextBoxComponent {
     }
 }
 
-export interface IEditFieldEventArg {
-    NewValue: string;
-    OldValue: string;
-}
-
-export class EditField {
+@Component({
+    selector: 'sb-EditTextArea',
+    templateUrl: '/Templates/Home/EditTextAreaTemplate.html',
+    inputs: ['Value'],
+    outputs: ['saveRequest']
+})
+export class EditTextAreaComponent {
     constructor() {
         this.saveRequest = new EventEmitter<IEditFieldEventArg>();
     }
