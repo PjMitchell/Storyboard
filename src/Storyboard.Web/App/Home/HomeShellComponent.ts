@@ -2,6 +2,7 @@
 import {RouteConfig, RouterOutlet} from 'angular2/router';
 import {SummaryComponent} from './components/summarycomponent';
 import {CreateStoryComponent} from './components/createstorycomponent';
+import {CreateActorComponent} from './components/createactorcomponent';
 import {StoryOverviewController} from './components/storyoverviewcomponent';
 
 @Component({
@@ -12,6 +13,7 @@ import {StoryOverviewController} from './components/storyoverviewcomponent';
 @RouteConfig([
         { path: '/', name: 'Summary', component: SummaryComponent, useAsDefault: true },
         { path: '/CreateStory', name: 'CreateStory', component: CreateStoryComponent },
+        { path: '/CreateActor/:storyId', name: 'CreateActor', component: CreateActorComponent },
         { path: '/StoryOverview/:id', name: 'StoryOverview', component: StoryOverviewController },
 ])  
 export class HomeShellComponent {

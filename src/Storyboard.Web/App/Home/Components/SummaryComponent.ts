@@ -1,6 +1,6 @@
 ﻿import {Component, Inject, OnInit} from 'angular2/core';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {StoryOverviewDataService, IStoryOverviewDataService} from '../services/storyoverviewdataservice';
+import {StoryDataService, IStoryDataService} from '../services/storydataservice';
 import * as model from '../Models/StoryModels';
 
 @Component({
@@ -10,10 +10,10 @@ import * as model from '../Models/StoryModels';
 export class SummaryComponent implements OnInit {
     
 
-    constructor(@Inject(StoryOverviewDataService) private dataService: IStoryOverviewDataService, private router: Router) {
-        this.Summaries = new Array<model.IStorySummary>();
+    constructor(@Inject(StoryDataService) private dataService: IStoryDataService, private router: Router) {
+        this.Summaries = new Array<model.IStory>();
     }
-    public Summaries: model.IStorySummary[];
+    public Summaries: model.IStory[];
 
     ngOnInit() {
         this.getAllSummaries();
@@ -32,7 +32,7 @@ export class SummaryComponent implements OnInit {
         this.dataService.getAll()
             .then(result => this.onSummariesReturned(result));
     };
-    private onSummariesReturned(result: model.IStorySummary[]){
+    private onSummariesReturned(result: model.IStory[]){
         this.Summaries = result;
     };
 }

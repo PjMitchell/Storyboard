@@ -3,25 +3,25 @@ import * as models from '../models/storymodels';
 import {IAddUpdateStoryCommand} from '../models/addupdatestorycommand';
 import {HttpAdaptor, IHttpAdaptor} from '../../core/httpadaptor';
 
-export interface IStoryOverviewDataService {
-    getAll(): Promise<models.IStorySummary[]>;
-    get(id: number): Promise<models.IStoryOverview>;
+export interface IStoryDataService {
+    getAll(): Promise<models.IStory[]>;
+    get(id: number): Promise<models.IStory>;
     add(command: IAddUpdateStoryCommand): Promise<number>;
     put(command: IAddUpdateStoryCommand): Promise<void>;
     delete(id: number): Promise<void>;
 }
 @Injectable()
-export class StoryOverviewDataService implements IStoryOverviewDataService {
-    private apiRoute = '/api/StoryOverview';
+export class StoryDataService implements IStoryDataService {
+    private apiRoute = '/api/Story';
 
     constructor(@Inject(HttpAdaptor) private http: IHttpAdaptor) {
     }
 
     public getAll() {
-        return this.http.get<models.IStorySummary[]>(this.apiRoute)
+        return this.http.get<models.IStory[]>(this.apiRoute)
     }
     public get(id: number) {
-        return this.http.get<models.IStoryOverview>(this.apiRoute + '/' + id)
+        return this.http.get<models.IStory>(this.apiRoute + '/' + id)
     }
 
     public add(command: IAddUpdateStoryCommand) {

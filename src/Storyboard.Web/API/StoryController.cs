@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
+using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using Storyboard.Domain.Models;
@@ -11,29 +12,27 @@ using System.Threading.Tasks;
 namespace Storyboard.Web.API
 {
     [Route("api/[controller]")]
-    //todo Consider breaking up concept of storysummary story creation and overview
-    public class StoryOverviewController : Controller
+    public class StoryController : Controller
     {
         private readonly IStoryRepository repository;
-        private readonly IStoryReadService storyReadService;
         
-        public StoryOverviewController(IStoryReadService storyReadService, IStoryRepository repository)
+        public StoryController(IStoryRepository repository)
         {
             this.repository = repository;
-            this.storyReadService = storyReadService;
         }
 
         [HttpGet]
-        public async Task<List<StorySummary>> Get()
+        public async Task<List<Story>> Get()
         {
-            var result = await storyReadService.GetStorySummaries();
+            var result = await repository.GetAsync();
             return result;
         }
 
         [HttpGet("{id:int}")]
-        public async Task<StoryOverview> GetOverview(int id)
+        public async Task<Story> GetById(int id)
         {
-            return await storyReadService.GetStoryOverview(id);
+            var result = await repository.GetAsync(id);
+            return result;
         }
 
         // POST api/StoryOverview
@@ -41,7 +40,7 @@ namespace Storyboard.Web.API
         public async Task<CreatedAtActionResult> Post([FromBody]AddUpdateStoryCommand addUpdateStoryCommand)
         {
             var resultingCommand = await repository.Add(addUpdateStoryCommand);           
-            return CreatedAtAction(nameof(GetOverview), new { id = resultingCommand.Id }, resultingCommand);
+            return CreatedAtAction(nameof(GetById), new { id = resultingCommand.Id }, resultingCommand);
         }
 
         // PUT api/<controller>/5

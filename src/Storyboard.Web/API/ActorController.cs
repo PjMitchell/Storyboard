@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using HDLink;
+using Microsoft.AspNet.Mvc;
 using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
+using Storyboard.Web.Models.Home;
+using Storyboard.Web.Models.Util;
+using System.Collections.Generic;
 using System.Net;
 
 using System.Threading.Tasks;
@@ -16,10 +20,11 @@ namespace Storyboard.Web.API
     public class ActorController : Controller
     {
         private IActorRepository repository;
-        
-        public ActorController(IActorRepository repo)
+        private ILinkDataService linkDataService;
+        public ActorController(IActorRepository repo, ILinkDataService linkDataService)
         {
             repository = repo;
+            this.linkDataService = linkDataService;
         }
 
         //Get ap/Actor/1
@@ -31,11 +36,18 @@ namespace Storyboard.Web.API
 
         // Post api/Actor
         [HttpPost]
-        public async Task<ObjectResult> Post([FromBody]AddUpdateActorCommand command)
+        public async Task<ActionResult> Post([FromBody]CreateActorCommand command)
         {
-            var id = await repository.Add(command);
+            if (command == null)
+                return HttpBadRequest();
+            var id = await repository.Add(command.ActorCommand);
+            command.ActorCommand.Id = id;
+            foreach(var link in command?.Links?? new List<CreateLinkForNewNodeCommand>())
+            {
+                await linkDataService.Add(link.ToCreateLinkCommand(id, StoryboardNodeTypes.Actor));
+            }
 
-            return new ObjectResult(id) { StatusCode = (int)HttpStatusCode.Created }; 
+            return CreatedAtAction(nameof(Get), new { id= id}, command); 
         }
 
         // Post api/Actor

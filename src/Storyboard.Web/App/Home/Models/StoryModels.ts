@@ -1,4 +1,4 @@
-﻿export interface IStorySummary {
+﻿export interface IStory {
     Id: number;
     Title: string;
     Synopsis: string;
@@ -9,7 +9,7 @@ export interface IActor {
     Name: string;
     Description: string;
 };
-export class StorySummary implements IStorySummary {
+export class Story implements IStory {
     Id: number;
     Title: string;
     Synopsis: string;
@@ -34,12 +34,12 @@ export class StorySection {
     ParentHierarchyElementId: number;
 }
 export interface IStoryOverview {
-    Summary: IStorySummary;
+    Summary: IStory;
     Actors: IActor[];
     Sections: IStorySection[];
 };
-export class StoryOverview {
-    Summary: StorySummary;
+export class StoryOverview implements IStoryOverview {
+    Summary: Story;
     Actors: Actor[];
     Sections: StorySection[];
 };
