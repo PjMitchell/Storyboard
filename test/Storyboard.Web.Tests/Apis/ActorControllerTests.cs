@@ -37,7 +37,7 @@ namespace Storyboard.Web.Tests.Apis
             var id = 3;
             Mock.Arrange(() => repo.GetAsync(id))
                 .Returns(() => Task.FromResult(expected));
-            var result = await target.Get(id);
+            var result = await target.GetById(id);
             Assert.Equal(expected, result);
         }
 

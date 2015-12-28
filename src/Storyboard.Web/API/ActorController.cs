@@ -29,7 +29,7 @@ namespace Storyboard.Web.API
 
         //Get ap/Actor/1
         [HttpGet("{id:int}")]
-        public async Task<Actor> Get(int id)
+        public async Task<Actor> GetById(int id)
         {
             return await repository.GetAsync(id);
         }
@@ -47,7 +47,7 @@ namespace Storyboard.Web.API
                 await linkDataService.Add(link.ToCreateLinkCommand(id, StoryboardNodeTypes.Actor));
             }
 
-            return CreatedAtAction(nameof(Get), new { id= id}, command); 
+            return CreatedAtAction(nameof(GetById), new { id= id}, command); 
         }
 
         // Post api/Actor

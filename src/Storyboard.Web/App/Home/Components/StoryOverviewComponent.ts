@@ -5,10 +5,10 @@ import {ActorDataService, IActorDataService } from '../services/actordataservice
 import {OverviewDataService, IOverviewDataService } from '../services/overviewdataservice';
 import * as models from '../models/storymodels';
 import {EditTextBoxComponent, EditTextAreaComponent, IEditFieldEventArg} from './editfieldcomponents'
-
+import {SideBarComponent} from './sidebarcomponent';
 @Component({
     templateUrl: '/Templates/Home/StoryOverviewTemplate.html',
-    directives: [ROUTER_DIRECTIVES, EditTextBoxComponent, EditTextAreaComponent]
+    directives: [ROUTER_DIRECTIVES, EditTextBoxComponent, EditTextAreaComponent, SideBarComponent]
 })
 export class StoryOverviewController implements OnInit {
 
@@ -47,12 +47,12 @@ export class StoryOverviewController implements OnInit {
         })
     };
 
-    private updateTitle(arg: IEditFieldEventArg) {
+    updateTitle(arg: IEditFieldEventArg) {
         this.Overview.Summary.Title = arg.NewValue;
         this.storyDataService.put(this.Overview.Summary)
             .catch(reason => { this.Overview.Summary.Title = arg.OldValue; });
     }
-    private updateSynopsis(arg: IEditFieldEventArg) {
+    updateSynopsis(arg: IEditFieldEventArg) {
         this.Overview.Summary.Synopsis = arg.NewValue;
         this.storyDataService.put(this.Overview.Summary)
             .catch(reason => { this.Overview.Summary.Synopsis = arg.OldValue; });

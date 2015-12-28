@@ -15,7 +15,7 @@
                         {{actor.Description}}
                     </td>
                     <td>
-                        <a class="btn btn-icon glyphicon glyphicon-search" href="#actor/{{actor.Id}}/s/{{Overview.Summary.Id}}"></a>
+                        <a class="btn btn-icon glyphicon glyphicon-search" [routerLink]="['ActorOverview', { id: actor.Id, storyId:Overview.Summary.Id }]"></a>
                     </td>
                     <td>
                         <button class="btn btn-icon glyphicon glyphicon-trash" ng-click="deleteActorCommand(actor.Id)"></button>
@@ -24,9 +24,9 @@
             </table>          
         </div>
     </div>
-    <!--<sb-sidebar class="gridCell sideMenu" sidebar-header="Section" sidebar-width="200px">
-        <div ng-show="vm.IsLoaded">
-            <p ng-repeat="section in vm.Overview.Sections">{{section.Description}}</p>
+    <sb-SideBar class="gridCell sideMenu" [Header]="'Section'" [Width]="'200px'">
+        <div *ngIf="IsLoaded">
+            <p *ngFor="#section of Overview.Sections">{{section.Description}}</p>
         </div>
-    </sb-sidebar>-->
+    </sb-SideBar>
 </div>

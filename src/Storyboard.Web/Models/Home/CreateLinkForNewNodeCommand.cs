@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Storyboard.Web.Models.Home
+﻿namespace Storyboard.Web.Models.Home
 {
     /// <summary>
     /// Used to attach a link to a new node. New node will be node A 
