@@ -28,6 +28,7 @@
         });
         Promise.all([
         System.import('../../app/home/services/actordataservice.spec'),
+        System.import('../../app/home/services/overviewdataservice.spec'),
         System.import('../../app/home/services/storydataservice.spec')
         ]).then(window.onload)
           .catch(console.log.bind(console));
