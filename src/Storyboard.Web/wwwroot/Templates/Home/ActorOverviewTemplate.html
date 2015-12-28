@@ -1,0 +1,4 @@
+﻿<h3 *ngIf="!IsLoaded">Loading...</h3>
+<a class="btn btn-icon glyphicon glyphicon-chevron-left" [routerLink]="['StoryOverview', {id: StoryId}]" style="float:left"></a>
+<sb-EditTextBox *ngIf="IsLoaded" style="width:calc(100% - 30px); float:left" [Value]="Overview.Name" (saveRequest)="updateName($event)"></sb-EditTextBox>
+<sb-EditTextArea *ngIf="IsLoaded" style="width:calc(100% - 30px);" [Value]="Overview.Description" (saveRequest)="updateDescription($event)"></sb-EditTextArea>
