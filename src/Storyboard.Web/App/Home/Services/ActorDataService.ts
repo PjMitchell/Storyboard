@@ -7,7 +7,7 @@ export interface IActorDataService {
     //getAll(): Promise<models.IStory[]>;
     get(id: number): Promise<models.IActor>;
     add(command: ICreateActorCommand): Promise<number>;
-    put(command: models.IActor): Promise<void>;
+    update(command: models.IActor): Promise<void>;
     delete(id: number): Promise<void>;
 }
 @Injectable()
@@ -29,7 +29,7 @@ export class ActorDataService implements IActorDataService {
             .then(value => value.value.ActorCommand.Id);
     }
 
-    public put(command: models.IActor) {
+    public update(command: models.IActor) {
         return this.http.put(this.apiRoute + '/' + command.Id, command);
     }
 

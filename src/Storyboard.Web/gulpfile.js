@@ -32,6 +32,7 @@ var npmConfig = {
          require.resolve('jasmine-core/lib/jasmine-core/jasmine.js'),
          require.resolve('jasmine-core/lib/jasmine-core/jasmine-html.js'),
          require.resolve('jasmine-core/lib/jasmine-core/boot.js'),
+         require.resolve('jasmine-es6-promise-matchers/jasmine-es6-promise-matchers.js'),
          require.resolve('rxjs/bundles/rx.js')
     ]
 }

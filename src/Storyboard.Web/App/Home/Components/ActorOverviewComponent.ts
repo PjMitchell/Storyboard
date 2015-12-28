@@ -26,13 +26,13 @@ export class ActorOverviewController implements OnInit {
 
     updateName(arg: IEditFieldEventArg) {
         this.Overview.Name = arg.NewValue;
-        this.actorDataService.put(this.Overview)
+        this.actorDataService.update(this.Overview)
             .catch(reason => { this.Overview.Name = arg.OldValue; });
     }
 
     updateDescription(arg: IEditFieldEventArg) {
         this.Overview.Description = arg.NewValue;
-        this.actorDataService.put(this.Overview)
+        this.actorDataService.update(this.Overview)
             .catch(reason => { this.Overview.Description = arg.OldValue; });
     }
 
