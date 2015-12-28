@@ -9,6 +9,7 @@ var gulp = require("gulp"),
   flatten = require('gulp-flatten'),
   watch = require('gulp-watch'),
   tsd = require('gulp-tsd'),
+  jas =require('gulp-jasmine')
   npmFile = require('gulp-npm-files');
 
 eval("var project = " + fs.readFileSync("./project.json"));
@@ -26,8 +27,11 @@ var npmConfig = {
          require.resolve('systemjs/dist/system.src.js'),
          require.resolve('zone.js/dist/zone.js'),
          require.resolve('angular2/bundles/angular2.dev.js'),
-         require.resolve('angular2/bundles/router.dev.js'),
-         require.resolve('angular2/bundles/http.dev.js'),
+         require.resolve('angular2/bundles/router.dev.js'),        
+         require.resolve('jasmine-core/lib/jasmine-core/jasmine.css'),
+         require.resolve('jasmine-core/lib/jasmine-core/jasmine.js'),
+         require.resolve('jasmine-core/lib/jasmine-core/jasmine-html.js'),
+         require.resolve('jasmine-core/lib/jasmine-core/boot.js'),
          require.resolve('rxjs/bundles/rx.js')
     ]
 }
@@ -54,7 +58,6 @@ gulp.task('sass', function(){
 gulp.task('typeScript', function () {
     var tsResult = tsProject.src() 
             .pipe(tsc(tsProject));
-
     tsResult.js.pipe(gulp.dest(paths.webroot));
 });
 
