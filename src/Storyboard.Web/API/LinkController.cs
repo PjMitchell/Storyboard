@@ -4,7 +4,7 @@ using Storyboard.Domain.Core;
 using Storyboard.Domain.Core.Commands;
 using Storyboard.Domain.Data;
 using Storyboard.Web.Models.Home;
-
+using Storyboard.Web.Models.Util;
 
 namespace Storyboard.Web.API
 {
@@ -25,19 +25,7 @@ namespace Storyboard.Web.API
         [HttpPost]
         public void Post([FromBody]CreateLinkRequest request)
         {
-            dataService.Add(MapRequest(request));
-        }
-
-        private CreateLinkCommand MapRequest(CreateLinkRequest request)
-        {
-            return new CreateLinkCommand
-            {
-                NodeA = new Node(request.NodeAId, StoryboardNodeTypes.GetFromValue(request.NodeAType)),
-                NodeB = new Node(request.NodeBId, StoryboardNodeTypes.GetFromValue(request.NodeBType)),
-                Strength = request.Strength,
-                Direction = (LinkFlow)request.Direction,
-                Type = new LinkType { Id = request.Type }
-            };
+            dataService.Add(request.ToCreateLinkCommand());
         }
     }
 }

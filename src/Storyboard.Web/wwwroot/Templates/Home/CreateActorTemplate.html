@@ -1,0 +1,9 @@
+﻿<h3>Create Actor</h3>
+<h3>Name</h3>
+<input type="text" maxlength="200" [(ngModel)]="Actor.Name" placeholder="Enter a name here">
+<h3>Description</h3>
+<textarea maxlength="4000" rows="5" [(ngModel)]="Actor.Description" placeholder="Enter a description here"></textarea>
+<button class="btn btn-primary" (click)="save()">Save</button>
+<!--<button class="btn btn-primary" (click)="saveAndOpen()">Save and Open</button>-->
+<button class="btn btn-warning" (click)="cancel()">Cancel</button>
+

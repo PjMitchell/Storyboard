@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_JasmineLayout";
+    ViewBag.Title = "Specs";
+}
+@section head
+{
+    <base href="/Test/Index">
+    <link rel="stylesheet" href="../../lib/jasmine-core/lib/jasmine-core/jasmine.css">
+    <script src="../../lib/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+    <script src="../../lib/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="../../lib/jasmine-core/lib/jasmine-core/boot.js"></script>
+}
+    <script src="../../lib/systemjs/dist/system.src.js"></script>
+    <script src="../../lib/es6-shim/es6-shim.js"></script>
+    <script src="../../lib/rxjs/bundles/rx.js"></script>
+    <script src="../../lib/zone.js/dist/zone.js"></script>
+    <script src="../../lib/angular2/bundles/angular2.dev.js"></script>
+    <script src="../../lib/angular2/bundles/router.dev.js"></script>
+    <script src="../../lib/reflect-metadata/reflect.js"></script>
+    <script>
+        System.config({
+            packages: {
+                '../../app': {
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('../../app/home/services/actordataservice.spec').catch(console.log.bind(console));
+    </script>
+</body>
+</html>
+
+
+
+
+

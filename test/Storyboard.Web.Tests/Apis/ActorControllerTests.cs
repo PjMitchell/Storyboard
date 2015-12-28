@@ -10,12 +10,15 @@ using Storyboard.Domain.Core;
 using Xunit;
 using Newtonsoft.Json.Linq;
 using System.Text;
+using Storyboard.Web.Models.Home;
+using Microsoft.AspNet.Mvc;
 
 namespace Storyboard.Web.Tests.Apis
 {
     public class ActorControllerTests
     {
-        private IActorRepository repo; 
+        private IActorRepository repo;
+        private ILinkDataService linkDataService;
         private ActorController target;
 
 
@@ -23,7 +26,8 @@ namespace Storyboard.Web.Tests.Apis
         public ActorControllerTests()
         {
             repo = Mock.Create<IActorRepository>();
-            target = new ActorController(repo);
+            linkDataService = Mock.Create<ILinkDataService>();
+            target = new ActorController(repo, linkDataService);
         }
 
         [Fact(DisplayName ="ActorController: Get Calls Repository")]
@@ -33,19 +37,21 @@ namespace Storyboard.Web.Tests.Apis
             var id = 3;
             Mock.Arrange(() => repo.GetAsync(id))
                 .Returns(() => Task.FromResult(expected));
-            var result = await target.Get(id);
+            var result = await target.GetById(id);
             Assert.Equal(expected, result);
         }
 
         [Fact(DisplayName = "ActorController: Post Calls Repository")]
         public async Task Post_CallsRepository()
         {
-            var command = new AddUpdateActorCommand
+            var actorCommand = new AddUpdateActorCommand
             {
                 Id = 1,
                 Description = "Description",
                 Name ="Name"
             };
+            var command = new CreateActorCommand();
+            command.ActorCommand = actorCommand;
             AddUpdateActorCommand repoCommand = new AddUpdateActorCommand();
            Mock.Arrange(() => repo.Add(Arg.IsAny<AddUpdateActorCommand>()))
                 .Returns((AddUpdateActorCommand cmd) => {
@@ -53,26 +59,30 @@ namespace Storyboard.Web.Tests.Apis
                     return Task.FromResult(cmd.Id);
                     });
             await target.Post(command);
-            Assert.Equal(command.Id, repoCommand.Id);
-            Assert.Equal(command.Description, repoCommand.Description);
-            Assert.Equal(command.Name, repoCommand.Name);
+            Assert.Equal(command.ActorCommand.Id, repoCommand.Id);
+            Assert.Equal(command.ActorCommand.Description, repoCommand.Description);
+            Assert.Equal(command.ActorCommand.Name, repoCommand.Name);
             
         }
 
-        [Fact(DisplayName = "ActorController: Post Returns Id")]
+        [Fact(DisplayName = "ActorController: Post Returns Command with Id")]
         public async Task Post_ReturnsId()
         {
-            var command = new AddUpdateActorCommand
+            var newId = 23;
+            var actorCommand = new AddUpdateActorCommand
             {
-                Id = 1,
+                Id = 0,
                 Description = "Description",
                 Name = "Name"
             };
+            var command = new CreateActorCommand();
+            command.ActorCommand = actorCommand;
             Mock.Arrange(() => repo.Add(Arg.IsAny<AddUpdateActorCommand>()))
-                .Returns((AddUpdateActorCommand cmd) => Task.FromResult(cmd.Id));
+                .Returns((AddUpdateActorCommand cmd) => Task.FromResult(newId));
                 
-            var result = await target.Post(command);
-            Assert.Equal(1, (int)result.Value);
+            var result = await target.Post(command) as ObjectResult;
+            var completedCommand = result?.Value as CreateActorCommand;
+            Assert.Equal(newId, completedCommand.ActorCommand.Id);
             
         }
         [Fact(DisplayName = "ActorController: Delete Calls Repository")]

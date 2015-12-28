@@ -97,12 +97,13 @@ namespace Storyboard.Data.Core
         /// Adds Story
         /// </summary>
         /// <param name="command">Story to be created</param>
-        public async Task<int> Add(AddUpdateStoryCommand command)
+        public async Task<AddUpdateStoryCommand> Add(AddUpdateStoryCommand command)
         {
             var row = Mapper.Map<StoryTableRow>(command);
             dbContext.Story.Add(row);
             await dbContext.SaveChangesAsync();
-            return row.Id;
+            command.Id = row.Id;
+            return command;
         }
 
         /// <summary>

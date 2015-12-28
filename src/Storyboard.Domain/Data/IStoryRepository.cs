@@ -24,7 +24,7 @@ namespace Storyboard.Domain.Data
         /// Creates Story
         /// </summary>
         /// <param name="command">Story to be created</param>
-        Task<int> Add(AddUpdateStoryCommand command);
+        Task<AddUpdateStoryCommand> Add(AddUpdateStoryCommand command);
 
         /// <summary>
         /// Deletes Story
