@@ -7,7 +7,7 @@ export interface IStoryDataService {
     getAll(): Promise<models.IStory[]>;
     get(id: number): Promise<models.IStory>;
     add(command: IAddUpdateStoryCommand): Promise<number>;
-    put(command: IAddUpdateStoryCommand): Promise<void>;
+    update(command: IAddUpdateStoryCommand): Promise<void>;
     delete(id: number): Promise<void>;
 }
 @Injectable()
@@ -29,7 +29,7 @@ export class StoryDataService implements IStoryDataService {
             .then(value => value.value.Id);
     }
 
-    public put(command: IAddUpdateStoryCommand) {
+    public update(command: IAddUpdateStoryCommand) {
         return this.http.put(this.apiRoute + '/' + command.Id, command);
     }
 

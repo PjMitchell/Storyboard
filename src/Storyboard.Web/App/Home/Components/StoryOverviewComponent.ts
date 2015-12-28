@@ -49,12 +49,12 @@ export class StoryOverviewController implements OnInit {
 
     updateTitle(arg: IEditFieldEventArg) {
         this.Overview.Summary.Title = arg.NewValue;
-        this.storyDataService.put(this.Overview.Summary)
+        this.storyDataService.update(this.Overview.Summary)
             .catch(reason => { this.Overview.Summary.Title = arg.OldValue; });
     }
     updateSynopsis(arg: IEditFieldEventArg) {
         this.Overview.Summary.Synopsis = arg.NewValue;
-        this.storyDataService.put(this.Overview.Summary)
+        this.storyDataService.update(this.Overview.Summary)
             .catch(reason => { this.Overview.Summary.Synopsis = arg.OldValue; });
     }
 };

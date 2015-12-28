@@ -26,12 +26,12 @@
                 }
             }
         });
-        System.import('../../app/home/services/actordataservice.spec')
-            .then(window.onload)
-            .catch(console.log.bind(console));
+        Promise.all([
+        System.import('../../app/home/services/actordataservice.spec'),
+        System.import('../../app/home/services/storydataservice.spec')
+        ]).then(window.onload)
+          .catch(console.log.bind(console));
     </script>
-</body>
-</html>
 
 
 
