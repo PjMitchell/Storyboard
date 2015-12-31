@@ -11,8 +11,11 @@
     <script src="../../lib/jasmine-core/lib/jasmine-core/boot.js"></script>
 }
     <script src="../../lib/jasmine-es6-promise-matchers/jasmine-es6-promise-matchers.js"></script>
-    <script src="../../lib/systemjs/dist/system.src.js"></script>
+    
     <script src="../../lib/es6-shim/es6-shim.js"></script>
+    <script src="../../lib/systemjs/dist/system-polyfills.src.js"></script>
+    <script src="../../lib/systemjs/dist/system.src.js"></script>
+
     <script src="../../lib/rxjs/bundles/rx.js"></script>
     <script src="../../lib/zone.js/dist/zone.js"></script>
     <script src="../../lib/angular2/bundles/angular2.dev.js"></script>
@@ -29,7 +32,8 @@
         Promise.all([
         System.import('../../app/home/services/actordataservice.spec'),
         System.import('../../app/home/services/overviewdataservice.spec'),
-        System.import('../../app/home/services/storydataservice.spec')
+        System.import('../../app/home/services/storydataservice.spec'),
+        System.import('../../app/home/components/summarycomponent.spec')
         ]).then(window.onload)
           .catch(console.log.bind(console));
     </script>

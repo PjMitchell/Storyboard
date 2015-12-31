@@ -1,7 +1,7 @@
 ﻿<div style="display:inline">
     <h3 style="margin:0;" *ngIf="!IsEditing">{{Value}}<button class="btn btn-icon glyphicon glyphicon-pencil faint" (click)="edit()"></button></h3>
     <div *ngIf="IsEditing" style="display:inline">
-        <textarea style="width: calc(100% - 50px)" maxlength="4000" rows="5" [(ngModel)]="EditedValue" ng-show="isEditing"></textarea>
+        <textarea style="width: calc(100% - 50px)" maxlength="4000" rows="5" [(ngModel)]="EditedValue"></textarea>
         <div class="btn-group" role="group" aria-label="...">
             <button class="btn btn-icon glyphicon glyphicon-floppy-disk" (click)="save()"></button>
             <button class="btn btn-icon glyphicon glyphicon-remove" (click)="cancel()"></button>

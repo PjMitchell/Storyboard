@@ -25,6 +25,7 @@ var npmConfig = {
     libBase: 'node_modules',
     libs: [
          require.resolve('systemjs/dist/system.src.js'),
+         require.resolve('systemjs/dist/system-polyfills.src.js'),
          require.resolve('zone.js/dist/zone.js'),
          require.resolve('angular2/bundles/angular2.dev.js'),
          require.resolve('angular2/bundles/router.dev.js'),        
