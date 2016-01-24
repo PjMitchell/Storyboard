@@ -5,18 +5,15 @@
     </div>
     <div class="userBlock">
         @if (Model.IsLoggedIn)
-            {
-            @Model.Username
-            <div class="dropdown" style="display:inline">
-                <button class="btn btn-icon glyphicon glyphicon-cog dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"></button>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation">
-                        @Html.ActionLink("Log out", "LogOff", "Account", null, new { role = "menuitem", tabindex = "-1" })
-                </li>
-            </ul>
-
-        </div>
-
+        {            
+            <div class="navDropdown">
+               <a href="#" class="navDropdownButton">@Model.Username</a>
+               <ul class="navDropdownMenu">
+                    <li>
+                        @Html.ActionLink("Log out", "LogOff", "Account", null)
+                    </li>
+               </ul>
+            </div>
         }
         else
         {

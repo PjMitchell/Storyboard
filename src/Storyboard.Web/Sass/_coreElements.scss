@@ -7,35 +7,31 @@ body{
     margin: 0;
     padding: 0;
     font-size: $regularFont;
-    color:$fontColour
+    color:$fontColour;
+    min-height:100vh;
+    position:relative;
 }
 
-header {
-    background: $accentColour;
-    margin:0 0 0 0;
-    padding:5px;
 
-}
 
 footer {
-    margin: 20px 5px;
+    margin: 0;
     font-size: $smallFont;
+    height: 20px;
+    position:absolute;
+    bottom: 0;
+    p {
+        margin: 0;
+        padding: 0 5px;
+    }
 }
 .page-content {
     padding: 0 5px
 }
-.titleBlock {
-    float: left;
-    color: $fontColour;
-    text-align: left;
-    font-size: $largeFont;
-}
-.userBlock {
-    float: right;
-} 
+
 
 main {
-    padding: 0;
+    padding: 1px 0 19px 0;
 }
 
 table {
