@@ -5,15 +5,10 @@
     </div>
     <div class="userBlock">
         @if (Model.IsLoggedIn)
-        {            
-            <div class="navDropdown">
-               <a href="#" class="navDropdownButton">@Model.Username</a>
-               <ul class="navDropdownMenu">
-                    <li>
-                        @Html.ActionLink("Log out", "LogOff", "Account", null)
-                    </li>
-               </ul>
-            </div>
+        {
+            @Model.Username
+            @Html.Raw(" ")
+            @Html.ActionLink("Log out", "LogOff", "Account", null)
         }
         else
         {
