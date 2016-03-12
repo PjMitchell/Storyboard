@@ -3,16 +3,15 @@
     ViewBag.Title = "Storyboard";
     
 }
-<main>
-    <h3>Welcome to Storyboard</h3>
-    <p>Storyboard allows you to describe a story in terms of components such as actors, allowing you to describe a story in terms of relationships between these components.</p>
 
-    @if (Model.IsSignedIn)
-    {
-        @Html.ActionLink("Start", "App")
-    }
-    else
-    {
-        @Html.ActionLink("Log in to start", "LogIn", "Account")
-    }
-</main>
+<h3>Welcome to Storyboard</h3>
+<p>Storyboard allows you to describe a story in terms of components such as actors, allowing you to describe a story in terms of relationships between these components.</p>
+
+@if (Model.IsSignedIn)
+{
+    @Html.ActionLink("Start", "App")
+}
+else
+{
+    @Html.ActionLink("Log in to start", "LogIn", "Account")
+}

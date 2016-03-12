@@ -10,7 +10,9 @@
 </head>
 <body>
     @Component.Invoke("Header")
-    @RenderBody()
+    <main>
+        @RenderBody()
+    </main>
     <footer>
         <p>&copy; @DateTime.Now.Year - Storyboard</p>
     </footer>

@@ -1,0 +1,70 @@
+﻿@import "_colourPalette.scss";
+@import "_textProperties.scss";
+
+$headerHeight : 40px;
+$dropdownLeftPadding :5px;
+header {
+    background: $accentColour;
+    margin:0;
+    padding:0;
+    height:$headerHeight;
+}
+
+.titleBlock {
+    float: left;
+    color: $fontColour;
+    text-align: left;
+    font-size: $largeFont;
+}
+.userBlock {
+    float: right;
+    
+} 
+
+.navDropdown {
+    position:relative;
+    a{
+        color: $fontColour;
+        font-style:normal;
+        text-decoration:  none;
+        padding-left:$dropdownLeftPadding;
+    }
+    .navDropdownMenu{
+        background: $accentColour;
+        padding:1px;
+        margin:0;
+        list-style:none;
+        position:absolute;
+        top:100%;
+        border-width: 0 1px 1px 1px;
+        border-style:solid;
+        border-radius:0 0 5px 5px;
+        display:none;
+        border-color: $accentShadeColour;
+        min-width:100%;
+        li{
+            position:relative;
+            padding-top:5px;
+        }
+    }
+
+}
+.navDropdownButton {
+    display:block;
+    margin:0;
+    padding:0;
+    line-height:$headerHeight;
+    height:$headerHeight;
+}
+
+.navDropdownButton::after {
+    content:"\25BE"
+}
+.navDropdownButton:hover {
+    background: $accentShadeColour;
+}
+
+.navDropdownButton:hover ~ .navDropdownMenu{
+    display:block;
+}
+ 
