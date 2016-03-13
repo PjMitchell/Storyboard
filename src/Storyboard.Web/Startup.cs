@@ -14,6 +14,9 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNet.FileProviders;
+using Microsoft.AspNet.StaticFiles;
+using System.IO;
 
 namespace Storyboard.Web
 {
@@ -128,7 +131,19 @@ namespace Storyboard.Web
             }
             app.UseIISPlatformHandler();
             // Add static files to the request pipeline.
-            app.UseStaticFiles();
+            app.UseFileServer();
+
+            // this will serve up node_modules
+            var provider = new PhysicalFileProvider(
+                env.MapPath("../node_modules")
+                //Path.Combine(env. ApplicationBasePath, "node_modules")
+            );
+            var options = new FileServerOptions();
+            options.RequestPath = "/node_modules";
+            options.StaticFileOptions.FileProvider = provider;
+            options.EnableDirectoryBrowsing = true;
+            app.UseFileServer(options);
+
 
             // Add cookie-based authentication to the request pipeline.
             app.UseIdentity();

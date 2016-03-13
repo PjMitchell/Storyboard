@@ -21,22 +21,7 @@ var paths = {
   app: "./" + project.webroot + "/app/",
   webroot: "./" + project.webroot +"/"
 };
-var npmConfig = {
-    libBase: 'node_modules',
-    libs: [
-         require.resolve('systemjs/dist/system.src.js'),
-         require.resolve('systemjs/dist/system-polyfills.src.js'),
-         require.resolve('zone.js/dist/zone.js'),
-         require.resolve('angular2/bundles/angular2.dev.js'),
-         require.resolve('angular2/bundles/router.dev.js'),        
-         require.resolve('jasmine-core/lib/jasmine-core/jasmine.css'),
-         require.resolve('jasmine-core/lib/jasmine-core/jasmine.js'),
-         require.resolve('jasmine-core/lib/jasmine-core/jasmine-html.js'),
-         require.resolve('jasmine-core/lib/jasmine-core/boot.js'),
-         require.resolve('jasmine-es6-promise-matchers/jasmine-es6-promise-matchers.js'),
-         require.resolve('rxjs/bundles/rx.js')
-    ]
-}
+
 var tsProject = tsc.createProject('tsconfig.json');
 
 
@@ -88,8 +73,6 @@ gulp.task("copy", ["clean"], function () {
     gulp.src(paths.bower + bower[destinationDir])
       .pipe(gulp.dest(paths.lib + destinationDir));
   }
-    gulp.src(npmConfig.libs, { base: npmConfig.libBase })
-    .pipe(gulp.dest(paths.lib))
 });
 
 

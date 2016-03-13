@@ -11,7 +11,7 @@
         "Storyboard.Domain": "1.0.0-*",
         "AutoMapper": "4.1.1",
         "EntityFramework.Core": "7.0.0-rc1-final",
-        "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final"
+        "EntityFramework.Relational": "7.0.0-rc1-final"
     },
 
     "frameworks": {
