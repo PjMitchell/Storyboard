@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
@@ -16,7 +15,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNet.FileProviders;
 using Microsoft.AspNet.StaticFiles;
-using System.IO;
 
 namespace Storyboard.Web
 {
