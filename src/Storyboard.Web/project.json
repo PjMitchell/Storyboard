@@ -49,7 +49,6 @@
         "bower_components"
     ],
     "publishExclude": [
-        "node_modules",
         "bower_components",
         "**.xproj",
         "**.user",

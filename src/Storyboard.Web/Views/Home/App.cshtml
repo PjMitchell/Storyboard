@@ -10,20 +10,13 @@
 
 @section scripts
 {
-    <script src="../../lib/es6-shim/es6-shim.js"></script>
-    <script src="../../lib/systemjs/dist/system-polyfills.src.js"></script>
-    <script src="../../lib/systemjs/dist/system.src.js"></script>
-    <script src="../../lib/rxjs/bundles/rx.js"></script>
-    <script src="../../lib/zone.js/dist/zone.js"></script>
-    <script src="../../lib/angular2/bundles/angular2.dev.js"></script>
-    <script src="../../lib/angular2/bundles/router.dev.js"></script>  
-    <script src="../../lib/angular2/bundles/http.dev.js"></script>  
-    <script src="../../lib/reflect-metadata/reflect.js"></script>
+    @await Html.PartialAsync("_AngularScripts")
     <script>
         System.config({
             packages: {
                 '../../app': {
                     defaultExtension: 'js'
+
                 }
             }
         });
